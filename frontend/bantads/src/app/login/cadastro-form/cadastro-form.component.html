@@ -1,43 +1,40 @@
-
 <div class="flex flex-col items-center justify-center">
-    <div class="my-2 w-full">
-
+  <div class="my-2 w-full">
     <div class="flex flex-row w-full">
-        <div class="flex-1">
-            <div class="flex flex-row flex-wrap">
-                <input type="text" placeholder="Nome" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-                <input type="text" placeholder="E-mail" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-            </div>
-                <input type="password" placeholder="Senha" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-            <div class="flex flex-row flex-wrap">
-                <input type="number" placeholder="CPF" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-                <input type="number" placeholder="Salário" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-            </div>
-            <div class="flex flex-row flex-wrap">
-                <input type="number" placeholder="Número" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">   
-                <input type="text" placeholder="Endereço" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-            </div>
-
+      <div class="flex-1">
+        <div class="flex flex-col">
+          <input type="text" name="nome" placeholder="Nome" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="text" name="email" placeholder="E-mail" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="password" name="senha" placeholder="Senha" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="text" name="cpf" placeholder="CPF" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="text" name="telefone" placeholder="Telefone" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="number" name="salario" placeholder="Salário" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="text" name="cep" placeholder="CEP" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
         </div>
-    </div>
 
-    <!--
-    NOME, EMAIL, CPF, ENDEREÇO, TELEFONE, SALARIO
-			ENDEREÇO: TIPO (RUA, AVENIDA, ETC), LOGRADOURO, NÚMERO, COMPLEMENTO, CEP, CIDADE, ESTADO
--->
+        <div class="flex flex-row flex-wrap my-2">
+          <input type="text" name="tipo" placeholder="Tipo" class="text-white md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="text" name="logradouro" placeholder="Logradouro" class="text-white md:ml-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        </div>
+
+        <div class="flex flex-row flex-wrap my-2">
+          <input type="text" name="numero" placeholder="Número" class="text-white md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="text" name="complemento" placeholder="Complemento" class="text-white md:ml-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        </div>
+
+        <div class="flex flex-row flex-wrap my-2">
+          <input type="text" name="cidade" placeholder="Cidade" class="text-white md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+          <input type="text" name="estado" placeholder="Estado" class="text-white md:ml-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        </div>
+      </div>
+    </div>
 
     <Button
-type="button"
-variant="contained"
-class="w-full mt-2 bg-blue-600 text-white py-2 px-4 rounded disabled:bg-blue-400 hover:bg-blue-700 focus:outline-none">
-Entrar
-</Button>
-
-    <div class="mt-2">
-        <p class="text-white">
-            Não possui uma conta ainda? <button class="text-white font-bold">Cadastre-se</button>
-        </p>
-    </div>
-</div>
-
+      type="button"
+      variant="contained"
+      class="w-full mt-2 bg-[#18C687] text-white py-2 px-4 rounded disabled:bg-[#90F58E] hover:bg-[#18FA87] focus:outline-none"
+    >
+      Cadastrar
+    </Button>
+  </div>
 </div>
