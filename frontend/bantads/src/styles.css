@@ -3,11 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, app-root, app-login {
+html, body, app-root, app-entrar {
   height: 100%;
 }
 
-app-root, app-login {
+app-root, app-entrar {
   display: flex;
   flex-direction: column;
   background-color: #ebebeb;

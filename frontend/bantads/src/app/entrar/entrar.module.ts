@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
+import { EntrarComponent } from './entrar.component';
 import { LoginFormComponent } from './login-form';
 import { CadastroFormComponent } from './cadastro-form';
 
 
-
 @NgModule({
   declarations: [
-    LoginComponent,
+    EntrarComponent,
     LoginFormComponent,
     CadastroFormComponent
   ],
@@ -16,9 +15,9 @@ import { CadastroFormComponent } from './cadastro-form';
     CommonModule
   ],
   exports: [
-    LoginComponent,
+    EntrarComponent,
     LoginFormComponent,
     CadastroFormComponent
   ]
 })
-export class LoginModule { }
+export class EntrarModule { }
