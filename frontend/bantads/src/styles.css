@@ -1,14 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html, body, app-root, app-entrar {
+html, body, app-root {
   height: 100%;
-}
-
-app-root, app-entrar {
   display: flex;
   flex-direction: column;
-  background-color: #ebebeb;
+  background-color: #4B5652;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
