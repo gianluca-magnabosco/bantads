@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-login-form',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent {
+  
+  showPassword: boolean = false;
+
+  email: string = '';
+  password: string = '';
+
+
+  isButtonDisabled(): boolean {
+    return this.email === '' || this.password === '';
+  }
 
 }

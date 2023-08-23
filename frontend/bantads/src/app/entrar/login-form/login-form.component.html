@@ -1,19 +1,21 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <div class="flex flex-col items-center justify-center">
   <div class="my-2 w-full">
 
-    <div class="flex flex-row w-auto">
+    <div class="flex flex-row w-auto relative">
       <div class="flex-1">
-        <input type="text" placeholder="E-mail" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-        <input type="password" placeholder="Senha" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        <input type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" placeholder="Senha" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        <i class="fa-solid fa-eye absolute cursor-pointer top-3/4 right-3" (click)="showPassword = !showPassword"></i>
       </div>
     </div>
 
-    <Button
+    <button
       type="button"
-      variant="contained"
-      class="w-full mt-2 font-medium bg-[#18C687] text-white py-2 px-4 rounded disabled:bg-[#90F58E] hover:bg-[#18FA87] focus:outline-none"
+      [disabled]="isButtonDisabled()"
+      class="w-full mt-2 font-medium bg-[#18C687] text-white py-2 px-4 rounded"
     >
       Entrar
-    </Button>
+    </button>
   </div>
 </div>
