@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { EntrarComponent } from './entrar.component';
 import { LoginFormComponent } from './login-form';
 import { CadastroFormComponent } from './cadastro-form';
+import { HttpClientModule } from '@angular/common/http'
+import { BuscaCEPService } from './services';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,16 @@ import { CadastroFormComponent } from './cadastro-form';
   imports: [
     CommonModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
     EntrarComponent,
     LoginFormComponent,
     CadastroFormComponent
+  ],
+  providers:[
+    BuscaCEPService
   ]
 
 })

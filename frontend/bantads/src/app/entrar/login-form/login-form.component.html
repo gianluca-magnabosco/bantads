@@ -4,8 +4,8 @@
 
     <div class="flex flex-row w-auto relative">
       <div class="flex-1">
-        <input type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-        <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" placeholder="Senha" class="w-full mt-2 text-white py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        <input type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" placeholder="Senha" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
         <i class="fa-solid fa-eye absolute cursor-pointer top-3/4 right-3" (click)="showPassword = !showPassword"></i>
       </div>
     </div>
@@ -14,7 +14,7 @@
       type="button"
       [disabled]="isButtonDisabled()"
       variant="contained"
-      class="w-full mt-2 font-medium bg-[#18C687] text-white py-2 px-4 rounded disabled:bg-[#90F58E] hover:bg-[#18FA87] focus:outline-none" 
+      class="w-full mt-2 font-medium bg-[#18C687] text-black py-2 px-4 rounded disabled:bg-[#90F58E] hover:bg-[#18FA87] focus:outline-none" 
     >
       Entrar
     </button>
