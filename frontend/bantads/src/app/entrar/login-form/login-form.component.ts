@@ -8,13 +8,18 @@ import { Component, Renderer2 } from '@angular/core';
 export class LoginFormComponent {
   
   showPassword: boolean = false;
+  isInvalidEmail: boolean = false;
 
   email: string = '';
   password: string = '';
 
 
   isButtonDisabled(): boolean {
-    return this.email === '' || this.password === '';
+    return this.email === '' || this.password === ''|| this.isInvalidEmail;
   }
+
+  validateEmail(): void {
+    this.isInvalidEmail = !this.email.includes('@');
+  }  
 
 }

@@ -4,7 +4,8 @@
 
     <div class="flex flex-row w-auto relative">
       <div class="flex-1">
-        <input type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+        <input type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none"(blur)="validateEmail()">
+        <div *ngIf="isInvalidEmail" class="text-red-500"><b>E-mail deve conter pelo menos um "@"</b></div>  
         <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" placeholder="Senha" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
         <i class="fa-solid fa-eye absolute cursor-pointer top-3/4 right-3" (click)="showPassword = !showPassword"></i>
       </div>
