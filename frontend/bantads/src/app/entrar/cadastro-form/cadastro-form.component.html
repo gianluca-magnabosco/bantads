@@ -1,47 +1,79 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-<form #f="ngForm">
 
 <div class="form-group relative">
-<div class="flex flex-col items-center justify-center">
-  <div class="my-2 w-full">
-    <div class="flex flex-row w-full">
-      <div class="flex-1">
-        <div class="flex flex-col">
-          <input type="text" [(ngModel)]="nome" name="nome"  placeholder="Nome" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+  <div class="flex flex-col items-center justify-center">
+    <div class="my-2 w-full">
+      <div class="flex flex-1 flex-col">
+        <div>
+          <input name="nome" type="text" [(ngModel)]="nome" placeholder="Nome" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setNomeBeenBlurred()" (input)="validateNome()"/>
+          <div *ngIf="!isNomeValid" class="text-red-600 font-bold">
+            {{nomeErrorText}}
+          </div>
+        </div>
 
-          <input type="text" name="email" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="validateEmail()">
-          <div *ngIf="isInvalidEmail" class="text-red-500"><b>E-mail deve conter pelo menos um "@"</b></div>    
+        <div>
+          <input name="email" type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setEmailBeenBlurred()" (input)="validateEmail()"/>
+          <div *ngIf="!isEmailValid" class="text-red-600 font-bold">
+            {{emailErrorText}}
+          </div>
+        </div>
 
-          <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" name="password" placeholder="Senha" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-          <i class="fa-solid fa-eye absolute cursor-pointer absolute top-32 right-3" (click)="showPassword = !showPassword"></i>
-          
-          <input type="text" name="cpf" [(ngModel)]="cpf" placeholder="CPF" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (input)="formatCPF($event)" maxlength="14" (blur)="validateCPF()">
-          <div *ngIf="isInvalidCPF" class="text-red-500"><b>CPF deve conter exatamente 11 números</b></div>
-          
-          <input type="text" name="telefone" [(ngModel)]="telefone" placeholder="Telefone (DDD)" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (input)="formatPhone($event)" maxlength="15" (blur)="validatePhone()">
-          <div *ngIf="isInvalidPhone" class="text-red-500"><b>Telefone deve conter exatamente 11 números (incluindo DDD)</b></div>
-          
-          <input type="number" name="salario" [(ngModel)]="salario" placeholder="Salário" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-          
-          <input type="text" name="cep" id="cep" ngModel #cep="ngModel" (blur)="consultaCep(applyFilter($event), f)" placeholder="CEP" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="8">
+        <div>
+          <input name="cpf" type="text" [(ngModel)]="cpf" placeholder="CPF" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="14" (blur)="setCpfBeenBlurred()" (input)="validateAndFormatCpf($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
+          <div *ngIf="!isCpfValid" class="text-red-600 font-bold">
+            {{cpfErrorText}}
+          </div>
+        </div>
+
+        <div>
+          <input name="telefone" type="text" [(ngModel)]="telefone" placeholder="Telefone" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="15" (blur)="setTelefoneBeenBlurred()" (input)="validateAndFormatTelefone($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
+          <div *ngIf="!isTelefoneValid" class="text-red-600 font-bold">
+            {{telefoneErrorText}}
+          </div>
+        </div>
+
+        <div>
+          <input name="salario" type="text" [(ngModel)]="salario" placeholder="Salário" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setSalarioBeenBlurred()" (input)="validateAndFormatSalario($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
+          <div *ngIf="!isSalarioValid" class="text-red-600 font-bold">
+            {{salarioErrorText}}
+          </div>
+        </div>
+
+        <div>
+          <input name="cep" type="text" [(ngModel)]="cep" placeholder="CEP" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="9" (blur)="setCepBeenBlurred()" (input)="validateFormatAndConsultarCep($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
+          <div *ngIf="!isCepValid" class="text-red-600 font-bold">
+            {{cepErrorText}}
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="enderecoShown">
+        <div class="flex flex-row flex-wrap my-2">
+          <input name="tipo" type="text" [(ngModel)]="tipo" placeholder="Tipo" class="text-black md:mr-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+
+          <input name="logradouro" type="text" [(ngModel)]="logradouro" placeholder="Logradouro" class="text-black md:ml-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
         </div>
 
         <div class="flex flex-row flex-wrap my-2">
-          <input type="text" name="tipo" [(ngModel)]="tipo" placeholder="Tipo" class="text-black md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-         
-          <input type="text" name="logradouro" [disabled]="isAddressDisabled" placeholder="Logradouro" id="logradouro" name="logradouro" ngModel #logradouro="ngModel" class="text-black md:ml-2 py-2 px-4 rounded focus:outline-none">
+          <div>
+            <input name="numero" type="text" [(ngModel)]="numero" placeholder="Número" class="text-black md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setNumeroBeenBlurred()" (input)="validateNumero()" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+            <div *ngIf="!isNumeroValid" class="text-red-600 font-bold">
+              {{numeroErrorText}}
+            </div>
+          </div>
+
+          <div>
+            <input name="complemento" type="text" [(ngModel)]="complemento" placeholder="Complemento" class="text-black md:ml-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setComplementoBeenBlurred()" (input)="validateComplemento()">
+            <div *ngIf="!isComplementoValid" class="text-red-600 font-bold">
+              {{complementoErrorText}}
+            </div>
+          </div>
         </div>
 
         <div class="flex flex-row flex-wrap my-2">
-          <input type="text" name="numero" [(ngModel)]="numero" placeholder="Número" class="text-black md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-          
-          <input type="text" name="complemento" placeholder="Complemento" class="text-black md:ml-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-        </div>
+          <input name="cidade" type="text" [(ngModel)]="cidade" placeholder="Cidade" class="text-black md:mr-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
 
-        <div class="flex flex-row flex-wrap my-2">
-          <input type="text" name="cidade" [disabled]="isAddressDisabled"  placeholder="Cidade" id="cidade" ngModel #cidade="ngModel" class="text-black md:mr-2 py-2 px-4 rounded focus:outline-none">
-          
-          <input type="text" name="uf" [disabled]="isAddressDisabled"  placeholder="Estado" ngModel #uf="ngModel" id="uf"  class="text-black md:ml-2 py-2 px-4 rounded focus:outline-none">
+          <input name="uf" type="text" [(ngModel)]="estado" placeholder="Estado" class="text-black md:ml-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
         </div>
       </div>
     </div>
@@ -51,10 +83,10 @@
       variant="contained"
       [disabled]="isButtonDisabled()"
       class="w-full mt-2 bg-[#18C687] text-black py-2 px-4 rounded disabled:bg-[#90F58E] hover:bg-[#18FA87] focus:outline-none font-medium"
+      (click)="cadastrar()"
     >
       Cadastrar
     </Button>
   </div>
 </div>
-</div>
-</form>
+

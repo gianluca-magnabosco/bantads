@@ -1,13 +1,24 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <div class="flex flex-col items-center justify-center">
   <div class="my-2 w-full">
-
     <div class="flex flex-row w-auto relative">
-      <div class="flex-1">
-        <input type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none"(blur)="validateEmail()">
-        <div *ngIf="isInvalidEmail" class="text-red-500"><b>E-mail deve conter pelo menos um "@"</b></div>  
-        <input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" placeholder="Senha" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
-        <i class="fa-solid fa-eye absolute cursor-pointer top-3/4 right-3" (click)="showPassword = !showPassword"></i>
+      <div class="flex flex-col flex-1">
+        <div>
+          <input name="email" type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setEmailBeenBlurred()" (input)="validateEmail()"/>
+          <div *ngIf="!isEmailValid" class="text-red-600 font-bold">
+            {{emailErrorText}}
+          </div>
+        </div>
+
+        <div>
+          <div class="flex flex-row relative">
+            <input name="password" type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="password" placeholder="Senha" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setPasswordBeenBlurred()" (input)="validatePassword()"/>
+            <i class="fa-solid fa-eye absolute cursor-pointer top-[43%] right-3" (click)="togglePasswordShown()"></i>
+          </div>
+          <div *ngIf="!isPasswordValid" class="text-red-600 font-bold">
+            {{passwordErrorText}}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -15,7 +26,8 @@
       type="button"
       [disabled]="isButtonDisabled()"
       variant="contained"
-      class="w-full mt-2 font-medium bg-[#18C687] text-black py-2 px-4 rounded disabled:bg-[#90F58E] hover:bg-[#18FA87] focus:outline-none" 
+      class="w-full mt-2 font-medium bg-[#18C687] text-black py-2 px-4 rounded disabled:bg-[#90F58E] hover:bg-[#18FA87] focus:outline-none"
+      (click)="login()"
     >
       Entrar
     </button>

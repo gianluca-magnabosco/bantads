@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./entrar.component.css']
 })
 export class EntrarComponent {
-  login:boolean = true;
+  public login: boolean = true;
 }

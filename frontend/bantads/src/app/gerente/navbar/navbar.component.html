@@ -1,43 +1,41 @@
 <mat-toolbar class="bg-black">
   <div class="flex flex-row items-center w-full justify-between">
     <div class="flex flex-row items-center justify-center">
-      <a>
+      <button class="flex flex-row items-center justify-center">
         <img style="width: 80px; height: 40px; margin-left: 10px; margin-top: 5px;" src="../assets/img/icone.png">
-      </a>
 
-      <div class="text-white text-3xl ml-5 flex flex-row">
-        Tads
-        <div class="font-extralight">bank</div>
-      </div>
+        <div class="text-white text-3xl ml-5 flex flex-row">
+          Tads
+          <div class="font-extralight">bank</div>
+        </div>
+      </button>
     </div>
 
     <div class="flex flex-row items-center justify-center space-x-3">
       <div class="text-white flex flex-wrap flex-row">
-        <a href="#" class=" hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
-          HOME
-        </a>
-        <a href="#" class=" hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
-          CONSULTAR CLIENTE
-        </a>
+        <button class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+          LISTAR TODOS OS CLIENTES
+        </button>
       </div>
 
       <div class="text-white flex flex-wrap flex-row">
-        <a href="#" class=" hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
-          TODOS OS CLIENTES
-        </a>
-        <a href="#" class=" hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
-          MELHORES CLIENTES
-        </a>
+        <button class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+          CONSULTAR CLIENTE
+        </button>
+      </div>
+
+      <div class="text-white flex flex-wrap flex-row">
+        <button class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+          LISTAR MELHORES CLIENTES
+        </button>
       </div>
     </div>
 
     <div class="flex flex-row items-center justify-center">
       <div class="text-white flex flex-wrap flex-row">
-        <a href="#" routerLink="entrar" class="text-white">
         <button class="bg-red-700 hover:bg-[#cf5177] p-2 rounded-sm">
           LOGOUT
         </button>
-        </a>
       </div>
     </div>
   </div>

@@ -6,27 +6,39 @@ import { EntrarComponent } from './entrar.component';
 import { LoginFormComponent } from './login-form';
 import { CadastroFormComponent } from './cadastro-form';
 import { HttpClientModule } from '@angular/common/http'
-import { BuscaCEPService } from './services';
+import { BuscaCEPService, CadastroService, LoginService, ValidationService } from './services';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
     EntrarComponent,
     LoginFormComponent,
-    CadastroFormComponent
+    CadastroFormComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
   ],
   exports: [
     EntrarComponent,
     LoginFormComponent,
-    CadastroFormComponent
+    CadastroFormComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
   ],
   providers:[
-    BuscaCEPService
+    BuscaCEPService,
+    ValidationService,
+    LoginService,
+    CadastroService,
   ]
 
 })

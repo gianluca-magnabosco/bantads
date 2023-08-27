@@ -6,9 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class BuscaCEPService {
 
-  constructor(private httpCliente: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  buscar(cep:String){
-    return this.httpCliente.get(`https://viacep.com.br/ws/${cep}/json/`)
+  buscar(cep: string) {
+    return this.httpClient.get(`https://viacep.com.br/ws/${cep}/json/`);
   }
 }
