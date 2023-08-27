@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoginDTO } from '../dtos/login.dto';
+import { Login } from 'src/app/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class LoginService {
 
   constructor() { }
 
-  login(loginDTO: LoginDTO): void {
+  login(loginDTO: Login): void {
     console.log(loginDTO);
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService, ValidationService } from '../services';
-import { LoginDTO } from '../dtos/login.dto';
+import { Login } from 'src/app/shared';
 
 @Component({
   selector: 'app-login-form',
@@ -18,9 +18,9 @@ export class LoginFormComponent {
   private passwordShown: boolean = false;
   private passwordError: string = "";
 
-  private loginDTO: LoginDTO = {
+  private loginDTO: Login = {
     email: "",
-    password: ""
+    password: "",
   };
 
   constructor(private validationService: ValidationService, private loginService: LoginService) { }
@@ -30,7 +30,7 @@ export class LoginFormComponent {
   }
 
   get email(): string {
-    return this.loginDTO.email;
+    return this.loginDTO.email!;
   }
 
   set email(email: string) {
@@ -50,7 +50,7 @@ export class LoginFormComponent {
   }
 
   get password(): string {
-    return this.loginDTO.password;
+    return this.loginDTO.password!;
   }
 
   set password(password: string) {
@@ -88,7 +88,10 @@ export class LoginFormComponent {
   }
 
   isButtonDisabled(): boolean {
-    return (!this.isPasswordValid || !this.isEmailValid);
+    return (
+      (this.email === "" || !this.email.match(/[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,125}[a-zA-Z]{2,63}/))
+      || (this.password === "")
+    );
   }
 
   validateEmail(): void {

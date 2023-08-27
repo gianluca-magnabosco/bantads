@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { BuscaCEPService, CadastroService, ValidationService } from '../services';
-import { CadastroDTO } from '../dtos/cadastro.dto';
-import { EnderecoDTO } from '../dtos/endereco.dto';
+import { Cadastro, Endereco } from 'src/app/shared';
 
 @Component({
   selector: 'app-cadastro-form',
@@ -44,7 +43,7 @@ export class CadastroFormComponent {
 
   private showEndereco: boolean = false;
 
-  private enderecoDTO: EnderecoDTO = {
+  private endereco: Endereco = {
     cep: "",
     tipo: "",
     logradouro: "",
@@ -54,13 +53,13 @@ export class CadastroFormComponent {
     estado: "",
   }
 
-  private cadastroDTO: CadastroDTO = {
+  private cadastroDTO: Cadastro = {
     nome: "",
     email: "",
     cpf: "",
     telefone: "",
     salario: "",
-    endereco: this.enderecoDTO,
+    endereco: this.endereco,
   }
 
   constructor(private validationService: ValidationService, private cadastroService: CadastroService, private buscaCEPService: BuscaCEPService) {}
@@ -74,7 +73,7 @@ export class CadastroFormComponent {
   }
 
   get nome(): string {
-    return this.cadastroDTO.nome;
+    return this.cadastroDTO.nome!;
   }
 
   set nome(nome: string) {
@@ -99,7 +98,7 @@ export class CadastroFormComponent {
   }
 
   get email(): string {
-    return this.cadastroDTO.email;
+    return this.cadastroDTO.email!;
   }
 
   set email(email: string) {
@@ -124,7 +123,7 @@ export class CadastroFormComponent {
   }
 
   get cpf(): string {
-    return this.cadastroDTO.cpf;
+    return this.cadastroDTO.cpf!;
   }
 
   set cpf(cpf: string) {
@@ -149,7 +148,7 @@ export class CadastroFormComponent {
   }
 
   get telefone(): string {
-    return this.cadastroDTO.telefone;
+    return this.cadastroDTO.telefone!;
   }
 
   set telefone(telefone: string) {
@@ -174,7 +173,7 @@ export class CadastroFormComponent {
   }
 
   get salario(): string {
-    return this.cadastroDTO.salario;
+    return this.cadastroDTO.salario!;
   }
 
   set salario(salario: string) {
@@ -199,11 +198,11 @@ export class CadastroFormComponent {
   }
 
   get cep(): string {
-    return this.cadastroDTO.endereco.cep;
+    return this.cadastroDTO.endereco!.cep!;
   }
 
   set cep(cep: string) {
-    this.cadastroDTO.endereco.cep = cep;
+    this.cadastroDTO.endereco!.cep = cep;
   }
 
   get isCepValid(): boolean {
@@ -224,27 +223,27 @@ export class CadastroFormComponent {
   }
 
   get tipo(): string {
-    return this.cadastroDTO.endereco.tipo;
+    return this.cadastroDTO.endereco!.tipo!;
   }
 
   set tipo(tipo: string) {
-    this.cadastroDTO.endereco.tipo = tipo;
+    this.cadastroDTO.endereco!.tipo = tipo;
   }
 
   get logradouro(): string {
-    return this.cadastroDTO.endereco.logradouro;
+    return this.cadastroDTO.endereco!.logradouro!;
   }
 
   set logradouro(logradouro: string) {
-    this.cadastroDTO.endereco.logradouro = logradouro;
+    this.cadastroDTO.endereco!.logradouro = logradouro;
   }
 
   get numero(): string {
-    return this.cadastroDTO.endereco.numero;
+    return this.cadastroDTO.endereco!.numero!;
   }
 
   set numero(numero: string) {
-    this.cadastroDTO.endereco.numero = numero;
+    this.cadastroDTO.endereco!.numero = numero;
   }
 
   get isNumeroValid(): boolean {
@@ -265,11 +264,11 @@ export class CadastroFormComponent {
   }
 
   get complemento(): string {
-    return this.cadastroDTO.endereco.complemento;
+    return this.cadastroDTO.endereco!.complemento!;
   }
 
   set complemento(complemento: string) {
-    this.cadastroDTO.endereco.complemento = complemento;
+    this.cadastroDTO.endereco!.complemento = complemento;
   }
 
   get isComplementoValid(): boolean {
@@ -290,29 +289,31 @@ export class CadastroFormComponent {
   }
 
   get cidade(): string {
-    return this.cadastroDTO.endereco.cidade;
+    return this.cadastroDTO.endereco!.cidade!;
   }
 
   set cidade(cidade: string) {
-    this.cadastroDTO.endereco.cidade = cidade;
+    this.cadastroDTO.endereco!.cidade = cidade;
   }
 
   get estado(): string {
-    return this.cadastroDTO.endereco.estado;
+    return this.cadastroDTO.endereco!.estado!;
   }
 
   set estado(estado: string) {
-    this.cadastroDTO.endereco.estado = estado;
+    this.cadastroDTO.endereco!.estado = estado;
   }
 
   isButtonDisabled(): boolean {
+    let numberSalario = Number(this.salario.replace(/[^\d,]/g, '').replace(',', '.'));
+
     return (
-      !this.isNomeValid
-      || !this.isEmailValid
-      || !this.isCpfValid
-      || !this.isTelefoneValid
-      || !this.isSalarioValid
-      || !this.isCepValid
+      (this.nome === "" || !this.nome.match(/^[a-zA-ZáãàâéèêíîìóòôõúûùÁÀÃÂÉÈÊÍÌÎÓÒÔÕÚÙÛñÑÇç\s]+$/))
+      || (this.email === "" || !this.email.match(/[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,125}[a-zA-Z]{2,63}/))
+      || (this.cpf === "" || !this.validationService.innerValidateCpf(this.cpf))
+      || (this.telefone === "" || !this.telefone.match(/\(\d{2}\)\s\d{5}-\d{4}/))
+      || (this.salario === "" || isNaN(numberSalario) || numberSalario <= 0.00 || numberSalario > 100000000)
+      || (this.cep === "" || !this.cep.match(/\d{5}-\d{3}/))
       || !this.isEnderecoValid()
     );
   }
@@ -325,7 +326,7 @@ export class CadastroFormComponent {
       && this.complemento.length > 0
       && this.cidade.length > 0
       && this.estado.length > 0
-    )
+    );
   }
 
   validateNome(): void {
@@ -532,7 +533,7 @@ export class CadastroFormComponent {
 
   validateFormatAndConsultarCep(event: any): void {
     this.showEndereco = false;
-    this.cadastroDTO.endereco.tipo = "";
+    this.cadastroDTO.endereco!.tipo = "";
     this.logradouro = "";
     this.cidade = "";
     this.estado = "";
@@ -548,6 +549,12 @@ export class CadastroFormComponent {
 
   consultarCep(): void {
     this.buscaCEPService.buscar(this.cep).subscribe((result: any) => {
+      if (result.logradouro === undefined) {
+        this.cepValid = false;
+        this.cepError = "Insira um CEP existente!";
+        return;
+      }
+
       let splitLogradouro = result.logradouro.split(' ');
       this.tipo = splitLogradouro.shift();
       this.logradouro = splitLogradouro.join(' ');

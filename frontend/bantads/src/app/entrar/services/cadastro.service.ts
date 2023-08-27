@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CadastroDTO } from '../dtos/cadastro.dto';
+import { Cadastro } from 'src/app/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,7 @@ export class CadastroService {
 
   constructor() { }
 
-  cadastrar(cadastroDTO: CadastroDTO): void {
+  cadastrar(cadastroDTO: Cadastro): void {
     console.log(cadastroDTO);
   }
 }
