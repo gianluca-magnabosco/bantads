@@ -7,6 +7,7 @@ import { TransferenciaComponent } from './transferencia';
 import { AlterarComponent } from './alterar';
 import { FooterModule } from '../footer';
 import { NavbarComponent } from './navbar';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -22,7 +23,8 @@ import { NavbarComponent } from './navbar';
   imports: [
     CommonModule,
     FooterModule,
-    NavbarComponent
+    NavbarComponent,
+    RouterModule
   ]
 })
 export class ClienteModule { }
