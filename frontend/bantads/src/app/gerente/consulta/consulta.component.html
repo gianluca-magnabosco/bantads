@@ -1,0 +1,62 @@
+<gerente-navbar/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl text-white font-semibold mb-4">Lista de Clientes</h1>
+  
+  <div class="mb-4 flex items-center">
+    <input type="text" placeholder="Pesquisar por CPF e/ou Nome" class="px-4 py-2 border rounded-md flex-1">
+    <button class="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md">Pesquisar</button>
+  </div>
+  <table class="w-full border-collapse border border-gray-300">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="py-2 px-4" (click)="sortData('cpf')">
+          CPF
+          <span class="ml-1">
+            <i class="fas fa-sort cursor-pointer"></i>
+          </span>
+        </th>
+        <th class="py-2 px-4" (click)="sortData('nome')">
+          Nome
+          <span class="ml-1">
+            <i class="fas fa-sort cursor-pointer"></i>
+          </span>
+        </th>
+        <th class="py-2 px-4" (click)="sortData('cidade')">
+          Cidade
+          <span class="ml-1">
+            <i class="fas fa-sort cursor-pointer " ></i>
+          </span>
+        </th>
+        <th class="py-2 px-4" (click)="sortData('estado')">
+          Estado
+          <span class="ml-1">
+            <i class="fas fa-sort cursor-pointer"></i>
+          </span>
+        </th>
+        <th class="py-2 px-4" (click)="sortData('saldo')">
+          Saldo
+          <span class="ml-1">
+            <i class="fas fa-sort cursor-pointer"></i>
+          </span>
+        </th>
+        <th class="py-2 px-4">Detalhes</th>
+        
+      </tr>
+    </thead>
+    <tbody class="text-white">
+      <tr *ngFor="let client of clients">
+        <td class="py-2 px-4">{{ client.cpf }}</td>
+        <td class="py-2 px-4">{{ client.nome }}</td>
+        <td class="py-2 px-4">{{ client.cidade }}</td>
+        <td class="py-2 px-4">{{ client.estado }}</td>
+        <td class="py-2 px-4">{{ client.saldo | currency }}</td>
+        <td class="py-2 px-4"><a class="text-blue-500 underline cursor-pointer">Detalhes</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<app-footer/>

@@ -6,7 +6,11 @@ import { DepositoComponent as ClienteDeposito } from './cliente/deposito/deposit
 import { SaqueComponent as ClienteSaque } from './cliente/saque/saque.component';
 import { TransferenciaComponent as ClienteTransferencia} from './cliente/transferencia/transferencia.component';
 import { AlterarComponent as ClienteAlterar} from './cliente/alterar/alterar.component';
+
 import { InicioComponent as GerenteInicio } from './gerente/inicio/inicio.component';
+import { ConsultaComponent as GerenteConsulta } from './gerente/consulta/consulta.component';
+
+
 import { InicioComponent as AdminInicio } from './administrador/inicio/inicio.component';
 
 
@@ -27,6 +31,10 @@ const routes: Routes = [
   {
     path: 'gerente/inicio',
     component: GerenteInicio
+  },
+  {
+    path: 'gerente/consulta',
+    component: GerenteConsulta
   },
   {
     path: 'admin/inicio',
