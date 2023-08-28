@@ -8,7 +8,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, RouterModule]
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    RouterModule,
+  ]
 })
 export class NavbarComponent {
 

@@ -1,43 +1,49 @@
 <mat-toolbar class="bg-black">
   <div class="flex flex-row items-center w-full justify-between">
     <div class="flex flex-row items-center justify-center">
-      <a>
+      <button class="flex flex-row items-center justify-center" [routerLink]="['/cliente/inicio']">
         <img style="width: 80px; height: 40px; margin-left: 10px; margin-top: 5px;" src="../assets/img/icone.png">
-      </a>
 
-      <div class="text-white text-3xl ml-5 flex flex-row">
-        Tads
-        <div class="font-extralight">bank</div>
-      </div>
+        <div class="text-white text-3xl ml-5 flex flex-row">
+          Tads
+          <div class="font-extralight">bank</div>
+        </div>
+      </button>
     </div>
 
     <div class="flex flex-row items-center justify-center space-x-3">
       <div class="text-white flex flex-wrap flex-row">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/alterar']">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/inicio']">
+          INÍCIO
+        </a>
+      </div>
+
+      <div class="text-white flex flex-wrap flex-row">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/alterar']">
           MEU PERFIL
         </a>
       </div>
 
       <div class="text-white">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/deposito']">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/deposito']">
           DEPÓSITO
         </a>
       </div>
 
       <div class="text-white">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/saque']">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/saque']">
           SAQUE
         </a>
       </div>
 
       <div class="text-white">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/transferencia']">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/transferencia']">
           TRANSFERÊNCIA
         </a>
       </div>
 
       <div class="text-white">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
           EXTRATO
         </a>
       </div>
