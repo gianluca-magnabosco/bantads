@@ -1,0 +1,72 @@
+<cliente-navbar/>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+<div class="flex flex-col flex-1 items-center">
+  <div class="flex flex-row flex-wrap space-x-2 mt-10">
+    <div class="text-white text-3xl font-medium">
+      SEU SALDO É:
+    </div>
+
+    <div class="text-red-600 text-3xl font-medium">
+      POBRE
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="form-group relative">
+    <div class="flex flex-col items-center justify-center">
+      <div class="my-2 w-full">
+        <div class="flex flex-row w-full">
+          <div class="flex-1">
+            <div class="flex flex-col items-center"> <!-- Centraliza verticalmente -->
+              
+              <input type="text" name="nome" placeholder="Nome" class="w-1/2 mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+              
+              <input type="text" name="email" placeholder="E-mail" class="w-1/2 mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+              
+              <input type="text" name="cpf" placeholder="CPF" class="w-1/2 mt-2 text-black py-2 px-4 rounded focus:outline-none" disabled>
+              
+              <input type="text" name="telefone" placeholder="Telefone (DDD)" class="w-1/2 mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="15">
+              
+              <input type="number" name="salario" placeholder="Salário" class="w-1/2 mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+
+              <input type="text" name="gerente" placeholder="Gerente" class="w-1/2 mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+              
+              <input type="text" name="cep" id="cep" placeholder="CEP" class="w-1/2 mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="8">
+            
+  
+            <div class="flex flex-row flex-wrap my-2">
+              <input type="text" name="tipo" placeholder="Tipo" class="text-black md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+              
+              <input type="text" name="logradouro" placeholder="Logradouro" id="logradouro" name="logradouro" class="text-black md:ml-2 py-2 px-4 rounded focus:outline-none">
+            </div>
+  
+            <div class="flex flex-row flex-wrap my-2">
+              <input type="text" name="numero" placeholder="Número" class="text-black md:mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+              
+              <input type="text" name="complemento" placeholder="Complemento" class="text-black md:ml-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none">
+            </div>
+  
+            <div class="flex flex-row flex-wrap my-2">
+              <input type="text" name="cidade" placeholder="Cidade" id="cidade" class="text-black md:mr-2 py-2 px-4 rounded focus:outline-none">
+              
+              <input type="text" name="uf" placeholder="Estado" id="uf" class="text-black md:ml-2 py-2 px-4 rounded focus:outline-none">
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="flex justify-center"> 
+          <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+            ALTERAR PERFIL
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+<app-footer/>
