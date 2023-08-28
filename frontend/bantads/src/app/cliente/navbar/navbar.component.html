@@ -13,25 +13,25 @@
 
     <div class="flex flex-row items-center justify-center space-x-3">
       <div class="text-white flex flex-wrap flex-row">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/alterar']">
           MEU PERFIL
         </a>
       </div>
 
       <div class="text-white">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/deposito']">
           DEPÓSITO
         </a>
       </div>
 
       <div class="text-white">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/saque']">
           SAQUE
         </a>
       </div>
 
       <div class="text-white">
-        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a href="#" class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/cliente/transferencia']">
           TRANSFERÊNCIA
         </a>
       </div>
@@ -45,7 +45,7 @@
 
     <div class="flex flex-row items-center justify-center">
       <div class="text-white flex flex-wrap flex-row">
-        <a class="bg-red-700 hover:bg-[#cf5177] p-2 rounded-sm text-white no-underline" href="#">
+        <a class="bg-red-700 hover:bg-[#cf5177] p-2 rounded-sm text-white no-underline" href="#" [routerLink]="['/entrar']">
           LOGOUT
         </a>
       </div>
