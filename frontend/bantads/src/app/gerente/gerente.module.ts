@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InicioComponent } from './inicio/inicio.component';
-import { FooterModule } from '../footer/footer.module';
-import { NavbarComponent } from './navbar/navbar.component';
+import { InicioComponent } from './inicio';
+import { FooterModule } from '../footer';
+import { NavbarComponent } from './navbar';
 import { MatDividerModule } from '@angular/material/divider';
-import { GerenteService } from './services/gerente.service';
+import { GerenteService } from './services';
 
 
 @NgModule({

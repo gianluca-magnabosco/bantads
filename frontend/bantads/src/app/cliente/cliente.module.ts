@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InicioComponent } from './inicio/inicio.component';
-import { DepositoComponent } from './deposito/deposito.component';
-import { SaqueComponent } from './saque/saque.component';
-import { TransferenciaComponent } from './transferencia/transferencia.component';
-import { AlterarComponent } from './alterar/alterar.component';
-import { FooterModule } from '../footer/footer.module';
-import { NavbarComponent } from './navbar/navbar.component';
+import { InicioComponent } from './inicio';
+import { DepositoComponent } from './deposito';
+import { SaqueComponent } from './saque';
+import { TransferenciaComponent } from './transferencia';
+import { AlterarComponent } from './alterar';
+import { FooterModule } from '../footer';
+import { NavbarComponent } from './navbar';
 
 
 
