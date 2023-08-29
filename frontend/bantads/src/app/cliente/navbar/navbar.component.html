@@ -1,14 +1,14 @@
 <mat-toolbar class="bg-black">
   <div class="flex flex-row items-center w-full justify-between">
     <div class="flex flex-row items-center justify-center">
-      <button class="flex flex-row items-center justify-center" [routerLink]="['/cliente/inicio']">
+      <a class="flex flex-row items-center justify-center no-underline" [routerLink]="['/cliente/inicio']">
         <img style="width: 80px; height: 40px; margin-left: 10px; margin-top: 5px;" src="../assets/img/icone.png">
 
         <div class="text-white text-3xl ml-5 flex flex-row">
           Tads
           <div class="font-extralight">bank</div>
         </div>
-      </button>
+      </a>
     </div>
 
     <div class="flex flex-row items-center justify-center space-x-3">
@@ -51,7 +51,7 @@
 
     <div class="flex flex-row items-center justify-center">
       <div class="text-white flex flex-wrap flex-row">
-        <a class="bg-red-700 hover:bg-[#cf5177] p-2 rounded-sm text-white no-underline" href="#" [routerLink]="['/entrar']">
+        <a class="bg-red-700 hover:bg-[#cf5177] p-2 rounded-sm text-white no-underline" [routerLink]="['/entrar']">
           LOGOUT
         </a>
       </div>

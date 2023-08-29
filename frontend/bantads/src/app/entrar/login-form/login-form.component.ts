@@ -18,23 +18,23 @@ export class LoginFormComponent {
   private passwordShown: boolean = false;
   private passwordError: string = "";
 
-  private loginDTO: Login = {
+  private login: Login = {
     email: "",
     password: "",
   };
 
   constructor(private validationService: ValidationService, private loginService: LoginService) { }
 
-  login(): void {
-    this.loginService.login(this.loginDTO);
+  realizarLogin(): void {
+    this.loginService.login(this.login);
   }
 
   get email(): string {
-    return this.loginDTO.email!;
+    return this.login.email!;
   }
 
   set email(email: string) {
-    this.loginDTO.email = email;
+    this.login.email = email;
   }
 
   get isEmailValid(): boolean {
@@ -50,11 +50,11 @@ export class LoginFormComponent {
   }
 
   get password(): string {
-    return this.loginDTO.password!;
+    return this.login.password!;
   }
 
   set password(password: string) {
-    this.loginDTO.password = password;
+    this.login.password = password;
   }
 
   get isPasswordValid(): boolean {

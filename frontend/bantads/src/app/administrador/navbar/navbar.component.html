@@ -1,37 +1,41 @@
 <mat-toolbar class="bg-black">
   <div class="flex flex-row items-center w-full justify-between">
     <div class="flex flex-row items-center justify-center">
-      <button class="flex flex-row items-center justify-center">
+      <a class="flex flex-row items-center justify-center no-underline" [routerLink]="['/admin/inicio']">
         <img style="width: 80px; height: 40px; margin-left: 10px; margin-top: 5px;" src="../assets/img/icone.png">
 
         <div class="text-white text-3xl ml-5 flex flex-row">
           Tads
           <div class="font-extralight">bank</div>
         </div>
-      </button>
+      </a>
     </div>
 
     <div class="flex flex-row items-center justify-center space-x-3">
       <div class="text-white flex flex-wrap flex-row">
-        <button class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/admin/inicio']">
+          INÍCIO
+        </a>
+      </div>
+
+      <div class="text-white flex flex-wrap flex-row">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
           RELATÓRIO DE CLIENTES
-        </button>
+        </a>
       </div>
 
       <div class="text-white">
-        <button class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
           LISTAR GERENTES
-        </button>
+        </a>
       </div>
     </div>
 
     <div class="flex flex-row items-center justify-center">
       <div class="text-white flex flex-wrap flex-row">
-        <a href="#" [routerLink]="['/entrar']">
-        <button class="bg-red-700 hover:bg-[#cf5177] p-2 rounded-sm">
+        <a class="bg-red-700 hover:bg-[#cf5177] p-2 rounded-sm no-underline text-white" [routerLink]="['/entrar']">
           LOGOUT
-        </button>
-        </a>  
+        </a>
       </div>
     </div>
   </div>

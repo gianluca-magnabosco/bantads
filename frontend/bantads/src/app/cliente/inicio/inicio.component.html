@@ -1,55 +1,63 @@
 <cliente-navbar/>
 
-<div class="flex flex-col flex-1 items-center">
-  <div class="flex flex-row flex-wrap space-x-2 mt-10">
+<div class="flex flex-col flex-1 items-center mb-20">
+  <div class="flex flex-row flex-wrap space-x-2 mt-24 mb-4">
     <div class="text-white text-3xl font-medium">
-      SEU SALDO É:
+      SALDO DISPONÍVEL:
     </div>
 
-    <div class="text-red-600 text-3xl font-medium">
-      POBRE
+    <div *ngIf="saldo > 0" class="text-green-600 text-3xl font-medium">
+      {{ saldoFormatado }}
+    </div>
+
+    <div *ngIf="saldo === 0" class="text-blue-700 text-3xl font-medium">
+      {{ saldoFormatado }}
+    </div>
+
+    <div *ngIf="saldo < 0" class="text-red-600 text-3xl font-medium">
+      {{ saldoFormatado }}
     </div>
   </div>
 
-  <div class="flex flex-col flex-1 justify-center space-y-4 items-center py-6">
-    <div>
-      <a href="#" [routerLink]="['/cliente/alterar']">
-      <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
-        CONSULTAR OU ALTERAR PERFIL
-      </button>
-    </a>
+  <div class="flex flex-row items-center mb-16">
+    <div class="h-[12rem] w-[12rem] m-0">
+      <img src="../../../assets/img/verde_contorno_menor.png" alt="">
     </div>
 
-    <div>
-      <a href="#" [routerLink]="['/cliente/deposito']">
-      <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
-        REALIZAR DEPÓSITO
-      </button>
-    </a>
+    <div class="flex flex-col flex-1 justify-center space-y-4 items-center py-6 w-full mx-24">
+      <div>
+        <button [routerLink]="['/cliente/alterar']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+          CONSULTAR OU ALTERAR PERFIL
+        </button>
+      </div>
+
+      <div>
+        <button [routerLink]="['/cliente/deposito']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+          REALIZAR DEPÓSITO
+        </button>
+      </div>
+
+      <div>
+        <button [routerLink]="['/cliente/saque']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+          REALIZAR SAQUE
+        </button>
+      </div>
+
+      <div>
+        <button [routerLink]="['/cliente/transferencia']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+          REALIZAR TRANSFERÊNCIA
+        </button>
+      </div>
+
+      <div>
+        <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+          CONSULTAR EXTRATO
+        </button>
+      </div>
     </div>
 
-    <div>
-      <a href="#" [routerLink]="['/cliente/saque']">
-      <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
-        REALIZAR SAQUE
-      </button>
-    </a>
-    </div>
-
-    <div>
-      <a href="#" [routerLink]="['/cliente/transferencia']">
-      <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
-        REALIZAR TRANSFERÊNCIA
-      </button>
-    </a>
-    </div>
-
-    <div>
-      <a href="#">
-      <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
-        CONSULTAR EXTRATO
-      </button>
-      </a>
+    <div class="h-[12rem] w-[12rem] m-0">
+      <img src="../../../assets/img/verde_contorno_maior.png" alt="">
     </div>
   </div>
 </div>
