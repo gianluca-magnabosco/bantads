@@ -10,6 +10,7 @@ import { AlterarComponent as ClienteAlterar} from './cliente/alterar/alterar.com
 import { InicioComponent as GerenteInicio } from './gerente/inicio/inicio.component';
 import { ConsultaComponent as GerenteConsulta } from './gerente/consulta/consulta.component';
 import { DadosClienteComponent as GerenteDadosCliente } from './gerente/dadoscliente/dadoscliente.component';
+import { PesquisaComponent as GerentePesquisa } from './gerente/pesquisa/pesquisa.component';
 
 
 import { InicioComponent as AdminInicio } from './administrador/inicio/inicio.component';
@@ -29,6 +30,8 @@ const routes: Routes = [
     path: 'cliente/inicio',
     component: ClienteInicio
   },
+
+  
   {
     path: 'gerente/inicio',
     component: GerenteInicio
@@ -41,11 +44,18 @@ const routes: Routes = [
     path: 'gerente/dadoscliente',
     component: GerenteDadosCliente
   },
+  {
+    path: 'gerente/pesquisa',
+    component: GerentePesquisa
+  },
   
+
   {
     path: 'admin/inicio',
     component: AdminInicio
   },
+
+  
   {
     path: 'cliente/deposito',
     component: ClienteDeposito

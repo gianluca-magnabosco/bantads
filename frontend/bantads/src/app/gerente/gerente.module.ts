@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InicioComponent } from './inicio';
 import { ConsultaComponent } from './consulta';
 import { DadosClienteComponent } from './dadoscliente';
+import { PesquisaComponent } from './pesquisa';
 import { FooterModule } from '../footer';
 import { NavbarComponent } from './navbar';
 import { MatDividerModule } from '@angular/material/divider';
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     InicioComponent,
     ConsultaComponent,
-    DadosClienteComponent
+    DadosClienteComponent,
+    PesquisaComponent
   ],
   imports: [
     CommonModule,
