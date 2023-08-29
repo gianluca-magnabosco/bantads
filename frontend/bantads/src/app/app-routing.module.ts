@@ -9,6 +9,7 @@ import { AlterarComponent as ClienteAlterar} from './cliente/alterar/alterar.com
 
 import { InicioComponent as GerenteInicio } from './gerente/inicio/inicio.component';
 import { ConsultaComponent as GerenteConsulta } from './gerente/consulta/consulta.component';
+import { DadosClienteComponent as GerenteDadosCliente } from './gerente/dadoscliente/dadoscliente.component';
 
 
 import { InicioComponent as AdminInicio } from './administrador/inicio/inicio.component';
@@ -36,6 +37,11 @@ const routes: Routes = [
     path: 'gerente/consulta',
     component: GerenteConsulta
   },
+  {
+    path: 'gerente/dadoscliente',
+    component: GerenteDadosCliente
+  },
+  
   {
     path: 'admin/inicio',
     component: AdminInicio
