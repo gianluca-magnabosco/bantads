@@ -1,1 +1,1 @@
-export * from './meu-perfil.component'
+export * from './meu-perfil.component';

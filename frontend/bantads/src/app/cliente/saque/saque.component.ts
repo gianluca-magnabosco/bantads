@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/shared/services';
+import { SaldoService } from '../services';
 
 
 
@@ -18,9 +19,11 @@ export class SaqueComponent implements OnInit {
   private valorValid: boolean = false;
   private valorError: string = "";
 
-  constructor(private validationService: ValidationService) {}
+  constructor(private validationService: ValidationService, private saldoService: SaldoService) {}
 
   ngOnInit(): void {
+    this.saldoCliente = this.saldoService.getSaldo();
+
     if (this.saldoCliente > 0) {
       this.saldoColoring = "text-green-600";
     } else if (this.saldoCliente < 0) {

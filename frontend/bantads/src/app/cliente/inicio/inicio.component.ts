@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SaldoService } from '../services';
 
 @Component({
   selector: 'cliente-inicio',
@@ -10,9 +11,11 @@ export class InicioComponent implements OnInit {
   private saldoCliente: number = 0.00;
   private saldoColoring: string = "";
 
-  constructor() {}
+  constructor(private saldoService: SaldoService) {}
 
   ngOnInit(): void {
+    this.saldoCliente = this.saldoService.getSaldo();
+
     if (this.saldoCliente > 0) {
       this.saldoColoring = "text-green-600";
     } else if (this.saldoCliente < 0) {

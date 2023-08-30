@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SaldoService } from '../services';
 
 
 
@@ -7,17 +8,33 @@ import { Component } from '@angular/core';
   templateUrl: './meu-perfil.component.html',
   styleUrls: ['./meu-perfil.component.css']
 })
-export class MeuPerfilComponent {
+export class MeuPerfilComponent implements OnInit {
 
   private saldoCliente: number = 0.00;
+  private saldoColoring: string = "";
+
   private gerenteDoCliente: string = "Seu Creyson";
 
-  get saldo(): number {
-    return this.saldoCliente;
+  constructor(private saldoService: SaldoService) {}
+
+  ngOnInit(): void {
+    this.saldoCliente = this.saldoService.getSaldo();
+
+    if (this.saldoCliente > 0) {
+      this.saldoColoring = "text-green-600";
+    } else if (this.saldoCliente < 0) {
+      this.saldoColoring = "text-red-600"
+    } else {
+      this.saldoColoring = "text-blue-700";
+    }
   }
 
-  get saldoFormatado(): string {
-    return `R$ ${this.saldo.toFixed(2).replace(".", ",")}`;
+  get saldo(): string {
+    return `R$ ${this.saldoCliente.toFixed(2).replace(".", ",")}`;
+  }
+
+  get saldoColor(): string {
+    return this.saldoColoring;
   }
 
   get gerente(): string {

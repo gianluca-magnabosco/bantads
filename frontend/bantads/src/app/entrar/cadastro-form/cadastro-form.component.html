@@ -33,7 +33,7 @@
         </div>
 
         <div>
-          <input name="salario" type="text" [(ngModel)]="salario" placeholder="Salário" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setSalarioBeenBlurred()" (input)="validateAndFormatSalario($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
+          <input name="salario" type="text" [(ngModel)]="salario" placeholder="Salário" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setSalarioBeenBlurred()" (input)="validateAndFormatSalario($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)" maxlength="17"/>
           <div *ngIf="!isSalarioValid" class="text-red-600 font-bold">
             {{salarioErrorText}}
           </div>

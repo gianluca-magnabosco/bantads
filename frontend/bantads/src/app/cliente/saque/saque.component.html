@@ -36,6 +36,7 @@
           (focus)="setValorBeenFocused()"
           (input)="validateAndFormatValor($event)"
           (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+          maxlength="17"
         />
         <div *ngIf="!isValorValid" class="text-red-600 font-bold">
           {{valorErrorText}}

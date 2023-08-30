@@ -145,6 +145,18 @@ export class ValidationService {
     return "";
   }
 
+  validateNumConta(numConta: string, numContaBeenBlurred: boolean): string {
+    if (!numContaBeenBlurred) {
+      return "";
+    }
+
+    if (!numConta.match(/\d{2}\.\d{3}-\d{1}/)) {
+      return "inválido";
+    }
+
+    return "";
+  }
+
   innerValidateCpf(value: string): boolean {
     if (!value.match(/\d{3}\.\d{3}\.\d{3}-\d{2}/)) {
       return false;
@@ -215,4 +227,14 @@ export class ValidationService {
     return formattedCep;
   }
 
+  formatNumConta(numConta: string): string {
+    let formattedNumConta = numConta;
+
+    if (numConta.length === 2) formattedNumConta += ".";
+    if (numConta.length === 3 && numConta[2] !== ".") formattedNumConta = numConta.substring(0, 2) + "." + numConta.substring(2, 3);
+    if (numConta.length === 6) formattedNumConta += "-";
+    if (numConta.length === 7 && numConta[6] !== "-") formattedNumConta = numConta.substring(0, 6) + "-" + numConta.substring(6, 7);
+
+    return formattedNumConta;
+  }
 }
