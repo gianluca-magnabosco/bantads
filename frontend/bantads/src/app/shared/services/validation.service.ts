@@ -83,16 +83,16 @@ export class ValidationService {
     return "";
   }
 
-  validateSalario(salario: string, salarioBeenBlurred: boolean): string {
-    if (!salarioBeenBlurred) {
+  validateMoney(moneyAmount: string, moneyAmountBeenBlurred: boolean): string {
+    if (!moneyAmountBeenBlurred) {
       return "";
     }
 
-    if (salario === "") {
+    if (moneyAmount === "") {
       return "vazio";
     }
 
-    const numericValue = Number(salario.replace(/[^\d,]/g, '').replace(',', '.'));
+    const numericValue = Number(moneyAmount.replace(/[^\d,]/g, '').replace(',', '.'));
 
     if (isNaN(numericValue) || numericValue <= 0.00 || numericValue > 100000000) {
       return "inválido";
@@ -192,15 +192,15 @@ export class ValidationService {
     return formattedTelefone;
   }
 
-  formatSalario(salario: string): string {
-    const numericInput = salario.replace(/\D/g, "");
-    let formattedSalario = Number(numericInput) / 100;
+  formatMoney(moneyAmount: string): string {
+    const numericInput = moneyAmount.replace(/\D/g, "");
+    let formattedMoneyAmount = Number(numericInput) / 100;
 
-    if (formattedSalario < 0) {
-      formattedSalario = 0;
+    if (formattedMoneyAmount < 0) {
+      formattedMoneyAmount = 0;
     }
 
-    return formattedSalario.toLocaleString("pt-BR", {
+    return formattedMoneyAmount.toLocaleString("pt-BR", {
       style: "currency",
       currency: "BRL",
     });

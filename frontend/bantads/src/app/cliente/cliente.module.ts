@@ -8,6 +8,8 @@ import { MeuPerfilComponent } from './meu-perfil';
 import { FooterModule } from '../footer';
 import { NavbarComponent } from './navbar';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ValidationService } from '../shared/services';
 
 
 
@@ -23,8 +25,12 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     FooterModule,
+    FormsModule,
     NavbarComponent,
     RouterModule
+  ],
+  providers: [
+    ValidationService,
   ]
 })
 export class ClienteModule { }

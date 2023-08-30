@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { BuscaCEPService, CadastroService, ValidationService } from '../services';
+import { BuscaCEPService, CadastroService } from '../services';
 import { Cadastro, Endereco } from 'src/app/shared';
+import { ValidationService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-cadastro-form',
@@ -426,7 +427,7 @@ export class CadastroFormComponent {
   }
 
   validateSalario(): void {
-    let result = this.validationService.validateSalario(this.salario, this.salarioBeenBlurred);
+    let result = this.validationService.validateMoney(this.salario, this.salarioBeenBlurred);
 
     switch (result) {
       case "vazio": {
@@ -527,7 +528,7 @@ export class CadastroFormComponent {
   }
 
   validateAndFormatSalario(event: any): void {
-    this.salario = this.validationService.formatSalario(event.target.value);
+    this.salario = this.validationService.formatMoney(event.target.value);
     this.validateSalario();
   }
 

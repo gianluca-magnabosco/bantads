@@ -6,10 +6,11 @@ import { EntrarComponent } from './entrar.component';
 import { LoginFormComponent } from './login-form';
 import { CadastroFormComponent } from './cadastro-form';
 import { HttpClientModule } from '@angular/common/http'
-import { BuscaCEPService, CadastroService, LoginService, ValidationService } from './services';
+import { BuscaCEPService, CadastroService, LoginService } from './services';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
+import { ValidationService } from '../shared/services';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { LoginService, ValidationService } from '../services';
+import { LoginService } from '../services';
 import { Login } from 'src/app/shared';
+import { ValidationService } from 'src/app/shared/services';
 
 @Component({
   selector: 'app-login-form',

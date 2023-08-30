@@ -6,16 +6,8 @@
       SALDO DISPONÍVEL:
     </div>
 
-    <div *ngIf="saldo > 0" class="text-green-600 text-3xl font-medium">
-      {{ saldoFormatado }}
-    </div>
-
-    <div *ngIf="saldo === 0" class="text-blue-700 text-3xl font-medium">
-      {{ saldoFormatado }}
-    </div>
-
-    <div *ngIf="saldo < 0" class="text-red-600 text-3xl font-medium">
-      {{ saldoFormatado }}
+    <div class="{{saldoColor}} text-3xl font-medium">
+      {{ saldo }}
     </div>
   </div>
 

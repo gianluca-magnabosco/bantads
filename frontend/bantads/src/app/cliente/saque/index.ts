@@ -1,1 +1,1 @@
-export * from './saque.component'
+export * from './saque.component';
