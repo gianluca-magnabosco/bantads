@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DadosClienteComponent } from './dadoscliente.component';
+import { DadosClienteComponent } from './dados-cliente.component';
 
 describe('DadosClienteComponent', () => {
   let component: DadosClienteComponent;

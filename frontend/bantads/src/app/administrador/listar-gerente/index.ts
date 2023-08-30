@@ -1,1 +1,0 @@
-export * from './listar-gerente.component'

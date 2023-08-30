@@ -5,7 +5,7 @@ import { FooterModule } from '../footer';
 import { NavbarComponent } from './navbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { AdministradorService } from './services';
-import { ListarGerenteComponent } from './listar-gerente';
+import { ListarGerentesComponent } from './listar-gerentes';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { InserirGerenteComponent } from './inserir-gerente';
@@ -15,7 +15,7 @@ import { EditarGerenteComponent } from './editar-gerente';
 @NgModule({
   declarations: [
     InicioComponent,
-    ListarGerenteComponent,
+    ListarGerentesComponent,
     InserirGerenteComponent,
     EditarGerenteComponent,
   ],

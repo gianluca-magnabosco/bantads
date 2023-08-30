@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 interface Client {
   cpf: string;
@@ -10,10 +10,10 @@ interface Client {
 
 @Component({
   selector: 'gerente-inicio',
-  templateUrl: './consulta.component.html',
-  styleUrls: ['./consulta.component.css']
+  templateUrl: './listar-clientes.component.html',
+  styleUrls: ['./listar-clientes.component.css']
 })
-export class ConsultaComponent   {
+export class ListarClientesComponent   {
 
   clients: Client[] = [
     {
@@ -46,8 +46,8 @@ export class ConsultaComponent   {
     }
   ];
 
-  sortKey: keyof Client = 'nome'; 
-  sortAsc = true; 
+  sortKey: keyof Client = 'nome';
+  sortAsc = true;
 
   constructor() { }
 
@@ -62,11 +62,11 @@ export class ConsultaComponent   {
       this.sortAsc = true;
       this.sortKey = key;
     }
-  
+
     this.clients.sort((a, b) => {
       const valA = a[key];
       const valB = b[key];
-  
+
       if (typeof valA === 'string' && typeof valB === 'string') {
         return this.sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
       } else if (typeof valA === 'number' && typeof valB === 'number') {

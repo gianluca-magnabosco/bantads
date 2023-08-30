@@ -4,10 +4,10 @@ import { AdministradorService } from '../services';
 
 @Component({
   selector: 'app-listar-gerente',
-  templateUrl: './listar-gerente.component.html',
-  styleUrls: ['./listar-gerente.component.css']
+  templateUrl: './listar-gerentes.component.html',
+  styleUrls: ['./listar-gerentes.component.css']
 })
-export class ListarGerenteComponent implements OnInit {
+export class ListarGerentesComponent implements OnInit {
 constructor(private administradorService : AdministradorService){}
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ remover($event: any, gerente: Gerente): void{
 
 gerentes: Gerente[] = [];
 
-sortKey: keyof Gerente = 'nome'; 
+sortKey: keyof Gerente = 'nome';
 sortAsc = true;
 
 sortData(key: keyof Gerente = this.sortKey): void {

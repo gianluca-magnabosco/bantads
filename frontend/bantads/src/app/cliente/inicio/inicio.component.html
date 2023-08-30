@@ -26,13 +26,13 @@
 
     <div class="flex flex-col flex-1 justify-center space-y-4 items-center py-6 w-full mx-24">
       <div>
-        <button [routerLink]="['/cliente/alterar']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+        <button [routerLink]="['/cliente/meu-perfil']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
           CONSULTAR OU ALTERAR PERFIL
         </button>
       </div>
 
       <div>
-        <button [routerLink]="['/cliente/deposito']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+        <button [routerLink]="['/cliente/depositar']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
           REALIZAR DEPÓSITO
         </button>
       </div>
@@ -50,7 +50,7 @@
       </div>
 
       <div>
-        <button class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
+        <button [routerLink]="['/cliente/extrato']" class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]">
           CONSULTAR EXTRATO
         </button>
       </div>

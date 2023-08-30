@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'gerente-inicio',
-  templateUrl: './pesquisa.component.html',
-  styleUrls: ['./pesquisa.component.css']
+  templateUrl: './consultar-cliente.component.html',
+  styleUrls: ['./consultar-cliente.component.css']
 })
-export class PesquisaComponent   {
+export class ConsultarClienteComponent {
   cpf: string = '';
   clienteEncontrado = false;
   cliente = {

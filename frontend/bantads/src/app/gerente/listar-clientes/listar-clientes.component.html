@@ -3,14 +3,14 @@
 
 <div class="container mx-auto p-4">
   <h1 class="text-2xl text-white font-semibold mb-4">Lista de Clientes</h1>
-  
+
   <div class="mb-4 flex items-center">
     <input type="text" placeholder="CPF" class="px-4 py-2 border rounded-md flex-1">
     <b class="text-white">&nbsp;E/ou&nbsp;</b>
     <input type="text" placeholder="Nome" class="px-4 py-2 border rounded-md flex-1">
-    <button class="ml-2 px-4 py-2 bg-blue-500 text-white font-bold rounded-md bg-[#18c687] hover:bg-[#0e744e]">Pesquisar</button>
+    <button class="ml-2 px-4 py-2 text-white font-bold rounded-md bg-[#18c687] hover:bg-[#0e744e]">Pesquisar</button>
   </div>
-  
+
   <table class="w-full border-collapse border border-gray-300">
     <thead>
       <tr class="bg-gray-200">
@@ -45,7 +45,7 @@
           </span>
         </th>
         <th class="py-2 px-4">Detalhes</th>
-        
+
       </tr>
     </thead>
     <tbody class="text-white">
@@ -55,7 +55,7 @@
         <td class="py-2 px-4">{{ client.cidade }}</td>
         <td class="py-2 px-4">{{ client.estado }}</td>
         <td class="py-2 px-4">{{ client.saldo | currency }}</td>
-        <td class="py-2 px-4"><a [routerLink]="['/gerente/dadoscliente']" class="text-blue-500 underline cursor-pointer">Detalhes</a></td>
+        <td class="py-2 px-4"><a [routerLink]="['/gerente/dados-cliente']" class="text-blue-500 underline cursor-pointer">Detalhes</a></td>
       </tr>
     </tbody>
   </table>

@@ -1,11 +1,11 @@
 <gerente-navbar/>
 <div class="p-4">
     <div class="mb-4">
-      <label for="cpfInput" class="block text-gray-700 text-white">CPF do Cliente:</label>
-      <input type="text" id="cpfInput" class="w-full px-3 py-2 border rounded-md"(input)="updateCPF($event)" [value]="cpf" maxlength="11">
+      <label for="cpfInput" class="block text-white">CPF do Cliente:</label>
+      <input type="text" id="cpfInput" class="w-full px-3 py-2 border rounded-md" (input)="updateCPF($event)" [value]="cpf" maxlength="11">
       <button class="mt-2 px-4 py-2 bg-[#18c687] hover:bg-[#0e744e] text-white rounded-md" (click)="buscarCliente()">Pesquisar</button>
     </div>
-  
+
     <div *ngIf="clienteEncontrado" class="border-t mt-4 pt-4 text-white">
       <h2 class="text-lg font-semibold">Dados do Cliente</h2>
       <table class="w-full mt-2">
@@ -26,7 +26,7 @@
           <td>{{ cliente.estado }}</td>
         </tr>
       </table>
-  
+
       <h2 class="text-lg font-semibold mt-4">Dados da Conta</h2>
       <table class="w-full mt-2">
         <tr>

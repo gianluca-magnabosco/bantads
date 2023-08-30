@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InicioComponent } from './inicio';
-import { ConsultaComponent } from './consulta';
-import { DadosClienteComponent } from './dadoscliente';
-import { PesquisaComponent } from './pesquisa';
+import { ListarClientesComponent } from './listar-clientes';
+import { DadosClienteComponent } from './dados-cliente';
+import { ConsultarClienteComponent } from './consultar-cliente';
 import { FooterModule } from '../footer';
 import { NavbarComponent } from './navbar';
 import { MatDividerModule } from '@angular/material/divider';
@@ -14,9 +14,9 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     InicioComponent,
-    ConsultaComponent,
+    ListarClientesComponent,
     DadosClienteComponent,
-    PesquisaComponent
+    ConsultarClienteComponent
   ],
   imports: [
     CommonModule,

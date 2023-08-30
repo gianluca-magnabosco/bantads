@@ -1,7 +1,7 @@
 <mat-toolbar class="bg-black">
   <div class="flex flex-row items-center w-full justify-between">
     <div class="flex flex-row items-center justify-center">
-      <a class="flex flex-row items-center justify-center no-underline" [routerLink]="['/gerente/inicio']">
+      <a class="flex flex-row items-center justify-center no-underline" [routerLink]="['/gerente']">
         <img style="width: 80px; height: 40px; margin-left: 10px; margin-top: 5px;" src="../assets/img/icone.png">
 
         <div class="text-white text-3xl ml-5 flex flex-row">
@@ -19,19 +19,19 @@
       </div>
 
       <div class="text-white flex flex-wrap flex-row">
-        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/gerente/listar-clientes']">
           LISTAR TODOS OS CLIENTES
         </a>
       </div>
 
       <div class="text-white flex flex-wrap flex-row">
-        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/gerente/consultar-cliente']">
           CONSULTAR CLIENTE
         </a>
       </div>
 
       <div class="text-white flex flex-wrap flex-row">
-        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline">
+        <a class="hover:bg-[#424242] p-2 rounded-sm text-white no-underline" [routerLink]="['/gerente/melhores-clientes']">
           LISTAR MELHORES CLIENTES
         </a>
       </div>

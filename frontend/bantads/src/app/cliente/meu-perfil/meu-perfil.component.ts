@@ -4,10 +4,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'cliente-alterar',
-  templateUrl: './alterar.component.html',
-  styleUrls: ['./alterar.component.css']
+  templateUrl: './meu-perfil.component.html',
+  styleUrls: ['./meu-perfil.component.css']
 })
-export class AlterarComponent {
+export class MeuPerfilComponent {
 
   private saldoCliente: number = 0.00;
   private gerenteDoCliente: string = "Seu Creyson";

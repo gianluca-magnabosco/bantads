@@ -4,7 +4,7 @@ import { InicioComponent } from './inicio';
 import { DepositoComponent } from './deposito';
 import { SaqueComponent } from './saque';
 import { TransferenciaComponent } from './transferencia';
-import { AlterarComponent } from './alterar';
+import { MeuPerfilComponent } from './meu-perfil';
 import { FooterModule } from '../footer';
 import { NavbarComponent } from './navbar';
 import { RouterModule } from '@angular/router';
@@ -18,7 +18,7 @@ import { RouterModule } from '@angular/router';
     DepositoComponent,
     SaqueComponent,
     TransferenciaComponent,
-    AlterarComponent
+    MeuPerfilComponent
   ],
   imports: [
     CommonModule,
