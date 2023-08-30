@@ -8,7 +8,7 @@ import { ClienteModule } from './cliente/cliente.module';
 import { FooterModule } from './footer/footer.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GerenteModule } from './gerente/gerente.module';
-import { AdministradorModule } from './administrador/administrador.module';
+import { AdministradorModule } from './administrador';
 
 @NgModule({
   declarations: [

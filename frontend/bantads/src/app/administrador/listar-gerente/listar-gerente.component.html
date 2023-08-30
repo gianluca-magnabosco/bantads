@@ -1,0 +1,107 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<admin-navbar/>
+<div class="flex flex-col flex-1 items-center">
+  <div class="flex flex-row items-center my-24">
+
+    <div class="flex flex-col flex-1 justify-center items-start ">
+      <div class="space-y-1">
+        <div class="text-white text-3xl font-light">
+          Lista de Gerentes:
+        </div>
+        <div class="text-white text-3xl font-semibold">
+            Quer adicionar um novo gerente?
+            <a href="#" [routerLink]="['/admin/novo']">
+            <button class="btn btn-lg btn-success">
+                Adicionar
+            </button>
+            </a>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20" *ngIf="gerentes.length > 0">
+        <div *ngFor="let gerente of gerentes">
+          <div class="flex flex-row flex-1 space-x-5">
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1">
+                Nome:
+                <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white" (click)="sortData('nome')"></i>
+            </span>
+              </div>
+              
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg text-start font-medium my-1">
+                 {{gerente.nome}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1" >
+                CPF:
+              </div>
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg text-start font-medium my-1">
+                 {{gerente.cpf}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1">
+                    Email:
+              </div>
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md min-h-[50px] h-[100px] min-w-[200px] break-words justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg break-words text-break text-start font-medium my-1">
+                 {{gerente.email}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1">
+                Telefone:
+              </div>
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg text-start font-medium my-1">
+                    {{gerente.telefone}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-row space-x-0">
+                <div class="flex flex-col p-2 w-[150px] justify-center mt-9 ml-4">
+                    <a href="#" class="w-[200px]">
+                    <button class="btn btn-lg btn-danger" (click)="remover($event, gerente)">
+                        Remover
+                    </button>
+                    </a>
+                </div>
+
+                <div class="flex flex-col p-2 justify-center mt-9">
+                    <a href="#" [routerLink]="['/admin/editar-gerente', gerente.id]">
+                    <button class="btn btn-lg btn-warning">
+                        Editar
+                    </button>
+                    </a>
+                </div>
+                </div>
+            </div>
+
+          <div class="ml-12">
+            <mat-divider class="bg-[#4B5652]" />
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-white mt-3 font-semibold" *ngIf="gerentes.length === 0">Nenhum gerente cadastrado ainda!</h1>
+    </div>
+
+  </div>
+</div>
+
+<app-footer/>

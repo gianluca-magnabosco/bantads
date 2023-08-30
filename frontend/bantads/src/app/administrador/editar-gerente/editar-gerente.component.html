@@ -1,0 +1,47 @@
+<admin-navbar/>
+<h1>Novo Gerente</h1>
+<div class="well">
+    <form action="" #formGerente="ngForm">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" [(ngModel)]="gerente.nome" #nome="ngModel" id="nome" name="nome" required>
+            <div class="alert alert-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
+                <div *ngIf="!nome.errors?.['required']">Digite o nome do gerente.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cpf">CPF:</label>
+            <input type="text" class="form-control" [(ngModel)]="gerente.cpf" #cpf="ngModel" [disabled]="true" id="cpf" name="cpf" required>
+            <div class="alert alert-danger" *ngIf="cpf.errors && (cpf.dirty || cpf.touched)">
+                <div *ngIf="!cpf.errors?.['required']">Digite o cpf do gerente.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" class="form-control" [(ngModel)]="gerente.email" #email="ngModel" id="email" name="email" required>
+            <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
+                <div *ngIf="!email.errors?.['required']">Digite o email do gerente.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="telefone">Telefone:</label>
+            <input type="text" class="form-control" id="telefone" [(ngModel)]="gerente.telefone" #telefone="ngModel" name="telefone" required>
+            <div class="alert alert-danger" *ngIf="telefone.errors && (telefone.dirty || telefone.touched)">
+                <div *ngIf="!telefone.errors?.['required']">Digite o telefone do gerente.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" (click)="atualizar()" [disabled]="!formGerente.form.valid">
+                Salvar
+            </button>
+            <a class="btn btn-secondary" [routerLink]="['/admin/listar-gerente']">
+                Voltar
+            </a>
+        </div>
+    </form>
+</div>
+

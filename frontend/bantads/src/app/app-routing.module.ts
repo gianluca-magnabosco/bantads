@@ -14,6 +14,9 @@ import { PesquisaComponent as GerentePesquisa } from './gerente/pesquisa/pesquis
 
 
 import { InicioComponent as AdminInicio } from './administrador/inicio/inicio.component';
+import { ListarGerenteComponent } from './administrador/listar-gerente/listar-gerente.component';
+import { InserirGerenteComponent } from './administrador/inserir-gerente/inserir-gerente.component';
+import { EditarGerenteComponent } from './administrador/editar-gerente/editar-gerente.component';
 
 
 const routes: Routes = [
@@ -53,6 +56,18 @@ const routes: Routes = [
   {
     path: 'admin/inicio',
     component: AdminInicio
+  },
+  {
+    path: 'admin/listar-gerente',
+    component: ListarGerenteComponent
+  },
+  {
+    path: 'admin/novo',
+    component: InserirGerenteComponent
+  },
+  {
+    path: 'admin/editar-gerente/:id',
+    component: EditarGerenteComponent
   },
 
   
