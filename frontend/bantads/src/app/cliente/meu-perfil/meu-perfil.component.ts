@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SaldoService } from '../services';
+import { ContaService } from '../services';
 
 
 
@@ -15,10 +15,10 @@ export class MeuPerfilComponent implements OnInit {
 
   private gerenteDoCliente: string = "Seu Creyson";
 
-  constructor(private saldoService: SaldoService) {}
+  constructor(private contaService: ContaService) {}
 
   ngOnInit(): void {
-    this.saldoCliente = this.saldoService.getSaldo();
+    this.saldoCliente = this.contaService.getSaldo();
 
     if (this.saldoCliente > 0) {
       this.saldoColoring = "text-green-600";

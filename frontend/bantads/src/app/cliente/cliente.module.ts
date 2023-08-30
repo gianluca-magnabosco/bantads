@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ValidationService } from '../shared/services';
-import { SaldoService } from './services';
+import { ContaService } from './services';
 
 
 
@@ -32,7 +32,7 @@ import { SaldoService } from './services';
   ],
   providers: [
     ValidationService,
-    SaldoService,
+    ContaService,
   ]
 })
 export class ClienteModule { }

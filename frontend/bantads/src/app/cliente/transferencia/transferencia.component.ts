@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SaldoService } from '../services';
+import { ContaService } from '../services';
 import { ValidationService } from 'src/app/shared/services';
 
 
@@ -24,10 +24,10 @@ export class TransferenciaComponent implements OnInit {
   private numContaValid: boolean = false;
   private numContaError: string = "";
 
-  constructor(private validationService: ValidationService, private saldoService: SaldoService) {}
+  constructor(private validationService: ValidationService, private contaService: ContaService) {}
 
   ngOnInit(): void {
-    this.saldoCliente = this.saldoService.getSaldo();
+    this.saldoCliente = this.contaService.getSaldo();
 
     if (this.saldoCliente > 0) {
       this.saldoColoring = "text-green-600";
