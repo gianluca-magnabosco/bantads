@@ -9,6 +9,8 @@ import { NavbarComponent } from './navbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { GerenteService } from './services';
 import { RouterModule } from '@angular/router';
+import { ValidationService } from '../shared/services';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,9 +26,11 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     MatDividerModule,
     RouterModule,
+    FormsModule,
   ],
   providers: [
     GerenteService,
+    ValidationService,
   ]
 })
 export class GerenteModule { }
