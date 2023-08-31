@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ValidationService } from 'src/app/shared/services';
 
 @Component({
   selector: 'gerente-inicio',
@@ -6,34 +7,69 @@ import { Component } from '@angular/core';
   styleUrls: ['./consultar-cliente.component.css']
 })
 export class ConsultarClienteComponent {
-  cpf: string = '';
-  clienteEncontrado = false;
-  cliente = {
-    nome: 'Nome do Cliente',
-    cpf: '123.456.789-00',
-    cidade: 'Azerbaijão',
-    estado: 'Paraná',
-    conta: {
-      numero: '12345',
-      saldo: 1500.00,
-      tipo: 'xxxxxxx' ,
-      agencia: 'xxxxxxxx'
-    }
-  };
+  private cpfInput: string = "";
+  private cpfBlurred: boolean = false;
+  private cpfValid: boolean = false;
+  private cpfError: string = "";
+
+  constructor(private validationService: ValidationService) {}
+
+  get cpf(): string {
+    return this.cpfInput;
+  }
+
+  set cpf(cpf: string) {
+    this.cpfInput = cpf;
+  }
+
+  get isCpfValid(): boolean {
+    return this.cpfValid;
+  }
+
+  get cpfErrorText(): string {
+    return this.cpfError;
+  }
+
+  get cpfBeenBlurred(): boolean {
+    return this.cpfBlurred;
+  }
+
+  setCpfBeenBlurred(): void {
+    this.cpfBlurred = true;
+    this.validateCpf();
+  }
 
   buscarCliente() {
     // aqui o scriptzin pra buscar o cliente, fiz essa simulação aq so pra ver como ia ficar
-    this.clienteEncontrado = true;
   }
 
-  formatCPF(cpf: string): string {
-    cpf = cpf.replace(/\D/g, '');
-    cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-    return cpf;
+  isButtonDisabled(): boolean {
+    return (
+      this.cpf === "" || !this.validationService.innerValidateCpf(this.cpf)
+    );
   }
 
-  updateCPF(event: Event): void {
-    this.cpf = this.formatCPF((event.target as HTMLInputElement).value);
+  validateCpf(): void {
+    let result = this.validationService.validateCpf(this.cpf, this.cpfBeenBlurred);
+
+    switch (result) {
+      case "inválido": {
+        this.cpfValid = false;
+        this.cpfError = "Insira um CPF válido!";
+        return;
+      }
+
+      default: {
+        this.cpfValid = true;
+        this.cpfError = "";
+        return;
+      }
+    }
+  }
+
+  validateAndFormatCpf(event: any): void {
+    this.cpf = this.validationService.formatCpf(event.target.value);
+    this.validateCpf();
   }
 }
 

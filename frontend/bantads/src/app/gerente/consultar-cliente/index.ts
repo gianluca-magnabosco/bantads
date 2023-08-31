@@ -1,1 +1,1 @@
-export * from './consultar-cliente.component'
+export * from './consultar-cliente.component';
