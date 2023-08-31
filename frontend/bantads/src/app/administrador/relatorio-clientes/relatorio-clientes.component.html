@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<admin-navbar/>
+<div class="flex flex-col flex-1 items-center">
+  <div class="flex flex-row items-center my-24">
+
+    <div class="flex flex-col flex-1 justify-center items-start ">
+      <div class="space-y-1">
+        <div class="text-white text-3xl font-light">
+          Relatório de Clientes:
+        </div>
+      </div>
+
+      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20" *ngIf="clientes.length > 0">
+        <div *ngFor="let cliente of clientes">
+          <div class="flex flex-row flex-1 space-x-5">
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1">
+                Nome:
+                <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white" (click)="sortData('nome')"></i>
+                </span>
+              </div>
+
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg text-start font-medium my-1">
+                 {{cliente.nome}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1" >
+                CPF:
+              </div>
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg text-start font-medium my-1">
+                 {{cliente.cpf}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1">
+                    Limite:
+              </div>
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md min-h-[50px] h-[100px] min-w-[200px] break-words justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg break-words text-break text-start font-medium my-1">
+                 {{cliente.limite}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1">
+                Saldo:
+              </div>
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg text-start font-medium my-1">
+                    {{cliente.saldo}}
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col p-4 w-[200px]">
+              <div class="text-white text-lg text-start font-medium my-1">
+                Nome do Gerente:
+              </div>
+
+              <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
+                <div class="text-white text-lg text-start font-medium my-1">
+                    {{cliente.nomeGerente}}
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+          <div class="ml-12">
+            <mat-divider class="bg-[#4B5652]" />
+          </div>
+        </div>
+      </div>
+
+      <h1 class="text-white mt-3 font-semibold" *ngIf="clientes.length === 0">Nenhum cliente cadastrado ainda!</h1>
+    </div>
+
+  </div>
+</div>
+
+<app-footer/>

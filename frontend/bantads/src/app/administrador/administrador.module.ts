@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { InserirGerenteComponent } from './inserir-gerente';
 import { EditarGerenteComponent } from './editar-gerente';
+import { RelatorioClientesComponent } from './relatorio-clientes';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { EditarGerenteComponent } from './editar-gerente';
     ListarGerentesComponent,
     InserirGerenteComponent,
     EditarGerenteComponent,
+    RelatorioClientesComponent,
   ],
   imports: [
     CommonModule,

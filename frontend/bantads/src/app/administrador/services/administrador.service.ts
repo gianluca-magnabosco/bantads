@@ -54,4 +54,16 @@ remover(id:number): void{
     )
   }
 
+  getClientes(): any {
+    return (
+      [
+        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
+        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
+        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
+        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
+        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
+      ]
+    )
+  }
+
 }

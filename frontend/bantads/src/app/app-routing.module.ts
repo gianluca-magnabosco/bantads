@@ -18,6 +18,7 @@ import { InicioComponent as AdminInicio } from './administrador/inicio/inicio.co
 import { ListarGerentesComponent as AdminListarGerentes } from './administrador/listar-gerentes/listar-gerentes.component';
 import { InserirGerenteComponent as AdminInserirGerente } from './administrador/inserir-gerente/inserir-gerente.component';
 import { EditarGerenteComponent as AdminEditarGerente } from './administrador/editar-gerente/editar-gerente.component';
+import { RelatorioClientesComponent as AdminRelatorioClientes } from './administrador/relatorio-clientes/relatorio-clientes.component';
 
 
 const routes: Routes = [
@@ -98,10 +99,10 @@ const routes: Routes = [
     path: 'admin/inicio',
     component: AdminInicio
   },
-  // {
-  //   path: 'admin/relatorio-clientes',
-  //   component: AdminRelatorioClientes
-  // },
+  {
+    path: 'admin/relatorio-clientes',
+    component: AdminRelatorioClientes
+  },
   {
     path: 'admin/listar-gerentes',
     component: AdminListarGerentes
