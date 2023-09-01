@@ -46,7 +46,7 @@ export class MeuPerfilComponent implements OnInit {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: '400px',
       data: {
-        titulo: 'Tem certeza que deseja realizar essa ação?',
+        titulo: 'Tem certeza que deseja alterar seu perfil?',
         gifSrc: 'https://media.tenor.com/fCYvprWxVnIAAAAM/luntry-luntryifunny.gif',
 
         onBotao1Click: () => {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/shared/services';
 import { ContaService } from '../services';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../shared/popup/popup.component'; 
 
 
 
@@ -19,7 +21,7 @@ export class DepositoComponent implements OnInit {
   private valorValid: boolean = false;
   private valorError: string = "";
 
-  constructor(private validationService: ValidationService, private contaService: ContaService) {}
+  constructor(private validationService: ValidationService, private contaService: ContaService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.saldoCliente = this.contaService.getSaldo();
@@ -94,4 +96,24 @@ export class DepositoComponent implements OnInit {
 
     return (this.valor === "" || isNaN(numberValor) || numberValor <= 0.00 || numberValor > 100000000);
   }
+
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: '400px',
+      data: {
+        titulo: 'Tem certeza que deseja realizar esse depósito?',
+        gifSrc: 'https://media.tenor.com/CbJpPU0xVjwAAAAM/star-wars.gif',
+
+        onBotao1Click: () => {
+          console.log('botao 1');
+
+        },
+        onBotao2Click: () => {
+          console.log('botao 2');
+
+        },
+
+      },
+    });
+}
 }

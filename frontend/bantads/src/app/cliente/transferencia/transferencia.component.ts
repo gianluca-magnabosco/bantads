@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContaService } from '../services';
 import { ValidationService } from 'src/app/shared/services';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../shared/popup/popup.component'; 
 
 
 
@@ -24,7 +26,7 @@ export class TransferenciaComponent implements OnInit {
   private numContaValid: boolean = false;
   private numContaError: string = "";
 
-  constructor(private validationService: ValidationService, private contaService: ContaService) {}
+  constructor(private validationService: ValidationService, private contaService: ContaService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.saldoCliente = this.contaService.getSaldo();
@@ -158,4 +160,25 @@ export class TransferenciaComponent implements OnInit {
     );
   }
 
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: '400px',
+      data: {
+        titulo: 'Tem certeza que deseja realizar essa transferência?',
+        gifSrc: 'https://i.gifer.com/CsFC.gif',
+
+        onBotao1Click: () => {
+          console.log('botao 1');
+
+        },
+        onBotao2Click: () => {
+          console.log('botao 2');
+
+        },
+
+      },
+    });
+
+
+}
 }

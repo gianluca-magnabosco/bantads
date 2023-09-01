@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/shared/services';
 import { ContaService } from '../services';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../shared/popup/popup.component'; 
 
 
 
@@ -19,7 +21,7 @@ export class SaqueComponent implements OnInit {
   private valorValid: boolean = false;
   private valorError: string = "";
 
-  constructor(private validationService: ValidationService, private contaService: ContaService) {}
+  constructor(private validationService: ValidationService, private contaService: ContaService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.saldoCliente = this.contaService.getSaldo();
@@ -102,5 +104,26 @@ export class SaqueComponent implements OnInit {
       (this.valor === "" || isNaN(numberValor) || numberValor <= 0.00 || numberValor > 100000000)
       || (Number(this.valor.replace(/[^\d,]/g, '').replace(',', '.')) > Number(this.saldo.replace(/[^\d,]/g, '').replace(',', '.')))
     );
+  }
+
+
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: '400px',
+      data: {
+        titulo: 'Tem certeza que deseja realizar o saque?', 
+        gifSrc: 'https://thumbs.gfycat.com/PerfectDarkLeafbird-size_restricted.gif', 
+        
+        onBotao1Click: () => {
+          console.log('botao 1');
+
+        },
+        onBotao2Click: () => {
+          console.log('botao 2');
+
+        },
+
+      },
+    });
   }
 }

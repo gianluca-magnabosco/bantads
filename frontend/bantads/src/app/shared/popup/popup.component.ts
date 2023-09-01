@@ -13,6 +13,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
       data: {
         titulo: 'xxxxxxxxxx', //Insira a mensagem que vc quer colocar
         gifSrc: 'xxxxxxxxxx', //Insira o gif que vc quer colocar
+        
+        onBotao1Click: () => {
+          console.log('botao 1');
+
+        },
+        onBotao2Click: () => {
+          console.log('botao 2');
+
+        },
 
       },
     });
