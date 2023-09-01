@@ -49,6 +49,15 @@ export class MeuPerfilComponent implements OnInit {
         titulo: 'Tem certeza que deseja realizar essa ação?',
         gifSrc: 'https://media.tenor.com/fCYvprWxVnIAAAAM/luntry-luntryifunny.gif',
 
+        onBotao1Click: () => {
+          console.log('botao 1');
+
+        },
+        onBotao2Click: () => {
+          console.log('botao 2');
+
+        },
+
       },
     });
 

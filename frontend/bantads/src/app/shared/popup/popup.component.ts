@@ -31,19 +31,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class PopupComponent {
   gifSrc: string;
+  onBotao1Click: () => void; 
+  onBotao2Click: () => void; 
+
+
   constructor(
     public dialogRef: MatDialogRef<PopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.gifSrc = data.gifSrc; 
-  }
-
-  onBotao1Click(): void {
-
-  }
-
-  onBotao2Click(): void {
-
+    this.onBotao1Click = data.onBotao1Click; 
+    this.onBotao2Click = data.onBotao2Click; 
   }
 
   fecharPopup(): void {
