@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContaService } from '../services';
-
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../shared/popup/popup.component'; 
 
 
 @Component({
@@ -15,7 +16,7 @@ export class MeuPerfilComponent implements OnInit {
 
   private gerenteDoCliente: string = "Seu Creyson";
 
-  constructor(private contaService: ContaService) {}
+  constructor(private contaService: ContaService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.saldoCliente = this.contaService.getSaldo();
@@ -39,5 +40,18 @@ export class MeuPerfilComponent implements OnInit {
 
   get gerente(): string {
     return this.gerenteDoCliente;
+  }
+
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: '400px',
+      data: {
+        titulo: 'Tem certeza que deseja realizar essa ação?',
+        gifSrc: 'https://media.tenor.com/fCYvprWxVnIAAAAM/luntry-luntryifunny.gif',
+
+      },
+    });
+
+
   }
 }

@@ -9,6 +9,8 @@ import { FooterModule } from './footer/footer.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GerenteModule } from './gerente/gerente.module';
 import { AdministradorModule } from './administrador';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { AdministradorModule } from './administrador';
     GerenteModule,
     AdministradorModule,
     FooterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
