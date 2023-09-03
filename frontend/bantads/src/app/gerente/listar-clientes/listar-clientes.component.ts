@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ValidationService } from 'src/app/shared/services';
 
 interface Client {
   cpf: string;
@@ -13,7 +14,10 @@ interface Client {
   templateUrl: './listar-clientes.component.html',
   styleUrls: ['./listar-clientes.component.css']
 })
-export class ListarClientesComponent   {
+export class ListarClientesComponent implements OnInit {
+
+  private searchCpf: string = "";
+  private searchName: string = "";
 
   clients: Client[] = [
     {
@@ -46,13 +50,51 @@ export class ListarClientesComponent   {
     }
   ];
 
+  filteredClientes!: Client[];
+
   sortKey: keyof Client = 'nome';
   sortAsc = true;
 
-  constructor() { }
+  constructor(private validationService: ValidationService) {
+    this.filteredClientes = this.clients;
+  }
 
   ngOnInit(): void {
     this.sortData();
+  }
+
+  get cpf(): string {
+    return this.searchCpf;
+  }
+
+  set cpf(cpf: string) {
+    this.searchCpf = cpf;
+  }
+
+  get nome(): string {
+    return this.searchName;
+  }
+
+  set nome(nome: string) {
+    this.searchName = nome;
+  }
+
+  formatAndSearchByCpf(event: any): void {
+    this.cpf = this.validationService.formatCpf(event.target.value);
+    this.searchByNomeAndCpf();
+  }
+
+  searchByNome(event: any): void {
+    this.searchByNomeAndCpf();
+  }
+
+  searchByNomeAndCpf(): void {
+    this.filteredClientes = this.clients.filter((cliente) => {
+      return (
+        cliente.nome.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "").startsWith(this.nome.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, ""))
+          && (cliente.cpf.startsWith(this.cpf.toLowerCase()))
+      );
+  });
   }
 
   sortData(key: keyof Client = this.sortKey): void {
