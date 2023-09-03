@@ -53,7 +53,7 @@ export class ListarClientesComponent implements OnInit {
   filteredClientes!: Client[];
 
   sortKey: keyof Client = 'nome';
-  sortAsc = true;
+  sortAsc = false;
 
   constructor(private validationService: ValidationService) {
     this.filteredClientes = this.clients;

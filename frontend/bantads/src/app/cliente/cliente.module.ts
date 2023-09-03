@@ -10,7 +10,7 @@ import { NavbarComponent } from './navbar';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ValidationService } from '../shared/services';
-import { ContaService } from './services';
+import { ClienteService, ContaService } from './services';
 import { SaldoComponent } from './saldo/saldo.component';
 import { EditarComponent } from './meu-perfil/editar/editar.component';
 import { VisualizarComponent } from './meu-perfil/visualizar/visualizar.component';
@@ -39,6 +39,7 @@ import { VisualizarComponent } from './meu-perfil/visualizar/visualizar.componen
   providers: [
     ValidationService,
     ContaService,
+    ClienteService,
   ]
 })
 export class ClienteModule { }

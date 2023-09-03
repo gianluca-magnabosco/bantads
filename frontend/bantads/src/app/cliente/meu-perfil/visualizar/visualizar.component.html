@@ -2,24 +2,24 @@
   <div class="bg-gray-800 text-white p-8 rounded-lg shadow-md w-96">
     <h2 class="text-2xl font-semibold mb-4">Suas Informações</h2>
     <div class="mb-4">
-      <p><span class="font-semibold">Nome:</span></p>
-      <p><span class="font-semibold">E-mail:</span></p>
-      <p><span class="font-semibold">CPF:</span></p>
-      <p><span class="font-semibold">Telefone:</span></p>
-      <p><span class="font-semibold">Salário:</span></p>
+      <p><span class="font-semibold">Nome: {{cliente.nome}}</span></p>
+      <p><span class="font-semibold">E-mail: {{cliente.email}}</span></p>
+      <p><span class="font-semibold">CPF: {{cliente.cpf}}</span></p>
+      <p><span class="font-semibold">Telefone: {{cliente.telefone}}</span></p>
+      <p><span class="font-semibold">Salário: {{cliente.salario}}</span></p>
     </div>
   </div>
 
   <div class="bg-gray-800 text-white mt-6 p-8 rounded-lg shadow-md w-96">
     <h2 class="text-2xl font-semibold mb-4">Seu Endereço</h2>
     <div>
-      <p><span class="font-semibold">CEP:</span></p>
-      <p><span class="font-semibold">Tipo:</span></p>
-      <p><span class="font-semibold">Logradouro:</span></p>
-      <p><span class="font-semibold">Número:</span></p>
-      <p><span class="font-semibold">Complemento:</span></p>
-      <p><span class="font-semibold">Cidade:</span></p>
-      <p><span class="font-semibold">Estado:</span></p>
+      <p><span class="font-semibold">CEP: {{cliente.endereco!.cep}}</span></p>
+      <p><span class="font-semibold">Tipo: {{cliente.endereco!.tipo}}</span></p>
+      <p><span class="font-semibold">Logradouro: {{cliente.endereco!.logradouro}}</span></p>
+      <p><span class="font-semibold">Número: {{cliente.endereco!.numero}}</span></p>
+      <p><span class="font-semibold">Complemento: {{cliente.endereco!.complemento}}</span></p>
+      <p><span class="font-semibold">Cidade: {{cliente.endereco!.cidade}}</span></p>
+      <p><span class="font-semibold">Estado: {{cliente.endereco!.estado}}</span></p>
     </div>
   </div>
 

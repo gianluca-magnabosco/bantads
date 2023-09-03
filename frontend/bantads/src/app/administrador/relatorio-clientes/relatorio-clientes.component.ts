@@ -1,43 +1,48 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from 'src/app/shared';
+import { ClienteRelatorio } from 'src/app/shared';
 import { AdministradorService } from '../services';
 
 @Component({
-  selector: 'app-relatorio-clientes',
+  selector: 'admin-relatorio-clientes',
   templateUrl: './relatorio-clientes.component.html',
   styleUrls: ['./relatorio-clientes.component.css']
 })
 export class RelatorioClientesComponent implements OnInit {
-constructor(private administradorService : AdministradorService){}
 
-//   ngOnInit(): void {
-//     this.clientes = this.listarTodos();
-//     this.sortData();
-//   }
+  private clientes!: ClienteRelatorio[];
 
-// listarTodos(): Cliente[]{
-//  return this.administradorService.listarTodos();
-// }
+  constructor(private administradorService : AdministradorService){}
 
-ngOnInit(): void {
-  this.clientes = this.administradorService.getClientes();
-}
-
-get listaGerentes() {
-  return this.clientes;
-}
-
-clientes: Cliente[] = [];
-
-sortKey: keyof Cliente = 'nome';
-sortAsc = true;
-
-sortData(key: keyof Cliente = this.sortKey): void {
-  if (key === this.sortKey) {
-    this.sortAsc = !this.sortAsc;
-  } else {
-    this.sortAsc = true;
-    this.sortKey = key;
+  ngOnInit(): void {
+    this.clientes = this.administradorService.getRelatorioClientes();
   }
-}
+
+  get listaClientes() {
+    return this.clientes;
+  }
+
+  sortKey: keyof ClienteRelatorio = "nome";
+  sortAsc = false;
+
+  sortData(key: keyof ClienteRelatorio = this.sortKey): void {
+    if (key === this.sortKey) {
+      this.sortAsc = !this.sortAsc;
+    } else {
+      this.sortAsc = true;
+      this.sortKey = key;
+    }
+
+    this.clientes.sort((a, b) => {
+      const valA = a[key];
+      const valB = b[key];
+
+      if (typeof valA === 'string' && typeof valB === 'string') {
+        return this.sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+      } else if (typeof valA === 'number' && typeof valB === 'number') {
+        return this.sortAsc ? valA - valB : valB - valA;
+      } else {
+        return 0;
+      }
+    });
+  }
 }

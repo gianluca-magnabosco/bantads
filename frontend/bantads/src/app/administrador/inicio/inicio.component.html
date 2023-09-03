@@ -1,11 +1,12 @@
 <admin-navbar/>
+
 <div class="flex flex-col flex-1 items-center">
   <div class="flex flex-row items-center my-24">
     <div class="h-50 w-50 m-0">
       <img src="../../../assets/img/verde_3.png" alt="">
     </div>
 
-    <div class="flex flex-col flex-1 justify-center items-start ">
+    <div class="flex flex-col flex-1 justify-center items-start">
       <div class="space-y-1">
         <div class="text-white text-3xl font-light">
           Painel do Administrador
@@ -16,12 +17,24 @@
         </div>
       </div>
 
-      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20">
+      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20 min-w-[90rem]">
+
+        <div *ngIf="listaGerentes.length === 0" class="w-full">
+          <div class="text-white font-medium text-3xl">
+            Nenhum Gerente cadastrado!
+          </div>
+        </div>
+
         <div *ngFor="let gerente of listaGerentes">
           <div class="flex flex-row flex-1 space-x-5">
-            <div class="flex flex-col p-4 w-[275px]">
+            <div class="flex flex-col p-4 w-[300px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Nome:
+                <button (click)="sortData('nome')">
+                  Nome:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[275px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
@@ -31,46 +44,60 @@
               </div>
             </div>
 
-            <div class="flex flex-col p-4 w-[275px]">
+            <div class="flex flex-col p-4 w-[300px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Quantidade de clientes:
+                <button (click)="sortData('quantidadeClientes')">
+                  Quantidade de Clientes:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[275px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-2xl font-bold text-white text-center">
-                  {{gerente.quantidade_clientes}}
+                  {{gerente.quantidadeClientes}}
                 </div>
               </div>
             </div>
 
-            <div class="flex flex-col p-4 w-[275px]">
+            <div class="flex flex-col p-4 w-[300px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Soma de saldos positivos:
+                <button (click)="sortData('totalSaldosPositivo')">
+                  Soma de Saldos Positivos:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[275px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-2xl text-[#18C687] font-bold text-center">
-                  {{gerente.soma_saldos_positivos}}
+                  {{gerente.totalSaldosPositivo | currency:"BRL":true}}
                 </div>
               </div>
             </div>
 
-            <div class="flex flex-col p-4 w-[275px]">
+            <div class="flex flex-col p-4 w-[300px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Soma de saldos negativos:
+                <button (click)="sortData('totalSaldosNegativo')">
+                  Soma de Saldos Negativos:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[275px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-2xl text-red-800 font-bold text-center">
-                  {{gerente.soma_saldos_negativos}}
+                  {{gerente.totalSaldosNegativo | currency:"BRL":true}}
                 </div>
               </div>
             </div>
-
           </div>
 
-          <div class="ml-12">
-            <mat-divider class="bg-[#4B5652]" />
+          <div class="ml-12 mr-6">
+            <mat-divider class="bg-[#4B5652]"/>
           </div>
         </div>
       </div>

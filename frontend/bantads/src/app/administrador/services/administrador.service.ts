@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Gerente } from 'src/app/shared';
+import { ClienteRelatorio, Gerente, GerenteDashboard } from 'src/app/shared';
 
 const LS_CHAVE: string = "gerentes";
 
@@ -8,40 +8,61 @@ const LS_CHAVE: string = "gerentes";
 })
 
 export class AdministradorService {
+
   constructor() { }
 
-listarTodos(): Gerente[]{
-  const gerentes = localStorage[LS_CHAVE];
-  return gerentes ? JSON.parse(gerentes) : [];
-}
+  getRelatorioClientes(): ClienteRelatorio[] {
+    return (
+      [
+        new ClienteRelatorio("Amigao", "123.456.789-00", 1000.00, 500.00, "Seu Creyson"),
+        new ClienteRelatorio("Brunao", "455.123.789-00", 3000.00, 1500.00, "Seu Creyson"),
+        new ClienteRelatorio("Homem", "452.321.789-00", 1230.00, 300.52, "Seu Creyson"),
+        new ClienteRelatorio("Lobisomem", "321.456.789-00", 1000.00, -420.69, "Seu Creyson"),
+      ]
+    )
+  }
 
-inserir(gerente: Gerente): void{
-  const gerentes = this.listarTodos();
-  gerente.id = new Date().getTime();
-  gerentes.push(gerente);
-  localStorage[LS_CHAVE] = JSON.stringify(gerentes);
-}
+  getDashboardGerentes(): GerenteDashboard[] {
+    return (
+      [
+        new GerenteDashboard("Seu Creyson", 10, 2300.52, -420.69)
+      ]
+    )
+  }
 
-buscarPorId(id: number): Gerente | undefined{
-  const gerentes: Gerente[] = this.listarTodos();
-  return gerentes.find(gerente => gerente.id === id);
-}
+  listarTodos(): Gerente[]{
+    const gerentes = localStorage[LS_CHAVE];
+    return gerentes ? JSON.parse(gerentes) : [];
+  }
 
-atualizar(gerente: Gerente): void{
-  const gerentes: Gerente[] = this.listarTodos();
-  gerentes.forEach((obj, index, objs) => {
-    if(gerente.id === obj.id){
-      objs[index] = gerente
-    }
-  });
-  localStorage[LS_CHAVE] = JSON.stringify(gerentes);
-}
+  inserir(gerente: Gerente): void{
+    const gerentes = this.listarTodos();
+    gerente.id = new Date().getTime();
+    gerentes.push(gerente);
+    localStorage[LS_CHAVE] = JSON.stringify(gerentes);
+  }
 
-remover(id:number): void{
-  let gerentes: Gerente[] = this.listarTodos();
-  gerentes = gerentes.filter(gerente => gerente.id !== id);
-  localStorage[LS_CHAVE] = JSON.stringify(gerentes);
-}
+  buscarPorId(id: number): Gerente | undefined{
+    const gerentes: Gerente[] = this.listarTodos();
+    return gerentes.find(gerente => gerente.id === id);
+  }
+
+  atualizar(gerente: Gerente): void{
+    const gerentes: Gerente[] = this.listarTodos();
+    gerentes.forEach((obj, index, objs) => {
+      if(gerente.id === obj.id){
+        objs[index] = gerente
+      }
+    });
+    localStorage[LS_CHAVE] = JSON.stringify(gerentes);
+  }
+
+  remover(id:number): void{
+    let gerentes: Gerente[] = this.listarTodos();
+    gerentes = gerentes.filter(gerente => gerente.id !== id);
+    localStorage[LS_CHAVE] = JSON.stringify(gerentes);
+  }
+
   getGerentes(): any {
     return (
       [

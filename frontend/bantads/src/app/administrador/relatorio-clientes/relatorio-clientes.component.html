@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <admin-navbar/>
+
 <div class="flex flex-col flex-1 items-center">
   <div class="flex flex-row items-center my-24">
 
@@ -10,84 +10,104 @@
         </div>
       </div>
 
-      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20" *ngIf="clientes.length > 0">
-        <div *ngFor="let cliente of clientes">
+      <div *ngIf="listaClientes.length > 0" class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20">
+        <div *ngFor="let cliente of listaClientes">
           <div class="flex flex-row flex-1 space-x-5">
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Nome:
-                <span class="ml-1 text-white">
-                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white" (click)="sortData('nome')"></i>
-                </span>
+                <button (click)="sortData('nome')">
+                  Nome:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
-
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg text-start font-medium my-1">
-                 {{cliente.nome}}
+                  {{cliente.nome}}
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1" >
-                CPF:
+                <button (click)="sortData('cpf')">
+                  CPF:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg text-start font-medium my-1">
-                 {{cliente.cpf}}
+                  {{cliente.cpf}}
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                    Limite:
+                <button (click)="sortData('limite')">
+                  Limite:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md min-h-[50px] h-[100px] min-w-[200px] break-words justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg break-words text-break text-start font-medium my-1">
-                 {{cliente.limite}}
+                  {{cliente.limite | currency:"BRL":true}}
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Saldo:
+                <button (click)="sortData('saldo')">
+                  Saldo:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg text-start font-medium my-1">
-                    {{cliente.saldo}}
+                  {{cliente.saldo | currency:"BRL":true}}
                 </div>
               </div>
             </div>
 
-            <div class="flex flex-col p-4 w-[200px]">
+            <div class="flex flex-col p-4 w-[250px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Nome do Gerente:
+                <button (click)="sortData('gerente')">
+                  Nome do Gerente:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg text-start font-medium my-1">
-                    {{cliente.nomeGerente}}
+                  {{cliente.gerente}}
                 </div>
               </div>
             </div>
+          </div>
 
-            </div>
-
-          <div class="ml-12">
+          <div class="mx-12">
             <mat-divider class="bg-[#4B5652]" />
           </div>
         </div>
       </div>
 
-      <h1 class="text-white mt-3 font-semibold" *ngIf="clientes.length === 0">Nenhum cliente cadastrado ainda!</h1>
-    </div>
+      <h1 class="text-white mt-3 font-semibold" *ngIf="listaClientes.length === 0">Nenhum cliente cadastrado ainda!</h1>
 
+    </div>
   </div>
 </div>
 
