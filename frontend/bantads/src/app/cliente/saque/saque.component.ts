@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ValidationService } from 'src/app/shared/services';
 import { ContaService } from '../services';
 import { MatDialog } from '@angular/material/dialog';
-import { PopupComponent } from '../../shared/popup/popup.component'; 
+import { PopupComponent } from '../../shared/popup/popup.component';
 
 
 
@@ -14,7 +14,6 @@ import { PopupComponent } from '../../shared/popup/popup.component';
 export class SaqueComponent implements OnInit {
 
   private saldoCliente: number = 0.00;
-  private saldoColoring: string = "";
   private valor: string = "";
 
   private valorFocused: boolean = false;
@@ -25,22 +24,10 @@ export class SaqueComponent implements OnInit {
 
   ngOnInit(): void {
     this.saldoCliente = this.contaService.getSaldo();
-
-    if (this.saldoCliente > 0) {
-      this.saldoColoring = "text-green-600";
-    } else if (this.saldoCliente < 0) {
-      this.saldoColoring = "text-red-600"
-    } else {
-      this.saldoColoring = "text-blue-700";
-    }
   }
 
   get saldo(): string {
     return `R$ ${this.saldoCliente.toFixed(2).replace(".", ",")}`;
-  }
-
-  get saldoColor(): string {
-    return this.saldoColoring;
   }
 
   get valorSaque(): string {
@@ -111,9 +98,9 @@ export class SaqueComponent implements OnInit {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: '400px',
       data: {
-        titulo: 'Tem certeza que deseja realizar o saque?', 
-        gifSrc: 'https://thumbs.gfycat.com/PerfectDarkLeafbird-size_restricted.gif', 
-        
+        titulo: 'Tem certeza que deseja realizar o saque?',
+        gifSrc: 'https://thumbs.gfycat.com/PerfectDarkLeafbird-size_restricted.gif',
+
         onBotao1Click: () => {
           console.log('botao 1');
 

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ValidationService } from 'src/app/shared/services';
-import { ContaService } from '../services';
 import { MatDialog } from '@angular/material/dialog';
-import { PopupComponent } from '../../shared/popup/popup.component'; 
+import { PopupComponent } from '../../shared/popup/popup.component';
 
 
 
@@ -11,37 +10,15 @@ import { PopupComponent } from '../../shared/popup/popup.component';
   templateUrl: './deposito.component.html',
   styleUrls: ['./deposito.component.css']
 })
-export class DepositoComponent implements OnInit {
+export class DepositoComponent {
 
-  private saldoCliente: number = 0.00;
-  private saldoColoring: string = "";
   private valor: string = "";
 
   private valorFocused: boolean = false;
   private valorValid: boolean = false;
   private valorError: string = "";
 
-  constructor(private validationService: ValidationService, private contaService: ContaService, private dialog: MatDialog) {}
-
-  ngOnInit(): void {
-    this.saldoCliente = this.contaService.getSaldo();
-
-    if (this.saldoCliente > 0) {
-      this.saldoColoring = "text-green-600";
-    } else if (this.saldoCliente < 0) {
-      this.saldoColoring = "text-red-600"
-    } else {
-      this.saldoColoring = "text-blue-700";
-    }
-  }
-
-  get saldo(): string {
-    return `R$ ${this.saldoCliente.toFixed(2).replace(".", ",")}`;
-  }
-
-  get saldoColor(): string {
-    return this.saldoColoring;
-  }
+  constructor(private validationService: ValidationService, private dialog: MatDialog) {}
 
   get valorDeposito(): string {
     return this.valor;

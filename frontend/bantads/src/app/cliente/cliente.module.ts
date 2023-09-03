@@ -11,6 +11,9 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ValidationService } from '../shared/services';
 import { ContaService } from './services';
+import { SaldoComponent } from './saldo/saldo.component';
+import { EditarComponent } from './meu-perfil/editar/editar.component';
+import { VisualizarComponent } from './meu-perfil/visualizar/visualizar.component';
 
 
 
@@ -21,7 +24,10 @@ import { ContaService } from './services';
     DepositoComponent,
     SaqueComponent,
     TransferenciaComponent,
-    MeuPerfilComponent
+    MeuPerfilComponent,
+    SaldoComponent,
+    EditarComponent,
+    VisualizarComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,90 @@
+<div class="flex flex-1 flex-col items-center justify-center w-full my-2">
+  <div class="flex flex-1 flex-col items-center w-full">
+    <div class="w-[60%]">
+      <input name="nome" type="text" [(ngModel)]="nome" placeholder="Nome" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setNomeBeenBlurred()" (input)="validateNome()"/>
+      <div *ngIf="!isNomeValid" class="text-red-600 font-bold">
+        {{nomeErrorText}}
+      </div>
+    </div>
+
+    <div class="w-[60%]">
+      <input name="email" type="text" [(ngModel)]="email" placeholder="E-mail" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setEmailBeenBlurred()" (input)="validateEmail()"/>
+      <div *ngIf="!isEmailValid" class="text-red-600 font-bold">
+        {{emailErrorText}}
+      </div>
+    </div>
+
+    <div class="w-[60%]">
+      <input type="text" name="cpf" placeholder="CPF" class="w-full mt-2 text-black py-2 px-4 rounded focus:outline-none" disabled>
+    </div>
+
+    <div class="w-[60%]">
+      <input name="telefone" type="text" [(ngModel)]="telefone" placeholder="Telefone" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="15" (blur)="setTelefoneBeenBlurred()" (input)="validateAndFormatTelefone($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
+      <div *ngIf="!isTelefoneValid" class="text-red-600 font-bold">
+        {{telefoneErrorText}}
+      </div>
+    </div>
+
+    <div class="w-[60%]">
+      <input name="salario" type="text" [(ngModel)]="salario" placeholder="Salário" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setSalarioBeenBlurred()" (input)="validateAndFormatSalario($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)" maxlength="17"/>
+      <div *ngIf="!isSalarioValid" class="text-red-600 font-bold">
+        {{salarioErrorText}}
+      </div>
+    </div>
+
+    <div class="w-[60%]">
+      <input name="cep" type="text" [(ngModel)]="cep" placeholder="CEP" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="9" (blur)="setCepBeenBlurred()" (input)="validateFormatAndConsultarCep($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
+      <div *ngIf="!isCepValid" class="text-red-600 font-bold">
+        {{cepErrorText}}
+      </div>
+    </div>
+
+    <div class="w-[60%] flex flex-col">
+      <div class="w-full flex flex-row flex-wrap mb-1 mt-2">
+        <input name="tipo" type="text" [(ngModel)]="tipo" placeholder="Tipo" class="flex-1 text-black mr-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+
+        <input name="logradouro" type="text" [(ngModel)]="logradouro" placeholder="Logradouro" class="flex-1 text-black ml-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+      </div>
+
+      <div class="w-full flex flex-row flex-wrap my-1">
+        <div class="flex-1 w-full">
+          <input name="numero" type="text" [(ngModel)]="numero" placeholder="Número" class="flex-1 w-[97%] text-black mr-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setNumeroBeenBlurred()" (input)="validateNumero()" (keypress)="($event.charCode >= 48 && $event.charCode < 58)">
+          <div *ngIf="!isNumeroValid" class="text-red-600 font-bold">
+            {{numeroErrorText}}
+          </div>
+        </div>
+
+        <div class="flex-1 w-full">
+          <input name="complemento" type="text" [(ngModel)]="complemento" placeholder="Complemento" class="flex-1 w-[97%] text-black ml-2 py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setComplementoBeenBlurred()" (input)="validateComplemento()">
+          <div *ngIf="!isComplementoValid" class="text-red-600 font-bold">
+            {{complementoErrorText}}
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-row flex-wrap my-1">
+        <input name="cidade" type="text" [(ngModel)]="cidade" placeholder="Cidade" class="flex-1 text-black mr-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+
+        <input name="uf" type="text" [(ngModel)]="estado" placeholder="Estado" class="flex-1 text-black ml-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-2">
+    <button
+      class="p-[0.625rem] mr-2 min-w-[12rem] rounded-md bg-red-600 hover:bg-red-500 font-medium text-white text-xl"
+      (click)="onModoChange('visualizar')"
+    >
+      CANCELAR
+    </button>
+
+    <button
+      class="p-[0.625rem] ml-2 min-w-[12rem] rounded-md disabled:bg-[#90F58E] bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl"
+      [disabled]="isButtonDisabled()"
+      (click)="abrirPopup()"
+    >
+      SALVAR
+    </button>
+  </div>
+
+</div>
