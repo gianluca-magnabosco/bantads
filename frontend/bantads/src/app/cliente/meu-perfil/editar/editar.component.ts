@@ -86,6 +86,9 @@ export class EditarComponent implements OnInit {
 
         botaoText1: "Cancelar",
 
+        musica1: new Audio('../../../assets/sound/oneyma.mp3'),
+        musica2: new Audio('../../../assets/sound/zoio.mp3'),
+
         onBotao1Click: () => {
           dialogRef.close();
         },

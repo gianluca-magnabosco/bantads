@@ -28,7 +28,7 @@ export class NavbarComponent {
 
         mensagem: "Tem certeza que deseja sair da sua conta?",
 
-        gifSrc: "../../../assets/gif/nerd.gif",
+        gifSrc: "../../../assets/gif/emoji2.gif",
 
         botaoText1: "Cancelar",
 
