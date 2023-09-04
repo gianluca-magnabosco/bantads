@@ -91,15 +91,16 @@ export class DepositoComponent {
         gifSrc: "../../../assets/gif/money.gif",
 
         botaoText1: "Cancelar",
-        
+
         musica1: new Audio('../../../assets/sound/whatsapp.mp3'),
-        musica2: new Audio('../../../assets/sound/queota.mp3'),
 
         onBotao1Click: () => {
           dialogRef.close();
         },
 
         botaoText2: "Confirmar",
+
+        musica2: new Audio('../../../assets/sound/queota.mp3'),
 
         onBotao2Click: () => {
           this.realizarDeposito();

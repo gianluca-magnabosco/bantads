@@ -64,9 +64,15 @@ export class PopupComponent {
     this.titulo = data.titulo;
     this.mensagem = data.mensagem;
     this.gifSrc = data.gifSrc;
-    this.onBotao1Click = data.onBotao1Click;
+    this.onBotao1Click = () => {
+      data.onBotao1Click();
+      this.tocarMusica1();
+    }
     this.botaoText1 = data.botaoText1;
-    this.onBotao2Click = data.onBotao2Click;
+    this.onBotao2Click = () => {
+      data.onBotao2Click();
+      this.tocarMusica2();
+    }
     this.botaoText2 = data.botaoText2;
     this.musica1 = data.musica1;
     this.musica2 = data.musica2;

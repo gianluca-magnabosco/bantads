@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class NavbarModule { }

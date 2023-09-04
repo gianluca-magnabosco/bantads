@@ -101,11 +101,15 @@ export class SaqueComponent {
 
         botaoText1: "Cancelar",
 
+        musica1: new Audio('../../../assets/sound/queota.mp3'),
+
         onBotao1Click: () => {
           dialogRef.close();
         },
 
         botaoText2: "Confirmar",
+
+        musica2: new Audio('../../../assets/sound/queota.mp3'),
 
         onBotao2Click: () => {
           this.realizarSaque();

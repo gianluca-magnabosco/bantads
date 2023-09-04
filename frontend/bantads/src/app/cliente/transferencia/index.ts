@@ -1,1 +1,1 @@
-export * from './transferencia.component';
+export * from "./transferencia.component";

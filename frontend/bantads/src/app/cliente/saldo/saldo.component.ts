@@ -14,23 +14,11 @@ export class SaldoComponent implements OnInit {
 
   ngOnInit(): void {
     this.saldoCliente = this.contaService.getSaldo();
-    if (this.saldoCliente > 0) {
-      this.saldoColoring = "text-green-600";
-    } else if (this.saldoCliente < 0) {
-      this.saldoColoring = "text-red-600";
-    } else {
-      this.saldoColoring = "text-blue-700";
-    }
+    this.setSaldoColoring();
 
     this.contaService.saldoUpdated.subscribe((newSaldo) => {
       this.saldoCliente = newSaldo;
-      if (this.saldoCliente > 0) {
-        this.saldoColoring = "text-green-600";
-      } else if (this.saldoCliente < 0) {
-        this.saldoColoring = "text-red-600";
-      } else {
-        this.saldoColoring = "text-blue-700";
-      }
+      this.setSaldoColoring();
     });
   }
 
@@ -40,5 +28,15 @@ export class SaldoComponent implements OnInit {
 
   get saldoColor(): string {
     return this.saldoColoring;
+  }
+
+  setSaldoColoring(): void {
+    if (this.saldoCliente > 0) {
+      this.saldoColoring = "text-green-600";
+    } else if (this.saldoCliente < 0) {
+      this.saldoColoring = "text-red-600";
+    } else {
+      this.saldoColoring = "text-blue-700";
+    }
   }
 }

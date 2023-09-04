@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BuscaCEPService } from 'src/app/entrar/services';
-import { Cliente, Endereco } from 'src/app/shared';
+import { AlterarPerfil, Cliente } from 'src/app/shared';
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
 import { ValidationService } from 'src/app/shared/services';
 import { ClienteService } from '../../services';
@@ -44,34 +44,30 @@ export class EditarComponent implements OnInit {
   private complementoValid: boolean = false;
   private complementoError: string = "";
 
-  private endereco: Endereco = {
-    cep: "",
-    tipo: "",
-    logradouro: "",
-    numero: "",
-    complemento: "",
-    cidade: "",
-    estado: "",
-  }
+  private cliente!: Cliente;
+  private clienteAlter!: AlterarPerfil;
 
-  private cliente: Cliente = {
-    nome: "",
-    email: "",
-    cpf: "",
-    telefone: "",
-    salario: "",
-    endereco: this.endereco,
-  }
 
   constructor(private clienteService: ClienteService, private validationService: ValidationService, private buscaCEPService: BuscaCEPService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.cliente = this.clienteService.getCliente();
+    this.clienteAlter = new AlterarPerfil (
+      this.cliente.nome,
+      this.cliente.email,
+      this.cliente.telefone,
+      this.cliente.salario,
+      {...this.cliente.endereco},
+    );
   }
 
   onModoChange(newModo: string) {
     this.modo = newModo;
     this.modoChange.emit(this.modo);
+  }
+
+  alterarPerfil(): void {
+    this.clienteService.updateCliente(this.clienteAlter);
   }
 
   abrirPopup(): void {
@@ -87,7 +83,6 @@ export class EditarComponent implements OnInit {
         botaoText1: "Cancelar",
 
         musica1: new Audio('../../../assets/sound/oneyma.mp3'),
-        musica2: new Audio('../../../assets/sound/zoio.mp3'),
 
         onBotao1Click: () => {
           dialogRef.close();
@@ -95,7 +90,10 @@ export class EditarComponent implements OnInit {
 
         botaoText2: "Confirmar",
 
+        musica2: new Audio('../../../assets/sound/zoio.mp3'),
+
         onBotao2Click: () => {
+          this.alterarPerfil();
           this.modo = "visualizar";
           this.modoChange.emit(this.modo);
           dialogRef.close();
@@ -105,11 +103,11 @@ export class EditarComponent implements OnInit {
   }
 
   get nome(): string {
-    return this.cliente.nome!;
+    return this.clienteAlter.nome!;
   }
 
   set nome(nome: string) {
-    this.cliente.nome = nome;
+    this.clienteAlter.nome = nome;
   }
 
   get isNomeValid(): boolean {
@@ -130,11 +128,11 @@ export class EditarComponent implements OnInit {
   }
 
   get email(): string {
-    return this.cliente.email!;
+    return this.clienteAlter.email!;
   }
 
   set email(email: string) {
-    this.cliente.email = email;
+    this.clienteAlter.email = email;
   }
 
   get isEmailValid(): boolean {
@@ -163,11 +161,11 @@ export class EditarComponent implements OnInit {
   }
 
   get telefone(): string {
-    return this.cliente.telefone!;
+    return this.clienteAlter.telefone!;
   }
 
   set telefone(telefone: string) {
-    this.cliente.telefone = telefone;
+    this.clienteAlter.telefone = telefone;
   }
 
   get isTelefoneValid(): boolean {
@@ -188,11 +186,11 @@ export class EditarComponent implements OnInit {
   }
 
   get salario(): string {
-    return this.cliente.salario!;
+    return this.clienteAlter.salario!;
   }
 
   set salario(salario: string) {
-    this.cliente.salario = salario;
+    this.clienteAlter.salario = salario;
   }
 
   get isSalarioValid(): boolean {
@@ -213,11 +211,11 @@ export class EditarComponent implements OnInit {
   }
 
   get cep(): string {
-    return this.cliente.endereco!.cep!;
+    return this.clienteAlter.endereco!.cep!;
   }
 
   set cep(cep: string) {
-    this.cliente.endereco!.cep = cep;
+    this.clienteAlter.endereco!.cep = cep;
   }
 
   get isCepValid(): boolean {
@@ -238,27 +236,27 @@ export class EditarComponent implements OnInit {
   }
 
   get tipo(): string {
-    return this.cliente.endereco!.tipo!;
+    return this.clienteAlter.endereco!.tipo!;
   }
 
   set tipo(tipo: string) {
-    this.cliente.endereco!.tipo = tipo;
+    this.clienteAlter.endereco!.tipo = tipo;
   }
 
   get logradouro(): string {
-    return this.cliente.endereco!.logradouro!;
+    return this.clienteAlter.endereco!.logradouro!;
   }
 
   set logradouro(logradouro: string) {
-    this.cliente.endereco!.logradouro = logradouro;
+    this.clienteAlter.endereco!.logradouro = logradouro;
   }
 
   get numero(): string {
-    return this.cliente.endereco!.numero!;
+    return this.clienteAlter.endereco!.numero!;
   }
 
   set numero(numero: string) {
-    this.cliente.endereco!.numero = numero;
+    this.clienteAlter.endereco!.numero = numero;
   }
 
   get isNumeroValid(): boolean {
@@ -279,11 +277,11 @@ export class EditarComponent implements OnInit {
   }
 
   get complemento(): string {
-    return this.cliente.endereco!.complemento!;
+    return this.clienteAlter.endereco!.complemento!;
   }
 
   set complemento(complemento: string) {
-    this.cliente.endereco!.complemento = complemento;
+    this.clienteAlter.endereco!.complemento = complemento;
   }
 
   get isComplementoValid(): boolean {
@@ -304,19 +302,19 @@ export class EditarComponent implements OnInit {
   }
 
   get cidade(): string {
-    return this.cliente.endereco!.cidade!;
+    return this.clienteAlter.endereco!.cidade!;
   }
 
   set cidade(cidade: string) {
-    this.cliente.endereco!.cidade = cidade;
+    this.clienteAlter.endereco!.cidade = cidade;
   }
 
   get estado(): string {
-    return this.cliente.endereco!.estado!;
+    return this.clienteAlter.endereco!.estado!;
   }
 
   set estado(estado: string) {
-    this.cliente.endereco!.estado = estado;
+    this.clienteAlter.endereco!.estado = estado;
   }
 
   isButtonDisabled(): boolean {
@@ -517,7 +515,7 @@ export class EditarComponent implements OnInit {
   }
 
   validateFormatAndConsultarCep(event: any): void {
-    this.cliente.endereco!.tipo = "";
+    this.tipo = "";
     this.logradouro = "";
     this.cidade = "";
     this.estado = "";

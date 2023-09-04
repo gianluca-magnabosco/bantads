@@ -1,1 +1,1 @@
-export * from './deposito.component';
+export * from "./deposito.component";
