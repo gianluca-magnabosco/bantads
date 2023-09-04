@@ -11,26 +11,31 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
     const dialogRef = this.dialog.open(PopupComponent, {
       width: '400px',
       data: {
-        titulo: 'xxxxxxxxxx', //Insira a mensagem que vc quer colocar
-        gifSrc: 'xxxxxxxxxx', //Insira o gif que vc quer colocar
-        
-        onBotao1Click: () => {
+        titulo: 'xxxxxxxxxx', // Insira o titulo do popup
+
+        mensagem: 'xxxxxxxxxx', // Insira a mensagem que vc quer colocar
+
+        gifSrc: 'xxxxxxxxxx', // Insira o gif que vc quer colocar
+
+        botaoText1: 'xxxxxxxxxx', // Insira o texto do botão vermelho
+
+        onBotao1Click: () => { // Insira a ação do botao vermelho
           console.log('botao 1');
-
         },
-        onBotao2Click: () => {
+
+        botaoText2: 'xxxxxxxxxx', // Insira o texto do botão verde
+
+        onBotao2Click: () => { // Insira a ação do botão verde
           console.log('botao 2');
-
         },
-
       },
     });
-  
+
   5 - Vá para o arquivo HTML e insira o seguinte codigo no botão para dar trigger no popup
-                                  
+
                                    (click)="abrirPopup()"
 
-  
+
   */
 
 @Component({
@@ -39,18 +44,25 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent {
+  titulo: string;
+  mensagem: string;
   gifSrc: string;
-  onBotao1Click: () => void; 
-  onBotao2Click: () => void; 
+  botaoText1: string;
+  onBotao1Click: () => void;
+  botaoText2: string;
+  onBotao2Click: () => void;
 
-
-  constructor(
+  constructor (
     public dialogRef: MatDialogRef<PopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.gifSrc = data.gifSrc; 
-    this.onBotao1Click = data.onBotao1Click; 
-    this.onBotao2Click = data.onBotao2Click; 
+    this.titulo = data.titulo;
+    this.mensagem = data.mensagem;
+    this.gifSrc = data.gifSrc;
+    this.onBotao1Click = data.onBotao1Click;
+    this.botaoText1 = data.botaoText1;
+    this.onBotao2Click = data.onBotao2Click;
+    this.botaoText2 = data.botaoText2;
   }
 
   fecharPopup(): void {

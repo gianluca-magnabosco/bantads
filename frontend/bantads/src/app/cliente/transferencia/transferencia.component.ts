@@ -142,23 +142,29 @@ export class TransferenciaComponent {
     this.contaService.transferencia(this.transferencia);
   }
 
-  // abrirPopup(): void {
-  //   const dialogRef = this.dialog.open(PopupComponent, {
-  //     width: '400px',
-  //     data: {
-  //       titulo: 'Tem certeza que deseja realizar essa transferência?',
-  //       gifSrc: 'https://i.gifer.com/CsFC.gif',
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Transferência",
 
-  //       onBotao1Click: () => {
-  //         console.log('botao 1');
+        mensagem: "Tem certeza que deseja realizar essa transferência?",
 
-  //       },
-  //       onBotao2Click: () => {
-  //         console.log('botao 2');
+        gifSrc: "../../../assets/gif/huell.gif",
 
-  //       },
+        botaoText1: "Cancelar",
 
-  //     },
-  //   });
-  // }
+        onBotao1Click: () => {
+          dialogRef.close();
+        },
+
+        botaoText2: "Confirmar",
+
+        onBotao2Click: () => {
+          this.realizarTransferencia();
+          dialogRef.close();
+        },
+      },
+    });
+  }
 }

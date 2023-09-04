@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { PopupComponent } from 'src/app/shared/popup/popup.component';
 
 @Component({
   selector: 'gerente-navbar',
@@ -15,5 +17,33 @@ import { RouterModule } from '@angular/router';
   ]
 })
 export class NavbarComponent {
+
+  constructor(private dialog: MatDialog, private router: Router) {}
+
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Sair",
+
+        mensagem: "Tem certeza que deseja sair da sua conta?",
+
+        gifSrc: "../../../assets/gif/nerd.gif",
+
+        botaoText1: "Cancelar",
+
+        onBotao1Click: () => {
+          dialogRef.close();
+        },
+
+        botaoText2: "Deslogar",
+
+        onBotao2Click: () => {
+          dialogRef.close();
+          this.router.navigate(["/entrar"]);
+        },
+      },
+    });
+  }
 
 }

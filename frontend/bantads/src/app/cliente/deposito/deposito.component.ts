@@ -80,23 +80,29 @@ export class DepositoComponent {
     this.contaService.depositar(this.deposito);
   }
 
-  // abrirPopup(): void {
-  //   const dialogRef = this.dialog.open(PopupComponent, {
-  //     width: '400px',
-  //     data: {
-  //       titulo: 'Tem certeza que deseja realizar esse depósito?',
-  //       gifSrc: 'https://media.tenor.com/CbJpPU0xVjwAAAAM/star-wars.gif',
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Depósito",
 
-  //       onBotao1Click: () => {
-  //         console.log('botao 1');
+        mensagem: "Tem certeza que deseja realizar esse depósito?",
 
-  //       },
-  //       onBotao2Click: () => {
-  //         console.log('botao 2');
+        gifSrc: "../../../assets/gif/money.gif",
 
-  //       },
+        botaoText1: "Cancelar",
 
-  //     },
-  //   });
-  // }
+        onBotao1Click: () => {
+          dialogRef.close();
+        },
+
+        botaoText2: "Confirmar",
+
+        onBotao2Click: () => {
+          this.realizarDeposito();
+          dialogRef.close();
+        },
+      },
+    });
+  }
 }

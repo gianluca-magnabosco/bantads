@@ -89,24 +89,29 @@ export class SaqueComponent {
     this.contaService.sacar(this.saque);
   }
 
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Saque",
 
-  // abrirPopup(): void {
-  //   const dialogRef = this.dialog.open(PopupComponent, {
-  //     width: '400px',
-  //     data: {
-  //       titulo: 'Tem certeza que deseja realizar o saque?',
-  //       gifSrc: 'https://thumbs.gfycat.com/PerfectDarkLeafbird-size_restricted.gif',
+        mensagem: "Tem certeza que deseja realizar o saque?",
 
-  //       onBotao1Click: () => {
-  //         console.log('botao 1');
+        gifSrc: "../../../assets/gif/palpatine.gif",
 
-  //       },
-  //       onBotao2Click: () => {
-  //         console.log('botao 2');
+        botaoText1: "Cancelar",
 
-  //       },
+        onBotao1Click: () => {
+          dialogRef.close();
+        },
 
-  //     },
-  //   });
-  // }
+        botaoText2: "Confirmar",
+
+        onBotao2Click: () => {
+          this.realizarSaque();
+          dialogRef.close();
+        },
+      },
+    });
+  }
 }

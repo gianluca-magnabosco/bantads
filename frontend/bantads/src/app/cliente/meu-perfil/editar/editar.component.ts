@@ -76,20 +76,27 @@ export class EditarComponent implements OnInit {
 
   abrirPopup(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
-      width: '400px',
+      width: "400px",
       data: {
-        titulo: 'Tem certeza que deseja alterar seu perfil?',
-        gifSrc: 'https://media.tenor.com/fCYvprWxVnIAAAAM/luntry-luntryifunny.gif',
+        titulo: "Alterar perfil",
+
+        mensagem: "Tem certeza que deseja alterar seu perfil?",
+
+        gifSrc: "../../../assets/gif/nerd.gif",
+
+        botaoText1: "Cancelar",
 
         onBotao1Click: () => {
-          console.log('botao 1');
-
+          dialogRef.close();
         },
+
+        botaoText2: "Confirmar",
+
         onBotao2Click: () => {
-          console.log('botao 2');
-
+          this.modo = "visualizar";
+          this.modoChange.emit(this.modo);
+          dialogRef.close();
         },
-
       },
     });
   }
