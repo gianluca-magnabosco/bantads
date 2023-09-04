@@ -15,6 +15,7 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     this.gerentes = this.administradorService.getDashboardGerentes();
+    this.sortData();
   }
 
   get listaGerentes() {

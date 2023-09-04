@@ -8,49 +8,50 @@ import { AdministradorService } from '../services';
   styleUrls: ['./listar-gerentes.component.css']
 })
 export class ListarGerentesComponent implements OnInit {
-constructor(private administradorService : AdministradorService){}
+
+  private gerentes!: Gerente[];
+
+  constructor(private administradorService : AdministradorService) {}
 
   ngOnInit(): void {
-    this.gerentes = this.listarTodos();
+    this.gerentes = this.administradorService.getGerentes();
     this.sortData();
   }
 
-listarTodos(): Gerente[]{
- return this.administradorService.listarTodos();
-}
-
-remover($event: any, gerente: Gerente): void{
-  $event.preventDefault();
-  if (confirm(`Deseja realmente remover o gerente ${gerente.nome}`)){
-    this.administradorService.remover(gerente.id!);
-    this.gerentes = this.listarTodos();
-  }
-}
-
-gerentes: Gerente[] = [];
-
-sortKey: keyof Gerente = 'nome';
-sortAsc = true;
-
-sortData(key: keyof Gerente = this.sortKey): void {
-  if (key === this.sortKey) {
-    this.sortAsc = !this.sortAsc;
-  } else {
-    this.sortAsc = true;
-    this.sortKey = key;
+  get listaGerentes() {
+    return this.gerentes;
   }
 
-  this.gerentes.sort((a, b) => {
-    const valA = a[key];
-    const valB = b[key];
-
-    if (typeof valA === 'string' && typeof valB === 'string') {
-      return this.sortAsc ? valB.localeCompare(valA) : valA.localeCompare(valB);
-    } else if (typeof valA === 'number' && typeof valB === 'number') {
-      return this.sortAsc ? valA - valB : valB - valA;
-    } else {
-      return 0;
+  remover($event: any, gerente: Gerente): void{
+    $event.preventDefault();
+    if (confirm(`Deseja realmente remover o gerente ${gerente.nome}`)){
+      this.administradorService.remover(gerente.id!);
+      this.administradorService.getGerentes();
     }
-  });
-}
+  }
+
+  sortKey: keyof Gerente = 'nome';
+  sortAsc = false;
+
+  sortData(key: keyof Gerente = this.sortKey): void {
+    if (key === this.sortKey) {
+      this.sortAsc = !this.sortAsc;
+    } else {
+      this.sortAsc = true;
+      this.sortKey = key;
+    }
+
+    this.gerentes.sort((a, b) => {
+      const valA = a[key];
+      const valB = b[key];
+
+      if (typeof valA === 'string' && typeof valB === 'string') {
+        return this.sortAsc ? valB.localeCompare(valA) : valA.localeCompare(valB);
+      } else if (typeof valA === 'number' && typeof valB === 'number') {
+        return this.sortAsc ? valA - valB : valB - valA;
+      } else {
+        return 0;
+      }
+    });
+  }
 }

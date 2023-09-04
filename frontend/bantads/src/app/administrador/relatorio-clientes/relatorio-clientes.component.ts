@@ -11,10 +11,11 @@ export class RelatorioClientesComponent implements OnInit {
 
   private clientes!: ClienteRelatorio[];
 
-  constructor(private administradorService : AdministradorService){}
+  constructor(private administradorService : AdministradorService) {}
 
   ngOnInit(): void {
     this.clientes = this.administradorService.getRelatorioClientes();
+    this.sortData();
   }
 
   get listaClientes() {

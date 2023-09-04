@@ -25,7 +25,15 @@ export class AdministradorService {
   getDashboardGerentes(): GerenteDashboard[] {
     return (
       [
-        new GerenteDashboard("Seu Creyson", 10, 2300.52, -420.69)
+        new GerenteDashboard("Seu Creyson", 10, 2300.52, -420.69),
+      ]
+    )
+  }
+
+  getGerentes(): Gerente[] {
+    return (
+      [
+        new Gerente(1, "Seu Creyson", "123.456.789-00", "seucreyson@seucreyson.com", "(41) 99969-4200"),
       ]
     )
   }
@@ -62,29 +70,4 @@ export class AdministradorService {
     gerentes = gerentes.filter(gerente => gerente.id !== id);
     localStorage[LS_CHAVE] = JSON.stringify(gerentes);
   }
-
-  getGerentes(): any {
-    return (
-      [
-        { nome: "Amigao", quantidade_clientes: "10", soma_saldos_positivos: "R$ 1003,00", soma_saldos_negativos: "R$ 302,00" },
-        { nome: "Amigao", quantidade_clientes: "10", soma_saldos_positivos: "R$ 1003,00", soma_saldos_negativos: "R$ 302,00" },
-        { nome: "Amigao", quantidade_clientes: "10", soma_saldos_positivos: "R$ 1003,00", soma_saldos_negativos: "R$ 302,00" },
-        { nome: "Amigao", quantidade_clientes: "10", soma_saldos_positivos: "R$ 1003,00", soma_saldos_negativos: "R$ 302,00" },
-        { nome: "Amigao", quantidade_clientes: "10", soma_saldos_positivos: "R$ 1003,00", soma_saldos_negativos: "R$ 302,00" },
-      ]
-    )
-  }
-
-  getClientes(): any {
-    return (
-      [
-        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
-        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
-        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
-        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
-        { nome: "Amigao", cpf: "10", limite: "R$ 1003,00", saldo: "R$ 302,00", nomeGerente: "oi" },
-      ]
-    )
-  }
-
 }

@@ -1,106 +1,134 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <admin-navbar/>
+
 <div class="flex flex-col flex-1 items-center">
   <div class="flex flex-row items-center my-24">
+    <div class="h-50 w-50 m-0">
+      <img src="../../../assets/img/verde_3.png" alt="">
+    </div>
 
-    <div class="flex flex-col flex-1 justify-center items-start ">
+
+    <div class="flex flex-col flex-1 justify-center items-start min-w-[80rem]">
       <div class="space-y-1">
-        <div class="text-white text-3xl font-light">
+        <div class="text-white text-3xl font-medium">
           Lista de Gerentes:
-        </div>
-        <div class="text-white text-3xl font-semibold">
-            Quer adicionar um novo gerente?
-            <a href="#" [routerLink]="['/admin/inserir-gerente']">
-            <button class="btn btn-lg btn-success">
-                Adicionar
-            </button>
-            </a>
         </div>
       </div>
 
-      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20" *ngIf="gerentes.length > 0">
-        <div *ngFor="let gerente of gerentes">
+      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20 self-center w-full">
+        <div class="text-center">
+          <div class="text-white text-3xl font-semibold">
+            Quer adicionar um novo gerente?
+            <button [routerLink]="['/admin/inserir-gerente']" class="p-[0.625rem] ml-2 min-w-[12rem] rounded-md disabled:bg-[#90F58E] bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl">
+              Adicionar
+            </button>
+          </div>
+
+          <div class="ml-12 my-8">
+            <mat-divider class="bg-[#4B5652]" />
+          </div>
+        </div>
+
+        <div *ngIf="listaGerentes.length === 0" class="w-full self-center">
+          <div class="text-white text-center font-medium text-3xl">
+            Nenhum Gerente cadastrado!
+          </div>
+        </div>
+
+        <div *ngFor="let gerente of listaGerentes">
           <div class="flex flex-row flex-1 space-x-5">
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Nome:
-                <span class="ml-1 text-white">
-                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white" (click)="sortData('nome')"></i>
-            </span>
+                <button (click)="sortData('nome')">
+                  Nome:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
-
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg text-start font-medium my-1">
-                 {{gerente.nome}}
+                  {{gerente.nome}}
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1" >
-                CPF:
+                <button (click)="sortData('cpf')">
+                  CPF:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg text-start font-medium my-1">
-                 {{gerente.cpf}}
+                  {{gerente.cpf}}
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                    Email:
+                <button (click)="sortData('email')">
+                  E-mail:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md min-h-[50px] h-[100px] min-w-[200px] break-words justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg break-words text-break text-start font-medium my-1">
-                 {{gerente.email}}
+                  {{gerente.email}}
                 </div>
               </div>
             </div>
 
             <div class="flex flex-col p-4 w-[200px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                Telefone:
+                <button (click)="sortData('telefone')">
+                  Telefone:
+                  <span class="ml-1 text-white">
+                    <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
+                  </span>
+                </button>
               </div>
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[200px] h-[100px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-white text-lg text-start font-medium my-1">
-                    {{gerente.telefone}}
+                  {{gerente.telefone}}
                 </div>
               </div>
             </div>
 
             <div class="flex flex-row space-x-0">
-                <div class="flex flex-col p-2 w-[150px] justify-center mt-9 ml-4">
-                    <a href="#" class="w-[200px]">
-                    <button class="btn btn-lg btn-danger" (click)="remover($event, gerente)">
-                        Remover
-                    </button>
-                    </a>
-                </div>
+              <div class="flex flex-col p-2 w-[150px] justify-center mt-9 ml-4">
+                <button class="btn btn-lg btn-danger" (click)="remover($event, gerente)">
+                  Remover
+                </button>
+              </div>
 
-                <div class="flex flex-col p-2 justify-center mt-9">
-                    <a href="#" [routerLink]="['/admin/editar-gerente', gerente.id]">
-                    <button class="btn btn-lg btn-warning">
-                        Editar
-                    </button>
-                    </a>
-                </div>
-                </div>
+              <div class="flex flex-col p-2 w-[150px] justify-center mt-9">
+                <button [routerLink]="['/admin/editar-gerente', gerente.id]" class="btn btn-lg btn-warning">
+                  Editar
+                </button>
+              </div>
             </div>
+          </div>
 
           <div class="ml-12">
             <mat-divider class="bg-[#4B5652]" />
           </div>
         </div>
       </div>
-
-      <h1 class="text-white mt-3 font-semibold" *ngIf="gerentes.length === 0">Nenhum gerente cadastrado ainda!</h1>
     </div>
 
+    <div class="h-50 w-50 m-0">
+      <img src="../../../assets/img/verde_3.png" alt="">
+    </div>
   </div>
 </div>
 

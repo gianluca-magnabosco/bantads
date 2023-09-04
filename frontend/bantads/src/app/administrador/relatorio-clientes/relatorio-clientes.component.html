@@ -2,15 +2,25 @@
 
 <div class="flex flex-col flex-1 items-center">
   <div class="flex flex-row items-center my-24">
+    <div class="h-50 w-50 m-0">
+      <img src="../../../assets/img/verde_3.png" alt="">
+    </div>
 
-    <div class="flex flex-col flex-1 justify-center items-start ">
+    <div class="flex flex-col flex-1 justify-center items-start">
       <div class="space-y-1">
         <div class="text-white text-3xl font-light">
           Relatório de Clientes:
         </div>
       </div>
 
-      <div *ngIf="listaClientes.length > 0" class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20">
+      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20 min-w-[70rem]">
+
+        <div *ngIf="listaClientes.length === 0" class="w-full">
+          <div class="text-white font-medium text-3xl">
+            Nenhum Cliente cadastrado!
+          </div>
+        </div>
+
         <div *ngFor="let cliente of listaClientes">
           <div class="flex flex-row flex-1 space-x-5">
             <div class="flex flex-col p-4 w-[200px]">
@@ -104,9 +114,10 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <h1 class="text-white mt-3 font-semibold" *ngIf="listaClientes.length === 0">Nenhum cliente cadastrado ainda!</h1>
-
+    <div class="h-50 w-50 m-0">
+      <img src="../../../assets/img/verde_3.png" alt="">
     </div>
   </div>
 </div>
