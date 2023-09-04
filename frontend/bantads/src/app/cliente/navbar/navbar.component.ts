@@ -32,6 +32,9 @@ export class NavbarComponent {
 
         botaoText1: "Cancelar",
 
+        musica1: new Audio('../../../assets/sound/ishowspeed.mp3'),
+        musica2: new Audio('../../../assets/sound/bluezao.mp3'),
+
         onBotao1Click: () => {
           dialogRef.close();
         },
