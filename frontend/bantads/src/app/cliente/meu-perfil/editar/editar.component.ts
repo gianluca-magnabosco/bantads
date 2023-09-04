@@ -1,16 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { BuscaCEPService } from 'src/app/entrar/services';
 import { Cliente, Endereco } from 'src/app/shared';
 import { PopupComponent } from 'src/app/shared/popup/popup.component';
 import { ValidationService } from 'src/app/shared/services';
+import { ClienteService } from '../../services';
 
 @Component({
   selector: 'cliente-editar',
   templateUrl: './editar.component.html',
   styleUrls: ['./editar.component.css']
 })
-export class EditarComponent {
+export class EditarComponent implements OnInit {
 
   @Input() modo!: string;
   @Output() modoChange = new EventEmitter<string>();
@@ -62,7 +63,11 @@ export class EditarComponent {
     endereco: this.endereco,
   }
 
-  constructor(private validationService: ValidationService, private buscaCEPService: BuscaCEPService, private dialog: MatDialog) {}
+  constructor(private clienteService: ClienteService, private validationService: ValidationService, private buscaCEPService: BuscaCEPService, private dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.cliente = this.clienteService.getCliente();
+  }
 
   onModoChange(newModo: string) {
     this.modo = newModo;

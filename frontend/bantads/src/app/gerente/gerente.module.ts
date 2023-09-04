@@ -31,12 +31,12 @@ registerLocaleData(localePt)
     FormsModule,
   ],
   providers: [
-    GerenteService,
-    ValidationService,
     {
       provide: LOCALE_ID,
       useValue: 'pt-BR'
-    }
+    },
+    GerenteService,
+    ValidationService,
   ]
 })
 export class GerenteModule { }

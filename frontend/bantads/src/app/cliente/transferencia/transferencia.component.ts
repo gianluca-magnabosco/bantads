@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ContaService } from '../services';
 import { ValidationService } from 'src/app/shared/services';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../shared/popup/popup.component';
-
+import { Transferencia } from 'src/app/shared';
 
 
 @Component({
@@ -11,11 +11,10 @@ import { PopupComponent } from '../../shared/popup/popup.component';
   templateUrl: './transferencia.component.html',
   styleUrls: ['./transferencia.component.css']
 })
-export class TransferenciaComponent implements OnInit {
+export class TransferenciaComponent {
 
-  private saldoCliente: number = 0.00;
+  private transferencia: Transferencia = new Transferencia("", "");
 
-  private valor: string = "";
   private valorFocused: boolean = false;
   private valorValid: boolean = false;
   private valorError: string = "";
@@ -27,20 +26,12 @@ export class TransferenciaComponent implements OnInit {
 
   constructor(private validationService: ValidationService, private contaService: ContaService, private dialog: MatDialog) {}
 
-  ngOnInit(): void {
-    this.saldoCliente = this.contaService.getSaldo();
-  }
-
-  get saldo(): string {
-    return `R$ ${this.saldoCliente.toFixed(2).replace(".", ",")}`;
-  }
-
   get valorTransferencia(): string {
-    return this.valor;
+    return this.transferencia.valor!;
   }
 
   set valorTransferencia(valor: string) {
-    this.valor = valor;
+    this.transferencia.valor = valor;
   }
 
   get isValorValid(): boolean {
@@ -86,7 +77,7 @@ export class TransferenciaComponent implements OnInit {
   }
 
   validateValor(): void {
-    let result = this.validationService.validateMoney(this.valor, this.valorBeenFocused);
+    let result = this.validationService.validateMoney(this.transferencia.valor!, this.valorBeenFocused);
 
     switch (result) {
       case "inválido": {
@@ -96,7 +87,7 @@ export class TransferenciaComponent implements OnInit {
       }
 
       default: {
-        if (Number(this.valor.replace(/[^\d,]/g, '').replace(',', '.')) > Number(this.saldo.replace(/[^\d,]/g, '').replace(',', '.'))) {
+        if (Number(this.transferencia.valor!.replace(/[^\d,]/g, '').replace(',', '.')) > this.contaService.getSaldo()) {
           this.valorValid = false;
           this.valorError = "Seu saldo não é suficiente para essa operação!";
           return;
@@ -110,7 +101,7 @@ export class TransferenciaComponent implements OnInit {
   }
 
   validateAndFormatValor(event: any): void {
-    this.valor = this.validationService.formatMoney(event.target.value);
+    this.transferencia.valor = this.validationService.formatMoney(event.target.value);
     this.validateValor();
   }
 
@@ -138,34 +129,36 @@ export class TransferenciaComponent implements OnInit {
   }
 
   isButtonDisabled(): boolean {
-    let numberValor = Number(this.valor.replace(/[^\d,]/g, '').replace(',', '.'));
+    let numberValor = Number(this.transferencia.valor!.replace(/[^\d,]/g, '').replace(',', '.'));
 
     return (
-      (this.valor === "" || isNaN(numberValor) || numberValor <= 0.00 || numberValor > 100000000)
-      || (Number(this.valor.replace(/[^\d,]/g, '').replace(',', '.')) > Number(this.saldo.replace(/[^\d,]/g, '').replace(',', '.')))
+      (this.transferencia.valor === "" || isNaN(numberValor) || numberValor <= 0.00 || numberValor > 100000000)
+      || (Number(this.transferencia.valor!.replace(/[^\d,]/g, '').replace(',', '.')) > this.contaService.getSaldo())
       || (this.numConta === "" || !this.numConta.match(/\d{2}\.\d{3}-\d{1}/))
     );
   }
 
-  abrirPopup(): void {
-    const dialogRef = this.dialog.open(PopupComponent, {
-      width: '400px',
-      data: {
-        titulo: 'Tem certeza que deseja realizar essa transferência?',
-        gifSrc: 'https://i.gifer.com/CsFC.gif',
+  realizarTransferencia(): void {
+    this.contaService.transferencia(this.transferencia);
+  }
 
-        onBotao1Click: () => {
-          console.log('botao 1');
+  // abrirPopup(): void {
+  //   const dialogRef = this.dialog.open(PopupComponent, {
+  //     width: '400px',
+  //     data: {
+  //       titulo: 'Tem certeza que deseja realizar essa transferência?',
+  //       gifSrc: 'https://i.gifer.com/CsFC.gif',
 
-        },
-        onBotao2Click: () => {
-          console.log('botao 2');
+  //       onBotao1Click: () => {
+  //         console.log('botao 1');
 
-        },
+  //       },
+  //       onBotao2Click: () => {
+  //         console.log('botao 2');
 
-      },
-    });
+  //       },
 
-
-}
+  //     },
+  //   });
+  // }
 }

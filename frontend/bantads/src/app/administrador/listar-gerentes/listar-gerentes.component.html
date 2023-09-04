@@ -106,14 +106,14 @@
 
             <div class="flex flex-row space-x-0">
               <div class="flex flex-col p-2 w-[150px] justify-center mt-9 ml-4">
-                <button class="btn btn-lg btn-danger" (click)="remover($event, gerente)">
-                  Remover
+                <button [routerLink]="['/admin/editar-gerente', gerente.id]" class="btn btn-lg btn-warning">
+                  Editar
                 </button>
               </div>
 
               <div class="flex flex-col p-2 w-[150px] justify-center mt-9">
-                <button [routerLink]="['/admin/editar-gerente', gerente.id]" class="btn btn-lg btn-warning">
-                  Editar
+                <button class="btn btn-lg btn-danger" (click)="remover($event, gerente)">
+                  Remover
                 </button>
               </div>
             </div>

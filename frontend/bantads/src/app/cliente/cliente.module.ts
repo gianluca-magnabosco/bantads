@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InicioComponent } from './inicio';
 import { DepositoComponent } from './deposito';
@@ -14,7 +14,9 @@ import { ClienteService, ContaService } from './services';
 import { SaldoComponent } from './saldo/saldo.component';
 import { EditarComponent } from './meu-perfil/editar/editar.component';
 import { VisualizarComponent } from './meu-perfil/visualizar/visualizar.component';
-
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+registerLocaleData(localePt)
 
 
 
@@ -37,6 +39,10 @@ import { VisualizarComponent } from './meu-perfil/visualizar/visualizar.componen
     RouterModule
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt-BR'
+    },
     ValidationService,
     ContaService,
     ClienteService,

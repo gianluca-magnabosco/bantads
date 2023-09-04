@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ValidationService } from 'src/app/shared/services';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../shared/popup/popup.component';
+import { Deposito } from 'src/app/shared';
+import { ContaService } from '../services';
 
 
 
@@ -12,20 +14,20 @@ import { PopupComponent } from '../../shared/popup/popup.component';
 })
 export class DepositoComponent {
 
-  private valor: string = "";
+  private deposito: Deposito = new Deposito("");
 
   private valorFocused: boolean = false;
   private valorValid: boolean = false;
   private valorError: string = "";
 
-  constructor(private validationService: ValidationService, private dialog: MatDialog) {}
+  constructor(private contaService: ContaService, private validationService: ValidationService, private dialog: MatDialog) {}
 
   get valorDeposito(): string {
-    return this.valor;
+    return this.deposito.valor!;
   }
 
   set valorDeposito(valor: string) {
-    this.valor = valor;
+    this.deposito.valor = valor;
   }
 
   get isValorValid(): boolean {
@@ -46,7 +48,7 @@ export class DepositoComponent {
   }
 
   validateValor(): void {
-    let result = this.validationService.validateMoney(this.valor, this.valorBeenFocused);
+    let result = this.validationService.validateMoney(this.deposito.valor!, this.valorBeenFocused);
 
     switch (result) {
       case "inválido": {
@@ -64,33 +66,37 @@ export class DepositoComponent {
   }
 
   validateAndFormatValor(event: any): void {
-    this.valor = this.validationService.formatMoney(event.target.value);
+    this.deposito.valor = this.validationService.formatMoney(event.target.value);
     this.validateValor();
   }
 
   isButtonDisabled(): boolean {
-    let numberValor = Number(this.valor.replace(/[^\d,]/g, '').replace(',', '.'));
+    let numberValor = Number(this.deposito.valor!.replace(/[^\d,]/g, '').replace(',', '.'));
 
-    return (this.valor === "" || isNaN(numberValor) || numberValor <= 0.00 || numberValor > 100000000);
+    return (this.deposito.valor === "" || isNaN(numberValor) || numberValor <= 0.00 || numberValor > 100000000);
   }
 
-  abrirPopup(): void {
-    const dialogRef = this.dialog.open(PopupComponent, {
-      width: '400px',
-      data: {
-        titulo: 'Tem certeza que deseja realizar esse depósito?',
-        gifSrc: 'https://media.tenor.com/CbJpPU0xVjwAAAAM/star-wars.gif',
+  realizarDeposito(): void {
+    this.contaService.depositar(this.deposito);
+  }
 
-        onBotao1Click: () => {
-          console.log('botao 1');
+  // abrirPopup(): void {
+  //   const dialogRef = this.dialog.open(PopupComponent, {
+  //     width: '400px',
+  //     data: {
+  //       titulo: 'Tem certeza que deseja realizar esse depósito?',
+  //       gifSrc: 'https://media.tenor.com/CbJpPU0xVjwAAAAM/star-wars.gif',
 
-        },
-        onBotao2Click: () => {
-          console.log('botao 2');
+  //       onBotao1Click: () => {
+  //         console.log('botao 1');
 
-        },
+  //       },
+  //       onBotao2Click: () => {
+  //         console.log('botao 2');
 
-      },
-    });
-}
+  //       },
+
+  //     },
+  //   });
+  // }
 }
