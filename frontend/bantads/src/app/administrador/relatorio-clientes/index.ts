@@ -1,1 +1,1 @@
-export * from './relatorio-clientes.component'
+export * from "./relatorio-clientes.component";

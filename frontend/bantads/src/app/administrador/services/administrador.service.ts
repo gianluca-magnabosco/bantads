@@ -9,25 +9,28 @@ const LS_CHAVE: string = "gerentes";
 
 export class AdministradorService {
 
-  constructor() { }
+  private dashboardGerentes!: GerenteDashboard[];
+  private relatorioClientes!: ClienteRelatorio[];
+
+  constructor() {
+    this.dashboardGerentes = [
+      new GerenteDashboard("Seu Creyson", 10, 2300.52, -420.69),
+      new GerenteDashboard("Outro Gerente", 15, 1420.69, -122.32),
+    ];
+    this.relatorioClientes = [
+      new ClienteRelatorio("Amigao", "123.456.789-00", 1000.00, 500.00, "Seu Creyson"),
+      new ClienteRelatorio("Brunao", "455.123.789-00", 3000.00, 1500.00, "Seu Creyson"),
+      new ClienteRelatorio("Homem", "452.321.789-00", 1230.00, 300.52, "Seu Creyson"),
+      new ClienteRelatorio("Lobisomem", "321.456.789-00", 1000.00, -420.69, "Seu Creyson"),
+    ];
+  }
 
   getRelatorioClientes(): ClienteRelatorio[] {
-    return (
-      [
-        new ClienteRelatorio("Amigao", "123.456.789-00", 1000.00, 500.00, "Seu Creyson"),
-        new ClienteRelatorio("Brunao", "455.123.789-00", 3000.00, 1500.00, "Seu Creyson"),
-        new ClienteRelatorio("Homem", "452.321.789-00", 1230.00, 300.52, "Seu Creyson"),
-        new ClienteRelatorio("Lobisomem", "321.456.789-00", 1000.00, -420.69, "Seu Creyson"),
-      ]
-    )
+    return this.relatorioClientes;
   }
 
   getDashboardGerentes(): GerenteDashboard[] {
-    return (
-      [
-        new GerenteDashboard("Seu Creyson", 10, 2300.52, -420.69),
-      ]
-    )
+    return this.dashboardGerentes;
   }
 
   getGerentes(): Gerente[] {

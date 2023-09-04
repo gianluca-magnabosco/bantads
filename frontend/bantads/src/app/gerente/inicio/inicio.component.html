@@ -17,12 +17,19 @@
         </div>
       </div>
 
-      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-20">
+      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg pr-15 min-w-[70rem]">
+
+        <div *ngIf="listaPedidosPendentesAprovacao.length === 0" class="w-full">
+          <div class="text-white font-medium text-3xl">
+            Nenhum Gerente cadastrado!
+          </div>
+        </div>
+
         <div *ngFor="let pedidoPendenteAprovacao of listaPedidosPendentesAprovacao">
           <div class="flex flex-row flex-1 space-x-6 items-center mb-4">
             <div class="flex flex-col p-4 w-[275px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                <button (click)="ordenarLista('nome')">
+                <button (click)="sortData('nome')">
                   Nome:
                   <span class="ml-1 text-white">
                     <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
@@ -39,7 +46,7 @@
 
             <div class="flex flex-col p-4 w-[275px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                <button (click)="ordenarLista('cpf')">
+                <button (click)="sortData('cpf')">
                   CPF:
                   <span class="ml-1 text-white">
                     <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
@@ -56,7 +63,7 @@
 
             <div class="flex flex-col p-4 w-[275px]">
               <div class="text-white text-lg text-start font-medium my-1">
-                <button (click)="ordenarLista('salario')">
+                <button (click)="sortData('salario')">
                   Salário:
                   <span class="ml-1 text-white">
                     <i class="fa-solid fa-arrow-up-a-z cursor-pointer text-white"></i>
@@ -66,7 +73,7 @@
 
               <div class="flex flex-col space-x-1 p-4 rounded-md w-[275px] h-[80px] justify-center items-center text-white font-medium bg-gray-500">
                 <div class="text-2xl font-bold text-white text-center">
-                  {{pedidoPendenteAprovacao.salario}}
+                  {{pedidoPendenteAprovacao.salario | currency:"BRL":true}}
                 </div>
               </div>
             </div>

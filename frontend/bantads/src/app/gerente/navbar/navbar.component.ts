@@ -32,13 +32,14 @@ export class NavbarComponent {
 
         botaoText1: "Cancelar",
 
+        musica1: new Audio('../../../assets/sound/lowtiergod.mp3'),
+
         onBotao1Click: () => {
           dialogRef.close();
         },
 
         botaoText2: "Deslogar",
 
-        musica1: new Audio('../../../assets/sound/lowtiergod.mp3'),
         musica2: new Audio('../../../assets/sound/xxmarcelo.mp3'),
 
         onBotao2Click: () => {

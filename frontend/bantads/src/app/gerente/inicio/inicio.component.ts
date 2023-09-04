@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GerenteService } from '../services/gerente.service';
-
-interface Pedido {
-  nome: string;
-  cpf: string;
-  salario: number;
-}
+import { ClienteAprovacao } from 'src/app/shared';
 
 @Component({
   selector: 'gerente-inicio',
@@ -14,44 +9,40 @@ interface Pedido {
 })
 export class InicioComponent implements OnInit {
 
-  private pedidosPendentesAprovacao: Pedido[];
-  private ordenacaoAtual: string = '';
-  private ordemCrescente: boolean = true; 
+  private pedidosPendentesAprovacao!: ClienteAprovacao[];
 
-  constructor(private gerenteService: GerenteService) {
-    this.pedidosPendentesAprovacao = [];
-  }
+  constructor(private gerenteService: GerenteService) { }
 
   ngOnInit(): void {
     this.pedidosPendentesAprovacao = this.gerenteService.getPedidosPendentesAprovacao();
   }
 
-  get listaPedidosPendentesAprovacao() {
-    const listaOrdenada = [...this.pedidosPendentesAprovacao]; 
-    if (this.ordenacaoAtual === 'nome') {
-      listaOrdenada.sort((a: Pedido, b: Pedido) => a.nome.localeCompare(b.nome));
-    } else if (this.ordenacaoAtual === 'cpf') {
-      listaOrdenada.sort((a: Pedido, b: Pedido) => a.cpf.localeCompare(b.cpf));
-    } else if (this.ordenacaoAtual === 'salario') {
-      listaOrdenada.sort((a: Pedido, b: Pedido) => a.salario - b.salario);
-    }
-
-    if (!this.ordemCrescente) {
-      listaOrdenada.reverse();
-    }
-
-    return listaOrdenada;
+  get listaPedidosPendentesAprovacao(): ClienteAprovacao[] {
+    return this.pedidosPendentesAprovacao;
   }
 
+  sortKey: keyof ClienteAprovacao = "nome";
+  sortAsc = false;
 
-  ordenarLista(atributo: string) {
-    if (this.ordenacaoAtual === atributo) {
-
-      this.ordemCrescente = !this.ordemCrescente;
+  sortData(key: keyof ClienteAprovacao = this.sortKey): void {
+    if (key === this.sortKey) {
+      this.sortAsc = !this.sortAsc;
     } else {
-
-      this.ordemCrescente = true;
+      this.sortAsc = true;
+      this.sortKey = key;
     }
-    this.ordenacaoAtual = atributo;
+
+    this.pedidosPendentesAprovacao.sort((a, b) => {
+      const valA = a[key];
+      const valB = b[key];
+
+      if (typeof valA === 'string' && typeof valB === 'string') {
+        return this.sortAsc ? valA.localeCompare(valB) : valB.localeCompare(valA);
+      } else if (typeof valA === 'number' && typeof valB === 'number') {
+        return this.sortAsc ? valA - valB : valB - valA;
+      } else {
+        return 0;
+      }
+    });
   }
 }
