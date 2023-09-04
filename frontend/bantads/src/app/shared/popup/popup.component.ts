@@ -19,6 +19,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
         botaoText1: 'xxxxxxxxxx', // Insira o texto do botão vermelho
 
+        musica1: new Audio('xxxxxxxxxxxxxx'), //Adicione o Som 1 para o botão 1
+        musica2: new Audio('xxxxxxxxxxxxxx'), //Adicione o Som 2 para o botão 2
+
         onBotao1Click: () => { // Insira a ação do botao vermelho
           console.log('botao 1');
         },
@@ -51,6 +54,8 @@ export class PopupComponent {
   onBotao1Click: () => void;
   botaoText2: string;
   onBotao2Click: () => void;
+  musica1: HTMLAudioElement;
+  musica2: HTMLAudioElement;
 
   constructor (
     public dialogRef: MatDialogRef<PopupComponent>,
@@ -63,9 +68,23 @@ export class PopupComponent {
     this.botaoText1 = data.botaoText1;
     this.onBotao2Click = data.onBotao2Click;
     this.botaoText2 = data.botaoText2;
+    this.musica1 = data.musica1;
+    this.musica2 = data.musica2;
   }
 
   fecharPopup(): void {
     this.dialogRef.close();
+  }
+
+  tocarMusica1(): void {
+    if (this.musica1) {
+      this.musica1.play();
+    }
+  }
+
+  tocarMusica2(): void {
+    if (this.musica2) {
+      this.musica2.play();
+    }
   }
 }
