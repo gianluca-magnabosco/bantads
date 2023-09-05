@@ -40,7 +40,13 @@
           />
         </div>
 
-        <table class="w-full border-collapse border border-gray-300">
+        <div *ngIf="clientes.length === 0" class="w-full">
+          <div class="text-white font-medium text-3xl">
+            Nenhum Cliente cadastrado!
+          </div>
+        </div>
+
+        <table class="w-full border-collapse border border-gray-300" *ngIf="clientes.length > 0">
           <thead>
             <tr class="bg-gray-200">
               <th class="py-2 px-4">

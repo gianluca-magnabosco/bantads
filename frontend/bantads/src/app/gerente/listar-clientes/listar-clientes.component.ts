@@ -71,7 +71,7 @@ export class ListarClientesComponent implements OnInit {
       this.sortKey = key;
     }
 
-    this.clientes.sort((a, b) => {
+    this.filteredClientes.sort((a, b) => {
       const valA = a[key];
       const valB = b[key];
 
