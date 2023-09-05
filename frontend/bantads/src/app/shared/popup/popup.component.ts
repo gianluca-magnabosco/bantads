@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ViewChild, ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
   /*  ---- Mini tutorial para adicionar um popupzin no seu component ----
@@ -17,10 +17,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
         gifSrc: 'xxxxxxxxxx', // Insira o gif que vc quer colocar
 
-        botaoText1: 'xxxxxxxxxx', // Insira o texto do botão vermelho
-
         musica1: new Audio('xxxxxxxxxxxxxx'), //Adicione o Som 1 para o botão 1
         musica2: new Audio('xxxxxxxxxxxxxx'), //Adicione o Som 2 para o botão 2
+
+        botaoText1: 'xxxxxxxxxx', // Insira o texto do botão vermelho
 
         onBotao1Click: () => { // Insira a ação do botao vermelho
           console.log('botao 1');
@@ -30,6 +30,10 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
         onBotao2Click: () => { // Insira a ação do botão verde
           console.log('botao 2');
+
+        mostrarCampoTexto: true,    //Se deseja mostrar um textfield
+        mostrarBotaoVermelho: true, //Se deseja mostrar o botão vermelho (Botão 1)
+        mostrarBotaoVerde: true,  //Se deseja mostrar o botão verde (Botão 2)
         },
       },
     });
@@ -47,6 +51,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent {
+  mostrarCampoTexto: boolean = false;
   titulo: string;
   mensagem: string;
   gifSrc: string;
@@ -57,6 +62,9 @@ export class PopupComponent {
   musica1: HTMLAudioElement;
   musica2: HTMLAudioElement;
 
+
+  @ViewChild('campoTexto') campoTexto!: ElementRef;
+
   constructor (
     public dialogRef: MatDialogRef<PopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -64,15 +72,9 @@ export class PopupComponent {
     this.titulo = data.titulo;
     this.mensagem = data.mensagem;
     this.gifSrc = data.gifSrc;
-    this.onBotao1Click = () => {
-      data.onBotao1Click();
-      this.tocarMusica1();
-    }
+    this.onBotao1Click = data.onBotao1Click;
     this.botaoText1 = data.botaoText1;
-    this.onBotao2Click = () => {
-      data.onBotao2Click();
-      this.tocarMusica2();
-    }
+    this.onBotao2Click = data.onBotao2Click;
     this.botaoText2 = data.botaoText2;
     this.musica1 = data.musica1;
     this.musica2 = data.musica2;

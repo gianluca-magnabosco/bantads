@@ -101,7 +101,7 @@ export class SaqueComponent {
 
         botaoText1: "Cancelar",
 
-        musica1: new Audio('../../../assets/sound/queota.mp3'),
+        musica1: new Audio('../../../assets/sound/sommuitobaixo.mp3'),
 
         onBotao1Click: () => {
           dialogRef.close();
@@ -109,12 +109,15 @@ export class SaqueComponent {
 
         botaoText2: "Confirmar",
 
-        musica2: new Audio('../../../assets/sound/queota.mp3'),
+        musica2: new Audio('../../../assets/sound/bluezaotavivo.mp3'),
 
         onBotao2Click: () => {
           this.realizarSaque();
           dialogRef.close();
         },
+
+        mostrarBotaoVermelho: true, 
+        mostrarBotaoVerde: true,
       },
     });
   }

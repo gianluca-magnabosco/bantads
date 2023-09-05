@@ -46,6 +46,9 @@ export class NavbarComponent {
           dialogRef.close();
           this.router.navigate(["/entrar"]);
         },
+
+        mostrarBotaoVermelho: true, 
+        mostrarBotaoVerde: true,
       },
     });
   }

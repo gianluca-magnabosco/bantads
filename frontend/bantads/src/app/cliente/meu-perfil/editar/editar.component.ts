@@ -98,6 +98,9 @@ export class EditarComponent implements OnInit {
           this.modoChange.emit(this.modo);
           dialogRef.close();
         },
+
+        mostrarBotaoVermelho: true, 
+        mostrarBotaoVerde: true,
       },
     });
   }

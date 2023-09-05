@@ -106,6 +106,9 @@ export class DepositoComponent {
           this.realizarDeposito();
           dialogRef.close();
         },
+
+        mostrarBotaoVermelho: true, 
+        mostrarBotaoVerde: true,
       },
     });
   }

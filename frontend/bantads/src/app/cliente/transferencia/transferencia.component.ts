@@ -154,7 +154,7 @@ export class TransferenciaComponent {
 
         botaoText1: "Cancelar",
 
-        musica1: new Audio('../../../assets/sound/queota.mp3'),
+        musica1: new Audio('../../../assets/sound/nandomouraditado.mp3'),
 
         onBotao1Click: () => {
           dialogRef.close();
@@ -162,12 +162,15 @@ export class TransferenciaComponent {
 
         botaoText2: "Confirmar",
 
-        musica2: new Audio('../../../assets/sound/queota.mp3'),
+        musica2: new Audio('../../../assets/sound/cristoronaldo.mp3'),
 
         onBotao2Click: () => {
           this.realizarTransferencia();
           dialogRef.close();
         },
+
+        mostrarBotaoVermelho: true, 
+        mostrarBotaoVerde: true,
       },
     });
   }

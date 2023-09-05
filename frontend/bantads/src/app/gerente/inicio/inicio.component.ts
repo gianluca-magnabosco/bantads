@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GerenteService } from '../services/gerente.service';
 import { ClienteAprovacao } from 'src/app/shared';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../shared/popup/popup.component';
 
 @Component({
   selector: 'gerente-inicio',
@@ -11,7 +13,7 @@ export class InicioComponent implements OnInit {
 
   private pedidosPendentesAprovacao!: ClienteAprovacao[];
 
-  constructor(private gerenteService: GerenteService) { }
+  constructor(private gerenteService: GerenteService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.pedidosPendentesAprovacao = this.gerenteService.getPedidosPendentesAprovacao();
@@ -42,6 +44,52 @@ export class InicioComponent implements OnInit {
         return this.sortAsc ? valA - valB : valB - valA;
       } else {
         return 0;
+      }
+    });
+  }
+
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: {
+        titulo: 'Recusar Cliente',
+
+        mensagem: 'Qual foi o motivo para a recusa do cliente?',
+
+        gifSrc: '../../../assets/gif/nerd.gif',
+
+        botaoText1: 'Fechar',
+        musica1: new Audio('../../../assets/sound/copaonamao.mp3'),
+        onBotao1Click: () => dialogRef.close(),
+
+        botaoText2: 'Concluir',
+        musica2: new Audio('../../../assets/sound/johncena.mp3'),
+
+        mostrarCampoTexto: true,
+        mostrarBotaoVermelho: true,
+        mostrarBotaoVerde: true,
+
+        
+
+      }
+    });
+  }
+
+  abrirPopupdois(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: {
+        titulo: 'Aprovar Cliente',
+
+        mensagem: 'Cliente Aprovado ! ',
+
+        gifSrc: '../../../assets/gif/lingua.gif',
+
+        onBotao2Click: () => dialogRef.close(),
+
+        botaoText2: 'Concluir',
+        musica2: new Audio('../../../assets/sound/maketheL.mp3'),
+        mostrarBotaoVerde: true
+        
+
       }
     });
   }
