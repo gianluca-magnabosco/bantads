@@ -13,6 +13,7 @@ import { ValidationService } from '../shared/services';
 import { FormsModule } from '@angular/forms';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
+import { MelhoresClientesComponent } from './melhores-clientes'
 registerLocaleData(localePt)
 
 @NgModule({
@@ -20,7 +21,8 @@ registerLocaleData(localePt)
     InicioComponent,
     ListarClientesComponent,
     DadosClienteComponent,
-    ConsultarClienteComponent
+    ConsultarClienteComponent,
+    MelhoresClientesComponent,
   ],
   imports: [
     CommonModule,

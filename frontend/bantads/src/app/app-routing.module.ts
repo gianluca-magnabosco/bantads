@@ -13,6 +13,7 @@ import { InicioComponent as GerenteInicio } from './gerente/inicio/inicio.compon
 import { ListarClientesComponent as GerenteListarClientes } from './gerente/listar-clientes/listar-clientes.component';
 import { DadosClienteComponent as GerenteDadosCliente } from './gerente/dados-cliente/dados-cliente.component';
 import { ConsultarClienteComponent as GerenteConsultarCliente } from './gerente/consultar-cliente/consultar-cliente.component';
+import { MelhoresClientesComponent as GerenteMelhoresClientes } from './gerente/melhores-clientes/melhores-clientes.component';
 
 import { InicioComponent as AdminInicio } from './administrador/inicio/inicio.component';
 import { ListarGerentesComponent as AdminListarGerentes } from './administrador/listar-gerentes/listar-gerentes.component';
@@ -80,10 +81,10 @@ const routes: Routes = [
     path: 'gerente/consultar-cliente',
     component: GerenteConsultarCliente
   },
-  // {
-    //   path: 'gerente/melhores-clientes',
-    //   component: GerenteMelhoresClientes
-    // },
+  {
+    path: 'gerente/melhores-clientes',
+    component: GerenteMelhoresClientes
+  },
   {
     path: 'gerente/dados-cliente',
     component: GerenteDadosCliente

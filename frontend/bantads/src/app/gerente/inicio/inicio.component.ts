@@ -63,6 +63,7 @@ export class InicioComponent implements OnInit {
 
         botaoText2: 'Concluir',
         musica2: new Audio('../../../assets/sound/johncena.mp3'),
+        onBotao2Click: () => dialogRef.close(),
 
         mostrarCampoTexto: true,
         mostrarBotaoVermelho: true,

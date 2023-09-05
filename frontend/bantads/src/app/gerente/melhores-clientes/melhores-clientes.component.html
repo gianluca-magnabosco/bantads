@@ -1,0 +1,71 @@
+<gerente-navbar/>
+
+<div class="flex flex-col flex-1 items-center">
+  <div class="flex flex-row items-center my-16">
+    <div class="h-50 w-50 mb-32">
+      <img src="../../../assets/img/verde_3.png" alt="">
+    </div>
+
+    <div class="container mx-auto p-2">
+      <h1 class="text-3xl text-white font-semibold mb-4">
+        Lista de Melhores Clientes
+      </h1>
+
+      <div class="bg-slate-800 p-10 mb-10 mt-3 space-y-2 rounded-lg">
+        <div *ngIf="melhoresClientes.length === 0" class="w-full">
+          <div class="text-white font-medium text-3xl">
+            Nenhum Cliente cadastrado!
+          </div>
+        </div>
+
+        <table class="w-full border-collapse border border-gray-300" *ngIf="melhoresClientes.length > 0">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="py-2 px-4">
+                  CPF
+              </th>
+
+              <th class="py-2 px-4">
+                  Nome
+              </th>
+
+              <th class="py-2 px-4">
+                  Cidade
+              </th>
+
+              <th class="py-2 px-4">
+                  Estado
+              </th>
+
+              <th class="py-2 px-4">
+                  Saldo
+              </th>
+
+              <th class="py-1 px-1">
+              </th>
+
+            </tr>
+          </thead>
+
+          <tbody class="text-white">
+            <tr *ngFor="let client of filteredClientes" class="border-2">
+              <td class="p-3">{{ client.cpf }}</td>
+              <td class="p-3">{{ client.nome }}</td>
+              <td class="p-3">{{ client.cidade }}</td>
+              <td class="p-3">{{ client.estado }}</td>
+              <td class="p-3">{{ client.saldo | currency:'BRL':true }}</td>
+              <td class="p-3">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="h-50 w-50 mb-32">
+      <img src="../../../assets/img/verde_3.png" alt="">
+    </div>
+  </div>
+</div>
+
+<app-footer/>
