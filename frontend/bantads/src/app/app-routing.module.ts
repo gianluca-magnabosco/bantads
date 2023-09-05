@@ -8,6 +8,7 @@ import { DepositoComponent as ClienteDeposito } from './cliente/deposito/deposit
 import { SaqueComponent as ClienteSaque } from './cliente/saque/saque.component';
 import { TransferenciaComponent as ClienteTransferencia } from './cliente/transferencia/transferencia.component';
 import { MeuPerfilComponent as ClienteMeuPerfil } from './cliente/meu-perfil/meu-perfil.component';
+import { ExtratoComponent as ClienteExtrato } from './cliente/extrato';
 
 import { InicioComponent as GerenteInicio } from './gerente/inicio/inicio.component';
 import { ListarClientesComponent as GerenteListarClientes } from './gerente/listar-clientes/listar-clientes.component';
@@ -58,10 +59,10 @@ const routes: Routes = [
     path: 'cliente/transferencia',
     component: ClienteTransferencia
   },
-  // {
-  //   path: 'cliente/extrato',
-  //   component: ClienteExtrato
-  // },
+   {
+   path: 'cliente/extrato',
+     component: ClienteExtrato
+   },
 
 
   {

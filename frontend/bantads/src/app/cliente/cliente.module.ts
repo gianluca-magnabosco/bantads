@@ -16,6 +16,8 @@ import { EditarComponent } from './meu-perfil/editar/editar.component';
 import { VisualizarComponent } from './meu-perfil/visualizar/visualizar.component';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
+import { ExtratoComponent } from './extrato/extrato.component';
+import { ClienteExtratoComponent } from './cliente-extrato/cliente-extrato.component';
 registerLocaleData(localePt)
 
 
@@ -29,7 +31,9 @@ registerLocaleData(localePt)
     MeuPerfilComponent,
     SaldoComponent,
     EditarComponent,
-    VisualizarComponent
+    VisualizarComponent,
+    ExtratoComponent,
+    ClienteExtratoComponent
   ],
   imports: [
     CommonModule,
