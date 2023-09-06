@@ -31,7 +31,7 @@ ngOnInit(): void {
 atualizar(): void{
   if (this.formGerente.form.valid){
     this.administradorService.atualizar(this.gerente);
-    this.router.navigate(['/admin/listar-gerente']);
+    this.router.navigate(['/admin/listar-gerentes']);
   }
 }
 }

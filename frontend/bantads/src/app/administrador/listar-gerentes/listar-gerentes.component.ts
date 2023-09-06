@@ -26,18 +26,18 @@ export class ListarGerentesComponent implements OnInit {
     $event.preventDefault();
     if (confirm(`Deseja realmente remover o gerente ${gerente.nome}`)){
       this.administradorService.remover(gerente.id!);
-      this.administradorService.getGerentes();
+      this.gerentes = this.administradorService.getGerentes();
     }
   }
 
   sortKey: keyof Gerente = 'nome';
-  sortAsc = false;
+  sortAsc = true;
 
   sortData(key: keyof Gerente = this.sortKey): void {
     if (key === this.sortKey) {
       this.sortAsc = !this.sortAsc;
     } else {
-      this.sortAsc = true;
+      this.sortAsc = false;
       this.sortKey = key;
     }
 

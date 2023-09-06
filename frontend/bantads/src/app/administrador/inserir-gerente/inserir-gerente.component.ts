@@ -25,7 +25,7 @@ ngOnInit(): void {
 inserir(): void{
   if(this.formGerente.form.valid){
     this.administradorService.inserir(this.gerente);
-    this.router.navigate(["/admin/listar-gerente"]);
+    this.router.navigate(["/admin/listar-gerentes"]);
   }
 }
 }

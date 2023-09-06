@@ -34,11 +34,8 @@ export class AdministradorService {
   }
 
   getGerentes(): Gerente[] {
-    return (
-      [
-        new Gerente(1, "Seu Creyson", "123.456.789-00", "seucreyson@seucreyson.com", "(41) 99969-4200"),
-      ]
-    )
+    const gerentes = localStorage[LS_CHAVE];
+    return gerentes ? JSON.parse(gerentes) : [];
   }
 
   listarTodos(): Gerente[]{

@@ -48,7 +48,7 @@
                         <button type="button" class="btn btn-success" (click)="inserir()" [disabled]="!formGerente.form.valid">
                             Salvar
                         </button>
-                        <a class="btn btn-secondary">
+                        <a class="btn btn-secondary" [routerLink]="['/admin/listar-gerentes']">
                             Voltar
                         </a>
                     </div>
