@@ -17,7 +17,7 @@ import { VisualizarComponent } from './meu-perfil/visualizar/visualizar.componen
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
 import { ExtratoComponent } from './extrato/extrato.component';
-import { ClienteExtratoComponent } from './cliente-extrato/cliente-extrato.component';
+import { MatDividerModule } from '@angular/material/divider';
 registerLocaleData(localePt)
 
 
@@ -33,14 +33,14 @@ registerLocaleData(localePt)
     EditarComponent,
     VisualizarComponent,
     ExtratoComponent,
-    ClienteExtratoComponent
   ],
   imports: [
     CommonModule,
     FooterModule,
     FormsModule,
     NavbarComponent,
-    RouterModule
+    RouterModule,
+    MatDividerModule
   ],
   providers: [
     {
