@@ -1,19 +1,19 @@
 <div class="flex flex-col items-center py-10">
-  <div class="bg-gray-800 text-white p-8 rounded-lg shadow-md w-96">
-    <h2 class="text-2xl font-semibold mb-4">Suas Informações</h2>
+  <div class="bg-gradient-to-r from-[#18C687] to-black text-white p-8 rounded-lg shadow-md w-96">
+    <h2 class="text-3xl font-bold mb-4">Seus Dados</h2>
     <div class="mb-4">
-      <p><span class="font-semibold">Nome: {{cliente.nome}}</span></p>
-      <p><span class="font-semibold">E-mail: {{cliente.email}}</span></p>
-      <p><span class="font-semibold">CPF: {{cliente.cpf}}</span></p>
-      <p><span class="font-semibold">Telefone: {{cliente.telefone}}</span></p>
-      <p><span class="font-semibold">Salário: {{cliente.salario}}</span></p>
-      <p><span class="font-semibold">Endereço: {{cliente.endereco!.tipo}} {{cliente.endereco!.logradouro}}, nº {{cliente.endereco!.numero}}, {{cliente.endereco!.complemento}} - {{cliente.endereco!.cidade}}, {{cliente.endereco!.estado}}</span></p>
+      <p><span class="font-bold text-lg">Nome:</span> {{cliente.nome}}</p>
+      <p><span class="font-bold text-lg">E-mail:</span> {{cliente.email}}</p>
+      <p><span class="font-bold text-lg">CPF:</span> {{cliente.cpf}}</p>
+      <p><span class="font-bold text-lg">Telefone:</span> {{cliente.telefone}}</p>
+      <p><span class="font-bold text-lg">Salário:</span> {{cliente.salario}}</p>
+      <p><span class="font-bold text-lg">Endereço:</span> {{cliente.endereco!.tipo}} {{cliente.endereco!.logradouro}}, nº {{cliente.endereco!.numero}}, {{cliente.endereco!.complemento}} - {{cliente.endereco!.cidade}}, {{cliente.endereco!.estado}}</p>
     </div>
   </div>
 
-  <div class="flex justify-center mt-3">
+  <div class="flex justify-center mt-6">
     <button
-      class="p-[0.625rem] rounded-md bg-[#18C687] hover:bg-[#18FA87] font-medium text-white text-xl min-w-[23rem]"
+      class="px-6 py-3 rounded-full bg-[#18C687] hover:bg-[#18FA87] text-white text-xl font-bold transition-colors duration-300"
       (click)="onModoChange('editar')"
     >
       EDITAR PERFIL

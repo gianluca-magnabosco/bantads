@@ -30,11 +30,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
         onBotao2Click: () => { // Insira a ação do botão verde
           console.log('botao 2');
-
+           },
         mostrarCampoTexto: true,    //Se deseja mostrar um textfield
         mostrarBotaoVermelho: true, //Se deseja mostrar o botão vermelho (Botão 1)
         mostrarBotaoVerde: true,  //Se deseja mostrar o botão verde (Botão 2)
-        },
+        
       },
     });
 
