@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Gerente } from 'src/app/shared';
 import { AdministradorService } from '../services';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../shared/popup/popup.component';
 
 @Component({
   selector: 'app-listar-gerente',
@@ -11,7 +13,7 @@ export class ListarGerentesComponent implements OnInit {
 
   private gerentes!: Gerente[];
 
-  constructor(private administradorService : AdministradorService) {}
+  constructor(private administradorService : AdministradorService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.gerentes = this.administradorService.getGerentes();
@@ -52,6 +54,33 @@ export class ListarGerentesComponent implements OnInit {
       } else {
         return 0;
       }
+    });
+  }
+
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: '400px',
+      data: {
+        titulo: 'Remover Gerente', 
+
+        mensagem: 'Você removeu o gerente com sucesso!', 
+
+        gifSrc: '../../../assets/gif/gato.gif', 
+
+        musica2: new Audio('../../../assets/sound/hastadrage.mp3'), 
+
+
+        botaoText2: 'Ok', // Insira o texto do botão verde
+
+        onBotao2Click: () => { 
+          dialogRef.close();
+          
+           },
+        mostrarCampoTexto: false,    
+        mostrarBotaoVermelho: false, 
+        mostrarBotaoVerde: true,  
+        
+      },
     });
   }
 }
