@@ -70,7 +70,7 @@ export class ListarGerentesComponent implements OnInit {
         musica2: new Audio('../../../assets/sound/hastadrage.mp3'), 
 
 
-        botaoText2: 'Ok', // Insira o texto do botão verde
+        botaoText2: 'Ok', 
 
         onBotao2Click: () => { 
           dialogRef.close();
