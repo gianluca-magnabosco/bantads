@@ -31,3 +31,42 @@ export class ContaService {
     this.saldoUpdated.emit(this.saldo);
   }
 }
+
+
+
+
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Injectable, EventEmitter } from '@angular/core';
+// import { LoginService } from 'src/app/entrar/services';
+// import { Deposito, Saldo, Saque, Transferencia } from 'src/app/shared';
+// import { take } from 'rxjs';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class ContaService {
+
+//   private url: string = "http://localhost:3000/conta";
+//   private headers: HttpHeaders = new HttpHeaders().set(
+//     "x-access-token",
+//     this.loginService.token
+//   );
+
+//   constructor(private http: HttpClient, private loginService: LoginService) { }
+
+//   getSaldo() {
+//     return this.http.get<Saldo>(`${this.url}/saldo`, { headers: this.headers });
+//   }
+
+//   depositar(deposito: Deposito) {
+//     return this.http.put(`${this.url}/deposito`, deposito, { headers: this.headers }).pipe(take(1));
+//   }
+
+//   sacar(saque: Saque) {
+//     return this.http.put(`${this.url}/saque`, saque, { headers: this.headers }).pipe(take(1));
+//   }
+
+//   transferencia(transferencia: Transferencia) {
+//     return this.http.put(`${this.url}/transferencia`, transferencia, { headers: this.headers }).pipe(take(1));
+//   }
+// }

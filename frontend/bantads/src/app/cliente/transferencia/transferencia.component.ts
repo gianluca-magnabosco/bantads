@@ -169,7 +169,7 @@ export class TransferenciaComponent {
           dialogRef.close();
         },
 
-        mostrarBotaoVermelho: true, 
+        mostrarBotaoVermelho: true,
         mostrarBotaoVerde: true,
       },
     });

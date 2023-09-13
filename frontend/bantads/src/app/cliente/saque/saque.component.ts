@@ -116,7 +116,7 @@ export class SaqueComponent {
           dialogRef.close();
         },
 
-        mostrarBotaoVermelho: true, 
+        mostrarBotaoVermelho: true,
         mostrarBotaoVerde: true,
       },
     });

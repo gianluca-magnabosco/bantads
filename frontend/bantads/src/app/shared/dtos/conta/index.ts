@@ -7,3 +7,5 @@ export * from "./extrato-dia.model";
 export * from "./saque.model";
 
 export * from "./transferencia.model";
+
+export * from "./saldo.model";
