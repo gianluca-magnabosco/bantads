@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Gerente } from 'src/app/shared';
+import { Gerente, GerenteInserir } from 'src/app/shared';
 import { AdministradorService } from '../services';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { PopupComponent } from '../../shared/popup/popup.component';
-import { Cadastro, Endereco } from 'src/app/shared';
 import { ValidationService } from 'src/app/shared/services';
 
 @Component({
@@ -33,41 +32,11 @@ private telefoneBlurred: boolean = false;
 private telefoneValid: boolean = false;
 private telefoneError: string = "";
 
-private salarioBlurred: boolean = false;
-private salarioValid: boolean = false;
-private salarioError: string = "";
-
-private cepBlurred: boolean = false;
-private cepValid: boolean = false;
-private cepError: string = "";
-
-private numeroBlurred: boolean = false;
-private numeroValid: boolean = false;
-private numeroError: string = "";
-
-private complementoBlurred: boolean = false;
-private complementoValid: boolean = false;
-private complementoError: string = "";
-
-private showEndereco: boolean = false;
-
-private endereco: Endereco = {
-  cep: "",
-  tipo: "",
-  logradouro: "",
-  numero: "",
-  complemento: "",
-  cidade: "",
-  estado: "",
-}
-
-private cadastroDTO: Cadastro = {
+private gerenteInserirDTO: GerenteInserir = {
   nome: "",
   email: "",
   cpf: "",
   telefone: "",
-  salario: "",
-  endereco: this.endereco,
 }
 
 constructor(
@@ -78,11 +47,11 @@ constructor(
 ){}
 
 get nome(): string {
-  return this.cadastroDTO.nome!;
+  return this.gerenteInserirDTO.nome!;
 }
 
 set nome(nome: string) {
-  this.cadastroDTO.nome = nome;
+  this.gerenteInserirDTO.nome = nome;
 }
 
 get isNomeValid(): boolean {
@@ -103,11 +72,11 @@ setNomeBeenBlurred(): void {
 }
 
 get email(): string {
-  return this.cadastroDTO.email!;
+  return this.gerenteInserirDTO.email!;
 }
 
 set email(email: string) {
-  this.cadastroDTO.email = email;
+  this.gerenteInserirDTO.email = email;
 }
 
 get isEmailValid(): boolean {
@@ -128,11 +97,11 @@ setEmailBeenBlurred(): void {
 }
 
 get telefone(): string {
-  return this.cadastroDTO.telefone!;
+  return this.gerenteInserirDTO.telefone!;
 }
 
 set telefone(telefone: string) {
-  this.cadastroDTO.telefone = telefone;
+  this.gerenteInserirDTO.telefone = telefone;
 }
 
 get isTelefoneValid(): boolean {
@@ -153,11 +122,11 @@ setTelefoneBeenBlurred(): void {
 }
 
 get cpf(): string {
-  return this.cadastroDTO.cpf!;
+  return this.gerenteInserirDTO.cpf!;
 }
 
 set cpf(cpf: string) {
-  this.cadastroDTO.cpf = cpf;
+  this.gerenteInserirDTO.cpf = cpf;
 }
 
 get isCpfValid(): boolean {
@@ -194,8 +163,12 @@ inserir(): void{
 }
 
 isButtonDisabled(): boolean {
+
   return (
-    this.cpf === "" || !this.validationService.innerValidateCpf(this.cpf)
+    (this.nome === "" || !this.nome.match(/^[a-zA-ZáãàâéèêíîìóòôõúûùÁÀÃÂÉÈÊÍÌÎÓÒÔÕÚÙÛñÑÇç\s]+$/))
+    || (this.email === "" || !this.email.match(/[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,125}[a-zA-Z]{2,63}/))
+    || (this.cpf === "" || !this.validationService.innerValidateCpf(this.cpf))
+    || (this.telefone === "" || !this.telefone.match(/\(\d{2}\)\s\d{5}-\d{4}/))
   );
 }
 
