@@ -1,5 +1,5 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { InicioComponent } from './inicio';
 import { DepositoComponent } from './deposito';
 import { SaqueComponent } from './saque';
@@ -56,6 +56,7 @@ registerLocaleData(localePt)
     ValidationService,
     ContaService,
     ClienteService,
+    DatePipe,
   ]
 })
 export class ClienteModule { }

@@ -67,6 +67,7 @@ export class ListarGerentesComponent implements OnInit {
 
         gifSrc: '../../../assets/gif/gato.gif', 
 
+        musica1: new Audio('../../../assets/sound/coritiba.mp3'),
         musica2: new Audio('../../../assets/sound/hastadrage.mp3'), 
 
 
@@ -79,6 +80,7 @@ export class ListarGerentesComponent implements OnInit {
           this.administradorService.remover(gerente.id!);
           this.gerentes = this.administradorService.getGerentes();
            },
+
         mostrarCampoTexto: false,    
         mostrarBotaoVermelho: true, 
         mostrarBotaoVerde: true,  
