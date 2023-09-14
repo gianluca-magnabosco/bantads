@@ -13,6 +13,7 @@ import { EditarGerenteComponent } from './editar-gerente';
 import { RelatorioClientesComponent } from './relatorio-clientes';
 import localePt from '@angular/common/locales/pt';
 import {registerLocaleData} from '@angular/common';
+import { ValidationService } from '../shared/services';
 registerLocaleData(localePt)
 
 
@@ -38,6 +39,7 @@ registerLocaleData(localePt)
       useValue: 'pt-BR'
     },
     AdministradorService,
+    ValidationService,
   ]
 })
 export class AdministradorModule { }

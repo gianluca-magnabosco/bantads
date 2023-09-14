@@ -10,19 +10,39 @@
             <div class="contact-info-form p-4 text-white space-y-10 relative bg-black">
 
                 <h1>Novo Gerente</h1>
-
                 <form action="" #formGerente="ngForm" class="space-y-2 text-white">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
-                        <input type="text" class="form-control bg-transparent text-white before:bg-[#ffffff]" [(ngModel)]="gerente.nome" #nome="ngModel" id="nome" name="nome" required>
+                        <input 
+                        name="nome" 
+                        type="text" 
+                        [(ngModel)]="gerente.nome"
+                        placeholder="Nome"
+                        class="form-control bg-transparent text-white before:bg-[#ffffff]" 
+                        (blur)="setNomeBeenBlurred()"
+                        (input)="validateNome()"
+                        #nome="ngModel" 
+                        id="nome" 
+                        required>
                         <div class="alert alert-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
                             <div *ngIf="!nome.errors?.['required']">Digite o nome do gerente.</div>
                         </div>
-                    </div>
-            
+                    </div>                   
                     <div class="form-group">
                         <label for="cpf">CPF:</label>
-                        <input type="text" class="form-control bg-transparent text-white" [(ngModel)]="gerente.cpf" #cpf="ngModel" id="cpf" name="cpf" required>
+                        <input 
+                        name="cpf" 
+                        type="text" 
+                        [(ngModel)]="gerente.cpf" 
+                        placeholder="CPF"
+                        class="form-control bg-transparent text-white"
+                        maxlength="14"
+                        (blur)="setCpfBeenBlurred()"
+                        (input)="validateAndFormatCpf($event)"
+                        (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                        #cpf="ngModel" 
+                        id="cpf" 
+                        required>
                         <div class="alert alert-danger" *ngIf="cpf.errors && (cpf.dirty || cpf.touched)">
                             <div *ngIf="!cpf.errors?.['required']">Digite o cpf do gerente.</div>
                         </div>
@@ -30,7 +50,17 @@
             
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control bg-transparent text-white" [(ngModel)]="gerente.email" #email="ngModel" id="email" name="email" required>
+                        <input
+                        name="email"
+                        type="text" 
+                        [(ngModel)]="gerente.email" 
+                        placeholder="E-mail"
+                        class="form-control bg-transparent text-white"
+                        (blur)="setEmailBeenBlurred()"
+                        (input)="validateEmail()"
+                        #email="ngModel" 
+                        id="email" 
+                        required>
                         <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
                             <div *ngIf="!email.errors?.['required']">Digite o email do gerente.</div>
                         </div>
@@ -38,7 +68,19 @@
             
                     <div class="form-group">
                         <label for="telefone">Telefone:</label>
-                        <input type="text" class="form-control bg-transparent text-white" id="telefone" [(ngModel)]="gerente.telefone" #telefone="ngModel" name="telefone" required>
+                        <input
+                        name="telefone"
+                        type="text"
+                        [(ngModel)]="gerente.telefone"
+                        placeholder="Telefone"
+                        class="form-control bg-transparent text-white"
+                        maxlength="15"
+                        (blur)="setTelefoneBeenBlurred()"
+                        (input)="validateAndFormatTelefone($event)"
+                        (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                        id="telefone"
+                        #telefone="ngModel"
+                        required>
                         <div class="alert alert-danger" *ngIf="telefone.errors && (telefone.dirty || telefone.touched)">
                             <div *ngIf="!telefone.errors?.['required']">Digite o telefone do gerente.</div>
                         </div>
