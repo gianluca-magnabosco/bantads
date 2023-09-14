@@ -22,23 +22,48 @@
           <thead>
             <tr class="bg-gray-200">
               <th class="py-2 px-4">
+                <button (click)="sortData('cpf')">
                   CPF
+                  <span class="ml-1">
+                    <i class="fas fa-sort cursor-pointer"></i>
+                  </span>
+                </button>
               </th>
 
               <th class="py-2 px-4">
+                <button (click)="sortData('nome')">
                   Nome
+                  <span class="ml-1">
+                    <i class="fas fa-sort cursor-pointer"></i>
+                  </span>
+                </button>
               </th>
 
               <th class="py-2 px-4">
+                <button (click)="sortData('cidade')">
                   Cidade
+                  <span class="ml-1">
+                    <i class="fas fa-sort cursor-pointer"></i>
+                  </span>
+                </button>
               </th>
 
               <th class="py-2 px-4">
+                <button (click)="sortData('estado')">
                   Estado
+                  <span class="ml-1">
+                    <i class="fas fa-sort cursor-pointer"></i>
+                  </span>
+                </button>
               </th>
 
               <th class="py-2 px-4">
+                <button (click)="sortData('saldo')">
                   Saldo
+                  <span class="ml-1">
+                    <i class="fas fa-sort cursor-pointer"></i>
+                  </span>
+                </button>
               </th>
 
               <th class="py-1 px-1">
