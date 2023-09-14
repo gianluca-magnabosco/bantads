@@ -57,27 +57,30 @@ export class ListarGerentesComponent implements OnInit {
     });
   }
 
-  abrirPopup(): void {
+  abrirPopup($event: any, gerente: Gerente): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: '400px',
       data: {
         titulo: 'Remover Gerente', 
 
-        mensagem: 'Você removeu o gerente com sucesso!', 
+        mensagem: 'Você realmente deseja remover o gerente?', 
 
         gifSrc: '../../../assets/gif/gato.gif', 
 
         musica2: new Audio('../../../assets/sound/hastadrage.mp3'), 
 
 
-        botaoText2: 'Ok', 
+        botaoText1: 'Fechar',
+        onBotao1Click: () => dialogRef.close(), 
 
+        botaoText2: 'Remover',
         onBotao2Click: () => { 
           dialogRef.close();
-          
+          this.administradorService.remover(gerente.id!);
+          this.gerentes = this.administradorService.getGerentes();
            },
         mostrarCampoTexto: false,    
-        mostrarBotaoVermelho: false, 
+        mostrarBotaoVermelho: true, 
         mostrarBotaoVerde: true,  
         
       },
