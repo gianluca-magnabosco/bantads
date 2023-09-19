@@ -13,7 +13,10 @@ export class ListarGerentesComponent implements OnInit {
 
   private gerentes!: Gerente[];
 
-  constructor(private administradorService : AdministradorService, private dialog: MatDialog) {}
+  constructor(
+    private administradorService : AdministradorService, 
+    private dialog: MatDialog
+    ) {}
 
   ngOnInit(): void {
     this.gerentes = this.administradorService.getGerentes();

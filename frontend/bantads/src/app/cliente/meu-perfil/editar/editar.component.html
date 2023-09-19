@@ -1,5 +1,5 @@
 <div class="flex flex-1 flex-col items-center justify-center w-full my-2">
-  <div class="flex flex-1 flex-col items-center w-full">
+   <div class="flex flex-1 flex-col items-center w-full">
     <div class="w-[60%]">
       <input name="nome" type="text" [(ngModel)]="nome" placeholder="Nome" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" (blur)="setNomeBeenBlurred()" (input)="validateNome()"/>
       <div *ngIf="!isNomeValid" class="text-red-600 font-bold">
@@ -41,9 +41,9 @@
 
     <div class="w-[60%] flex flex-col">
       <div class="w-full flex flex-row flex-wrap mb-1 mt-2">
-        <input name="tipo" type="text" [(ngModel)]="tipo" placeholder="Tipo" class="flex-1 text-black mr-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+        <input name="tipo" type="text" [(ngModel)]="tipo" placeholder="Tipo" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none disabled:bg-gray-300" readonly disabled>
 
-        <input name="logradouro" type="text" [(ngModel)]="logradouro" placeholder="Logradouro" class="flex-1 text-black ml-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+        <input name="logradouro" type="text" [(ngModel)]="logradouro" placeholder="Logradouro" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none disabled:bg-gray-300" readonly disabled>
       </div>
 
       <div class="w-full flex flex-row flex-wrap my-1">
@@ -63,9 +63,9 @@
       </div>
 
       <div class="w-full flex flex-row flex-wrap my-1">
-        <input name="cidade" type="text" [(ngModel)]="cidade" placeholder="Cidade" class="flex-1 text-black mr-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+        <input name="cidade" type="text" [(ngModel)]="cidade" placeholder="Cidade" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none disabled:bg-gray-300" readonly disabled>
 
-        <input name="uf" type="text" [(ngModel)]="estado" placeholder="Estado" class="flex-1 text-black ml-2 py-2 px-4 rounded focus:outline-none disabled:bg-gray-300" readonly disabled>
+        <input name="uf" type="text" [(ngModel)]="estado" placeholder="Estado" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none disabled:bg-gray-300" readonly disabled>
       </div>
     </div>
   </div>
@@ -86,5 +86,6 @@
       SALVAR
     </button>
   </div>
+
 
 </div>
