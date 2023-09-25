@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Gerente } from 'src/app/shared';
+import { Gerente, GerenteInserir } from 'src/app/shared';
 import { AdministradorService } from '../services';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
@@ -61,13 +61,11 @@ private endereco: Endereco = {
   estado: "",
 }
 
-private cadastroDTO: Cadastro = {
+private gerenteModel: GerenteInserir = {
   nome: "",
   email: "",
   cpf: "",
   telefone: "",
-  salario: "",
-  endereco: this.endereco,
 }
 
 constructor(
@@ -78,11 +76,11 @@ constructor(
 ){}
 
 get nome(): string {
-  return this.cadastroDTO.nome!;
+  return this.gerenteModel.nome!;
 }
 
 set nome(nome: string) {
-  this.cadastroDTO.nome = nome;
+  this.gerenteModel.nome = nome;
 }
 
 get isNomeValid(): boolean {
@@ -103,11 +101,11 @@ setNomeBeenBlurred(): void {
 }
 
 get email(): string {
-  return this.cadastroDTO.email!;
+  return this.gerenteModel.email!;
 }
 
 set email(email: string) {
-  this.cadastroDTO.email = email;
+  this.gerenteModel.email = email;
 }
 
 get isEmailValid(): boolean {
@@ -128,11 +126,11 @@ setEmailBeenBlurred(): void {
 }
 
 get telefone(): string {
-  return this.cadastroDTO.telefone!;
+  return this.gerenteModel.telefone!;
 }
 
 set telefone(telefone: string) {
-  this.cadastroDTO.telefone = telefone;
+  this.gerenteModel.telefone = telefone;
 }
 
 get isTelefoneValid(): boolean {
@@ -153,11 +151,11 @@ setTelefoneBeenBlurred(): void {
 }
 
 get cpf(): string {
-  return this.cadastroDTO.cpf!;
+  return this.gerenteModel.cpf!;
 }
 
 set cpf(cpf: string) {
-  this.cadastroDTO.cpf = cpf;
+  this.gerenteModel.cpf = cpf;
 }
 
 get isCpfValid(): boolean {
@@ -193,11 +191,6 @@ inserir(): void{
   }
 }
 
-isButtonDisabled(): boolean {
-  return (
-    this.cpf === "" || !this.validationService.innerValidateCpf(this.cpf)
-  );
-}
 
 validateNome(): void {
   let result = this.validationService.validateNome(this.nome, this.nomeBeenBlurred);

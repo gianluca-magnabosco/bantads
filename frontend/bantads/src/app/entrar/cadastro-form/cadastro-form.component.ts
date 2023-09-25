@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { BuscaCEPService, CadastroService } from '../services';
 import { Cadastro, Endereco } from 'src/app/shared';
 import { ValidationService } from 'src/app/shared/services';
+import { MatDialog } from '@angular/material/dialog';
+import { PopupComponent } from '../../shared/popup/popup.component';
+
 
 @Component({
   selector: 'app-cadastro-form',
@@ -63,7 +66,7 @@ export class CadastroFormComponent {
     endereco: this.endereco,
   }
 
-  constructor(private validationService: ValidationService, private cadastroService: CadastroService, private buscaCEPService: BuscaCEPService) {}
+  constructor(private validationService: ValidationService, private cadastroService: CadastroService, private buscaCEPService: BuscaCEPService, private dialog: MatDialog) {}
 
   cadastrar(): void {
     this.cadastroService.cadastrar(this.cadastroDTO);
@@ -561,6 +564,26 @@ export class CadastroFormComponent {
       this.logradouro = splitLogradouro.join(' ');
       this.cidade = result.localidade;
       this.estado = result.uf;
+    });
+  }
+
+  abrirPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: {
+        titulo: 'Cadastro Pendente',
+
+        mensagem: 'Sua solicitação de autocadastro foi realizada, você receberá um e-mail com sua senha caso sua conta seja aprovada!',
+
+        gifSrc: '../../../assets/gif/money.gif',
+
+        onBotao2Click: () => dialogRef.close(),
+
+        botaoText2: 'Concluir',
+        musica2: new Audio('../../../assets/sound/maketheL.mp3'),
+        mostrarBotaoVerde: true
+        
+
+      }
     });
   }
 }

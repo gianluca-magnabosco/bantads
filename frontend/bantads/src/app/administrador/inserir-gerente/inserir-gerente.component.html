@@ -43,9 +43,9 @@
                         #cpf="ngModel" 
                         id="cpf" 
                         required>
-                        <div class="alert alert-danger" *ngIf="cpf.errors && (cpf.dirty || cpf.touched)">
-                            <div *ngIf="!cpf.errors?.['required']">Digite o cpf do gerente.</div>
-                        </div>
+                            <div *ngIf="!isCpfValid">
+                                {{cpfErrorText}}
+                            </div>
                     </div>
             
                     <div class="form-group">

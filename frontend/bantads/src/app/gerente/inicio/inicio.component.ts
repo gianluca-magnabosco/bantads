@@ -63,7 +63,10 @@ export class InicioComponent implements OnInit {
 
         botaoText2: 'Concluir',
         musica2: new Audio('../../../assets/sound/johncena.mp3'),
-        onBotao2Click: () => dialogRef.close(),
+
+        onBotao2Click: () => {
+          dialogRef.close();
+        },
 
         mostrarCampoTexto: true,
         mostrarBotaoVermelho: true,
@@ -76,6 +79,35 @@ export class InicioComponent implements OnInit {
   }
 
   abrirPopupdois(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: {
+        titulo: 'Aprovar Cliente',
+
+        mensagem: 'Confirma a aprovação??',
+
+        gifSrc: '../../../assets/gif/nerd.gif',
+
+        botaoText1: 'Voltar',
+        musica1: new Audio('../../../assets/sound/copaonamao.mp3'),
+        onBotao1Click: () => dialogRef.close(),
+
+
+        botaoText2: 'Aprovar',
+        musica2: new Audio('../../../assets/sound/johncena.mp3'),
+        onBotao2Click: () => {dialogRef.close(),
+        this.abrirPopuptres();},
+
+        mostrarCampoTexto: false,
+        mostrarBotaoVermelho: true,
+        mostrarBotaoVerde: true,
+
+        
+
+      }
+    });
+  }
+
+  abrirPopuptres(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       data: {
         titulo: 'Aprovar Cliente',
