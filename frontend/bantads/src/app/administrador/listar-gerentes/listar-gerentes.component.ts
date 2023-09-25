@@ -13,7 +13,10 @@ export class ListarGerentesComponent implements OnInit {
 
   private gerentes!: Gerente[];
 
-  constructor(private administradorService : AdministradorService, private dialog: MatDialog) {}
+  constructor(
+    private administradorService : AdministradorService, 
+    private dialog: MatDialog
+    ) {}
 
   ngOnInit(): void {
     this.gerentes = this.administradorService.getGerentes();
@@ -67,6 +70,7 @@ export class ListarGerentesComponent implements OnInit {
 
         gifSrc: '../../../assets/gif/gato.gif', 
 
+        musica1: new Audio('../../../assets/sound/coritiba.mp3'),
         musica2: new Audio('../../../assets/sound/hastadrage.mp3'), 
 
 
@@ -80,6 +84,7 @@ export class ListarGerentesComponent implements OnInit {
           this.gerentes = this.administradorService.getGerentes();
           this.abrirPopup2($event, gerente);
            },
+
         mostrarCampoTexto: false,    
         mostrarBotaoVermelho: true, 
         mostrarBotaoVerde: true,  

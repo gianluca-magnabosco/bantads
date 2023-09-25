@@ -43,9 +43,15 @@
                         #cpf="ngModel" 
                         id="cpf" 
                         required>
+<<<<<<< HEAD
                             <div *ngIf="!isCpfValid">
                                 {{cpfErrorText}}
                             </div>
+=======
+                        <div *ngIf="!isCpfValid" class="text-red-600 font-bold">
+                            {{cpfErrorText}}
+                        </div>
+>>>>>>> d9d3178f01c37904dc839dbf72f21bd6bc8beed5
                     </div>
             
                     <div class="form-group">

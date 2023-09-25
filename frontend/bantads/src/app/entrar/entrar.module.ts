@@ -12,11 +12,12 @@ import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { ValidationService } from '../shared/services';
 
+
 @NgModule({
   declarations: [
     EntrarComponent,
     LoginFormComponent,
-    CadastroFormComponent,
+    CadastroFormComponent
   ],
   imports: [
     CommonModule,
@@ -26,6 +27,7 @@ import { ValidationService } from '../shared/services';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    
   ],
   exports: [
     EntrarComponent,
