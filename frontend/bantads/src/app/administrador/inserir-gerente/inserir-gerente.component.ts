@@ -32,39 +32,7 @@ private telefoneBlurred: boolean = false;
 private telefoneValid: boolean = false;
 private telefoneError: string = "";
 
-<<<<<<< HEAD
-private salarioBlurred: boolean = false;
-private salarioValid: boolean = false;
-private salarioError: string = "";
-
-private cepBlurred: boolean = false;
-private cepValid: boolean = false;
-private cepError: string = "";
-
-private numeroBlurred: boolean = false;
-private numeroValid: boolean = false;
-private numeroError: string = "";
-
-private complementoBlurred: boolean = false;
-private complementoValid: boolean = false;
-private complementoError: string = "";
-
-private showEndereco: boolean = false;
-
-private endereco: Endereco = {
-  cep: "",
-  tipo: "",
-  logradouro: "",
-  numero: "",
-  complemento: "",
-  cidade: "",
-  estado: "",
-}
-
-private gerenteModel: GerenteInserir = {
-=======
 private gerenteInserirDTO: GerenteInserir = {
->>>>>>> d9d3178f01c37904dc839dbf72f21bd6bc8beed5
   nome: "",
   email: "",
   cpf: "",
@@ -79,19 +47,11 @@ constructor(
 ){}
 
 get nome(): string {
-<<<<<<< HEAD
-  return this.gerenteModel.nome!;
-}
-
-set nome(nome: string) {
-  this.gerenteModel.nome = nome;
-=======
   return this.gerenteInserirDTO.nome!;
 }
 
 set nome(nome: string) {
   this.gerenteInserirDTO.nome = nome;
->>>>>>> d9d3178f01c37904dc839dbf72f21bd6bc8beed5
 }
 
 get isNomeValid(): boolean {
@@ -112,19 +72,11 @@ setNomeBeenBlurred(): void {
 }
 
 get email(): string {
-<<<<<<< HEAD
-  return this.gerenteModel.email!;
-}
-
-set email(email: string) {
-  this.gerenteModel.email = email;
-=======
   return this.gerenteInserirDTO.email!;
 }
 
 set email(email: string) {
   this.gerenteInserirDTO.email = email;
->>>>>>> d9d3178f01c37904dc839dbf72f21bd6bc8beed5
 }
 
 get isEmailValid(): boolean {
@@ -145,19 +97,11 @@ setEmailBeenBlurred(): void {
 }
 
 get telefone(): string {
-<<<<<<< HEAD
-  return this.gerenteModel.telefone!;
-}
-
-set telefone(telefone: string) {
-  this.gerenteModel.telefone = telefone;
-=======
   return this.gerenteInserirDTO.telefone!;
 }
 
 set telefone(telefone: string) {
   this.gerenteInserirDTO.telefone = telefone;
->>>>>>> d9d3178f01c37904dc839dbf72f21bd6bc8beed5
 }
 
 get isTelefoneValid(): boolean {
@@ -178,19 +122,11 @@ setTelefoneBeenBlurred(): void {
 }
 
 get cpf(): string {
-<<<<<<< HEAD
-  return this.gerenteModel.cpf!;
-}
-
-set cpf(cpf: string) {
-  this.gerenteModel.cpf = cpf;
-=======
   return this.gerenteInserirDTO.cpf!;
 }
 
 set cpf(cpf: string) {
   this.gerenteInserirDTO.cpf = cpf;
->>>>>>> d9d3178f01c37904dc839dbf72f21bd6bc8beed5
 }
 
 get isCpfValid(): boolean {
@@ -226,8 +162,6 @@ inserir(): void{
   }
 }
 
-<<<<<<< HEAD
-=======
 isButtonDisabled(): boolean {
 
   return (
@@ -237,7 +171,6 @@ isButtonDisabled(): boolean {
     || (this.telefone === "" || !this.telefone.match(/\(\d{2}\)\s\d{5}-\d{4}/))
   );
 }
->>>>>>> d9d3178f01c37904dc839dbf72f21bd6bc8beed5
 
 validateNome(): void {
   let result = this.validationService.validateNome(this.nome, this.nomeBeenBlurred);

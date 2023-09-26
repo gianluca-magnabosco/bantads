@@ -65,7 +65,8 @@ export class InicioComponent implements OnInit {
         musica2: new Audio('../../../assets/sound/johncena.mp3'),
 
         onBotao2Click: () => {
-          dialogRef.close();
+          dialogRef.close(),
+          this.abrirPopupquatro();
         },
 
         mostrarCampoTexto: true,
@@ -115,6 +116,26 @@ export class InicioComponent implements OnInit {
         mensagem: 'Cliente Aprovado ! ',
 
         gifSrc: '../../../assets/gif/lingua.gif',
+
+        onBotao2Click: () => dialogRef.close(),
+
+        botaoText2: 'Concluir',
+        musica2: new Audio('../../../assets/sound/maketheL.mp3'),
+        mostrarBotaoVerde: true
+        
+
+      }
+    });
+  }
+
+  abrirPopupquatro(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      data: {
+        titulo: 'Reprovar Cliente',
+
+        mensagem: 'Cliente Reprovado! ',
+
+        gifSrc: '../../../assets/gif/huell.gif',
 
         onBotao2Click: () => dialogRef.close(),
 
