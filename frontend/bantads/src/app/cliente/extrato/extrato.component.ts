@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { formatDate } from '@angular/common'; 
+import { Extrato, TipoTransacao } from 'src/app/shared';
+import { ContaService } from '../services';
 
 @Component({
   selector: 'cliente-extrato',
@@ -8,90 +8,27 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./extrato.component.css']
 })
 export class ExtratoComponent implements OnInit {
-  saldoDoDia: number = 0;
-  dataAtual: number = Date.now();
-  transacoesDoDia: any[] = [];
-  saldosPorDia: { data: string, saldo: number }[] = [];
-  
 
+  extrato!: Extrato;
 
-  constructor(private datePipe: DatePipe) {}
+  conta: string = "69.420-1";
 
-  transacoes: any[] = [
-    { nome: 'ElfBar INC', descricao: 'Pacote 100 Pods Sabor Baunilha', data: '01/09/2023', horario: '09:15:00', valor: -550 },
-    { nome: 'CIEE', descricao: 'Bolsa-Auxílio', data: '04/09/2023 ', horario: '08:15:00', valor: 900 },
-    { nome: 'Nubank', descricao: 'Venda Ilícita', data: '04/09/2023', horario: '07:15:00', valor: 500 },
-    { nome: 'OnlyFans', descricao: 'Assinatura Anual Bluezão Premium Deluxe Maior Fã (Pietro)', data: '05/09/2023', horario: '06:15:00', valor: -100 },
-    { nome: 'Valve', descricao: 'Skin - AK-47 | Hentaizao Lore ', data: '14/09/2023', horario: '05:15:00', valor: -150 },
-    { nome: 'Nubank', descricao: 'Dívida xxmarcelo caloteiro', data: '14/09/2023', horario: '04:15:00', valor: 10 },
-  ];
+  constructor(private contaService: ContaService) {}
 
-  ngOnInit() {
-    this.calcularSaldo();
-    this.calcularSaldoDoDia();
-    this.calcularSaldosPorDia();
+  ngOnInit(): void {
+    this.extrato = this.contaService.getHistoricoMovimentacoes();
   }
 
-  calcularSaldo() {
-    let saldoTotal = 0;
-  
-    for (const transacao of this.transacoes) {
-      saldoTotal += transacao.valor;
+  getCorTextoTransacao(tipoTransacao: TipoTransacao, contaOrigem: string): string {
+    if (tipoTransacao === TipoTransacao.DEPOSITO || (tipoTransacao === TipoTransacao.TRANSFERENCIA && contaOrigem !== this.conta)) {
+      return "text-blue-600";
     }
-  
-    return saldoTotal;
-  }
-  
-  calcularSaldosPorDia() {
-    const datasUnicas = [...new Set(this.transacoes.map(transacao => transacao.data))];
-    const datasPossiveis = this.gerarDatasPossiveis(); 
-  
-    this.saldosPorDia = datasPossiveis.map(data => {
-      if (!data) {
-        return { data: 'Sem dados', saldo: 0 };
-      }
-  
-      const saldoDoDia = this.transacoes
-        .filter(transacao => transacao.data === data)
-        .reduce((acumulador, transacao) => acumulador + transacao.valor, 0);
-  
-      return { data, saldo: saldoDoDia };
-    });
-  }
-  
-  
-  gerarDatasPossiveis() {
-    const datasTransacoes = this.transacoes.map(transacao => transacao.data);
-    const datasUnicas = [...new Set(datasTransacoes)];
-    const dataAtual = new Date();
-    const umMesAtras = new Date(dataAtual.getFullYear(), dataAtual.getMonth() - 1, dataAtual.getDate());
-  
-    const datasPossiveis = [];
-  
-    for (let data = umMesAtras; data <= dataAtual; data.setDate(data.getDate() + 1)) {
-      const dataFormatada = this.datePipe.transform(data, 'dd/MM/yyyy');
-      datasPossiveis.push(dataFormatada);
+
+    if (tipoTransacao === TipoTransacao.SAQUE || (tipoTransacao === TipoTransacao.TRANSFERENCIA && contaOrigem === this.conta)) {
+      return "text-red-600";
     }
-  
-    return datasPossiveis;
-  }
-  
 
-  calcularSaldoDoDia() {
-    const dataAtual = new Date();
-    const dataAtualFormatada = this.datePipe.transform(dataAtual, 'dd/MM/yyyy');
-  
-    this.transacoesDoDia = this.transacoes.filter(transacao => transacao.data === dataAtualFormatada);
-  
-    this.saldoDoDia = 0;
-  
-    for (const transacao of this.transacoesDoDia) {
-      this.saldoDoDia += transacao.valor;
-    }
+    return "text-white";
   }
 
-
-  
-  
-  
 }

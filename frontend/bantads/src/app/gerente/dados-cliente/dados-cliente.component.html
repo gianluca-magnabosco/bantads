@@ -1,23 +1,27 @@
 <gerente-navbar/>
+
 <div class="flex flex-col items-center py-10">
-  <div class="bg-black text-white p-8 rounded-lg shadow-md w-96">
-    <h2 class="text-2xl font-semibold mb-4">Dados do Cliente</h2>
+  <div class="bg-gradient-to-r from-[#18C687] to-black text-white p-8 rounded-lg shadow-md w-96">
+    <h2 class="text-3xl font-bold mb-4">Dados do Cliente</h2>
     <div class="mb-4">
-      <p><span class="font-semibold">Nome:</span> </p>
-      <p><span class="font-semibold">CPF:</span> </p>
-      <p><span class="font-semibold">Cidade:</span> </p>
-      <p><span class="font-semibold">Estado:</span> </p>
-      <p><span class="font-semibold">Saldo:</span> </p>
+      <p><span class="font-bold text-lg">Nome:</span> {{cliente.nome}}</p>
+      <p><span class="font-bold text-lg">E-mail:</span> {{cliente.email}}</p>
+      <p><span class="font-bold text-lg">CPF:</span> {{cliente.cpf}}</p>
+      <p><span class="font-bold text-lg">Telefone:</span> {{cliente.telefone}}</p>
+      <p><span class="font-bold text-lg">Salário:</span> {{cliente.salario}}</p>
+      <p><span class="font-bold text-lg">Endereço:</span> {{cliente.endereco!.tipo}} {{cliente.endereco!.logradouro}}, nº {{cliente.endereco!.numero}}, {{cliente.endereco!.complemento}} - {{cliente.endereco!.cidade}}, {{cliente.endereco!.estado}}</p>
     </div>
   </div>
-  
-  <div class="bg-black text-white mt-6 p-8 rounded-lg shadow-md w-96">
-    <h2 class="text-2xl font-semibold mb-4">Dados da Conta</h2>
+
+  <div class="bg-gradient-to-r from-[#18C687] to-black text-white p-8 rounded-lg shadow-md w-96 mt-12">
+    <h2 class="text-3xl font-bold mb-4">Dados da Conta</h2>
     <div>
-      <p><span class="font-semibold">Número da Conta:</span> </p>
-      <p><span class="font-semibold">Tipo:</span> </p>
-      <p><span class="font-semibold">Agência:</span> </p>
+      <p><span class="font-bold text-lg">Número da Conta:</span> {{numConta}} </p>
+      <p><span class="font-bold text-lg">Limite:</span> {{limite}} </p>
+      <p><span class="font-bold text-lg">Saldo:</span> {{saldo}} </p>
+      <p><span class="font-bold text-lg">Gerente:</span> {{gerente}} </p>
     </div>
   </div>
 </div>
+
 <app-footer/>

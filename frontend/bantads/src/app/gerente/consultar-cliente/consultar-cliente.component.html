@@ -15,7 +15,7 @@
       <div class="flex flex-col w-full">
         <div class="flex flex-row">
           <input name="cpf" type="text" [(ngModel)]="cpf" placeholder="CPF do Cliente" class="w-full mt-2 text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none" maxlength="14" (blur)="setCpfBeenBlurred()" (input)="validateAndFormatCpf($event)" (keypress)="($event.charCode >= 48 && $event.charCode < 58)"/>
-          <button [disabled]="isButtonDisabled()" class="ml-2 mt-2 px-4 py-2 disabled:bg-[#90F58E] bg-[#18c687] hover:bg-[#0e744e] text-white rounded-md" (click)="buscarCliente()">
+          <button [disabled]="isButtonDisabled()" class="ml-2 mt-2 px-4 py-2 disabled:bg-[#90F58E] bg-[#18c687] hover:bg-[#0e744e] text-white rounded-md" [routerLink]="['/gerente/dados-cliente']">
             Pesquisar
           </button>
         </div>

@@ -112,7 +112,7 @@
               </div>
 
               <div class="flex flex-col p-2 w-[150px] justify-center mt-9">
-                <button class="btn btn-lg btn-danger" (click)="abrirPopup($event, gerente)">
+                <button class="btn btn-lg btn-danger" (click)="abrirPopup($event, gerente)" [disabled]="listaGerentes.length === 1">
                   Remover
                 </button>
               </div>

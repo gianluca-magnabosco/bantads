@@ -22,8 +22,8 @@ export class GerenteService {
       new ClienteConsultaListagem(1, "Amigao", "123.456.789-00", "Curitiba", "Paraná", 1000.69),
       new ClienteConsultaListagem(2, "Biricutico", "456.123.789-40", "Curitiba", "Paraná", 89798.69),
       new ClienteConsultaListagem(3, "Drelelele", "123.789.456-03", "Rio Negro", "Paraná", 12312.69),
-      new ClienteConsultaListagem(4, "Diamba", "123.543.789-12", "Mafra", "Santa Catarina", 543.69),
-      new ClienteConsultaListagem(5, "Drelens", "123.456.321-10", "São Paulo", "São Paulo", 765.69),
+      new ClienteConsultaListagem(4, "Drelens", "123.456.321-10", "São Paulo", "São Paulo", 765.69),
+      new ClienteConsultaListagem(5, "Gianluca", "115.687.529-38", "Mafra", "Santa Catarina", 420.69),
     ];
     this.melhoresClientes = [
       new ClienteConsultaListagem(1, "Amigao", "123.456.789-00", "Curitiba", "Paraná", 1000.69),

@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Deposito, Saque, Transferencia } from 'src/app/shared';
+import { Deposito, Extrato, ExtratoDia, HistoricoMovimentacoes, Saque, TipoTransacao, Transferencia } from 'src/app/shared';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,27 @@ export class ContaService {
 
   saldoUpdated = new EventEmitter<number>();
 
-  constructor() { }
+  private extrato!: Extrato;
+
+  constructor() {
+    this.extrato = new Extrato([
+      new ExtratoDia('2023-09-27', '135.00', []),
+      new ExtratoDia('2023-09-26', '694.20', [
+        new HistoricoMovimentacoes('2023-09-26T18:25:43.511Z', TipoTransacao.DEPOSITO, undefined, undefined, '500.00'),
+        new HistoricoMovimentacoes('2023-09-26T18:25:43.511Z', TipoTransacao.SAQUE, undefined, undefined, '200.00'),
+      ]),
+      new ExtratoDia('2023-09-25', '800.00', [
+        new HistoricoMovimentacoes('2023-09-25T18:25:43.511Z', TipoTransacao.DEPOSITO, undefined, undefined, '300.00'),
+        new HistoricoMovimentacoes('2023-09-25T18:25:43.511Z', TipoTransacao.TRANSFERENCIA, '69.420-1', '12.345-1', '200.00'),
+      ]),
+      new ExtratoDia('2023-09-24', '123.00', [
+        new HistoricoMovimentacoes('2023-09-24T18:25:43.511Z', TipoTransacao.SAQUE, undefined, undefined, '300.00'),
+        new HistoricoMovimentacoes('2023-09-24T18:25:43.511Z', TipoTransacao.TRANSFERENCIA, '12.345-1', '69.420-1', '200.00'),
+      ]),
+      new ExtratoDia('2023-09-23', '420.69', []),
+      new ExtratoDia('2023-09-22', '420.69', []),
+    ]);
+  }
 
   getSaldo(): number {
     return this.saldo;
@@ -29,6 +49,10 @@ export class ContaService {
   transferencia(transferencia: Transferencia): void {
     this.saldo -= Number(transferencia.valor!.replace(/[^\d,]/g, '').replace(',', '.'));
     this.saldoUpdated.emit(this.saldo);
+  }
+
+  getHistoricoMovimentacoes() {
+    return this.extrato;
   }
 }
 

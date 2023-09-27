@@ -10,42 +10,74 @@
             <div class="contact-info-form p-4 text-white space-y-10 relative bg-black">
 
                 <h1>Editar Gerente</h1>
-
                 <form action="" #formGerente="ngForm" class="space-y-2 text-white">
                     <div class="form-group">
                         <label for="nome">Nome:</label>
-                        <input type="text" class="form-control bg-transparent text-white before:bg-[#ffffff]" [(ngModel)]="gerente.nome" #nome="ngModel" id="nome" name="nome" required>
-                        <div class="alert alert-danger" *ngIf="nome.errors && (nome.dirty || nome.touched)">
-                            <div *ngIf="!nome.errors?.['required']">Digite o nome do gerente.</div>
+                        <input
+                        name="nome"
+                        type="text"
+                        [(ngModel)]="nome"
+                        placeholder="Nome"
+                        class="form-control bg-transparent text-white before:bg-[#ffffff]"
+                        (blur)="setNomeBeenBlurred()"
+                        (input)="validateNome()"
+                        id="nome"
+                        required>
+                        <div *ngIf="!isNomeValid" class="text-red-600 font-bold">
+                          {{nomeErrorText}}
                         </div>
                     </div>
-            
                     <div class="form-group">
                         <label for="cpf">CPF:</label>
-                        <input type="text" class="form-control bg-gray-900 bg-opacity-60 text-black" [disabled]="true" [(ngModel)]="gerente.cpf" #cpf="ngModel" id="cpf" name="cpf" required>
-                        <div class="alert alert-danger" *ngIf="cpf.errors && (cpf.dirty || cpf.touched)">
-                            <div *ngIf="!cpf.errors?.['required']">Digite o cpf do gerente.</div>
-                        </div>
+                        <input
+                        name="cpf"
+                        type="text"
+                        [(ngModel)]="cpf"
+                        placeholder="CPF"
+                        class="form-control bg-[#575551] text-black"
+                        id="cpf"
+                        readonly
+                        disabled>
                     </div>
-            
+
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control bg-transparent text-white" [(ngModel)]="gerente.email" #email="ngModel" id="email" name="email" required>
-                        <div class="alert alert-danger" *ngIf="email.errors && (email.dirty || email.touched)">
-                            <div *ngIf="!email.errors?.['required']">Digite o email do gerente.</div>
+                        <input
+                        name="email"
+                        type="text"
+                        [(ngModel)]="email"
+                        placeholder="E-mail"
+                        class="form-control bg-transparent text-white"
+                        (blur)="setEmailBeenBlurred()"
+                        (input)="validateEmail()"
+                        id="email"
+                        required>
+                        <div *ngIf="!isEmailValid" class="text-red-600 font-bold">
+                          {{emailErrorText}}
                         </div>
                     </div>
-            
+
                     <div class="form-group">
                         <label for="telefone">Telefone:</label>
-                        <input type="text" class="form-control bg-transparent text-white" id="telefone" [(ngModel)]="gerente.telefone" #telefone="ngModel" name="telefone" required>
-                        <div class="alert alert-danger" *ngIf="telefone.errors && (telefone.dirty || telefone.touched)">
-                            <div *ngIf="!telefone.errors?.['required']">Digite o telefone do gerente.</div>
+                        <input
+                        name="telefone"
+                        type="text"
+                        [(ngModel)]="telefone"
+                        placeholder="Telefone"
+                        class="form-control bg-transparent text-white"
+                        maxlength="15"
+                        (blur)="setTelefoneBeenBlurred()"
+                        (input)="validateAndFormatTelefone($event)"
+                        (keypress)="($event.charCode >= 48 && $event.charCode < 58)"
+                        id="telefone"
+                        required>
+                        <div *ngIf="!isTelefoneValid" class="text-red-600 font-bold">
+                          {{telefoneErrorText}}
                         </div>
                     </div>
-            
+
                     <div class="form-group space-x-2 mt-4">
-                        <button type="button" class="btn btn-success" (click)="atualizar()" [disabled]="!formGerente.form.valid">
+                        <button type="button" class="btn btn-success" (click)="abrirPopup()" (click)="atualizar()" [disabled]="isButtonDisabled()">
                             Salvar
                         </button>
                         <a class="btn btn-secondary" [routerLink]="['/admin/listar-gerentes']">
@@ -53,8 +85,8 @@
                         </a>
                     </div>
                 </form>
-            
-                
+
+
             </div>
         </div>
     </div>
