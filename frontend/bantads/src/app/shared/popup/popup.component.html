@@ -26,24 +26,26 @@
         type="text"
         #campoTexto
         placeholder="Digite aqui"
+        (input)="handleCampoTextoInput($event)"
         class="p-2 border border-gray-400 rounded"
-        
       >
     </div>
     <div class="flex justify-center space-x-4">
-      <div *ngIf="data.mostrarBotaoVermelho" class="flex justify-center space-x-4"> 
+      <div *ngIf="data.mostrarBotaoVermelho" class="flex justify-center space-x-4">
        <button
        class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500"
        (click)="onBotao1Click()"
+       [disabled]="isBotao1Disabled()"
        >
       {{ botaoText1 }}
     </button>
     </div>
-    
-    <div *ngIf="data.mostrarBotaoVerde" class="flex justify-center space-x-4"> 
+
+    <div *ngIf="data.mostrarBotaoVerde" class="flex justify-center space-x-4">
       <button
-        class="px-4 py-2 bg-[#18C687] hover:bg-[#18FA87] text-white rounded"
+        class="px-4 py-2 bg-[#18C687] hover:bg-[#18FA87] disabled:bg-[#90F58E] text-white rounded"
         (click)="onBotao2Click()"
+        [disabled]="isBotao2Disabled()"
       >
         {{ botaoText2 }}
       </button>

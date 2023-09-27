@@ -142,6 +142,30 @@ export class TransferenciaComponent {
     this.contaService.transferencia(this.transferencia);
   }
 
+  abrirConfirmacaoPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Sucesso!",
+
+        mensagem: "Transferência realizada com sucesso!",
+
+        gifSrc: "../../../assets/gif/huell.gif",
+
+        botaoText2: "OK",
+
+        musica2: new Audio('../../../assets/sound/queota.mp3'),
+
+        onBotao2Click: () => {
+          dialogRef.close();
+        },
+
+        mostrarBotaoVermelho: false,
+        mostrarBotaoVerde: true,
+      },
+    });
+  }
+
   abrirPopup(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: "400px",
@@ -167,6 +191,9 @@ export class TransferenciaComponent {
         onBotao2Click: () => {
           this.realizarTransferencia();
           dialogRef.close();
+          this.abrirConfirmacaoPopup();
+          this.valorTransferencia = "";
+          this.numConta = "";
         },
 
         mostrarBotaoVermelho: true,

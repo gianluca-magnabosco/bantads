@@ -70,6 +70,29 @@ export class EditarComponent implements OnInit {
     this.clienteService.updateCliente(this.clienteAlter);
   }
 
+  abrirConfirmacaoPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Sucesso!",
+
+        mensagem: "Perfil alterado com sucesso!",
+
+        gifSrc: "../../../assets/gif/huell.gif",
+
+        botaoText2: "OK",
+
+        musica2: new Audio('../../../assets/sound/queota.mp3'),
+
+        onBotao2Click: () => {
+          dialogRef.close();
+        },
+
+        mostrarBotaoVerde: true,
+      },
+    });
+  }
+
   abrirPopup(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: "400px",
@@ -97,9 +120,10 @@ export class EditarComponent implements OnInit {
           this.modo = "visualizar";
           this.modoChange.emit(this.modo);
           dialogRef.close();
+          this.abrirConfirmacaoPopup();
         },
 
-        mostrarBotaoVermelho: true, 
+        mostrarBotaoVermelho: true,
         mostrarBotaoVerde: true,
       },
     });

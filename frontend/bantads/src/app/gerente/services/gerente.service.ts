@@ -43,4 +43,12 @@ export class GerenteService {
   getMelhoresClientes(): ClienteConsultaListagem[] {
     return this.melhoresClientes;
   }
+
+  aprovarCliente(id: number) {
+    this.pedidosPendentesAprovacao = this.pedidosPendentesAprovacao.filter((item) => item.id != id);
+  }
+
+  recusarCliente(id: number) {
+    this.pedidosPendentesAprovacao = this.pedidosPendentesAprovacao.filter((item) => item.id != id);
+  }
 }

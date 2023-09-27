@@ -48,7 +48,7 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  abrirPopup(): void {
+  abrirPopupRecusar(id: number): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       data: {
         titulo: 'Recusar Cliente',
@@ -57,34 +57,34 @@ export class InicioComponent implements OnInit {
 
         gifSrc: '../../../assets/gif/nerd.gif',
 
-        botaoText1: 'Fechar',
+        botaoText1: 'Voltar',
         musica1: new Audio('../../../assets/sound/copaonamao.mp3'),
         onBotao1Click: () => dialogRef.close(),
 
-        botaoText2: 'Concluir',
+        botaoText2: 'Confirmar',
         musica2: new Audio('../../../assets/sound/johncena.mp3'),
 
         onBotao2Click: () => {
+          this.gerenteService.recusarCliente(id);
+          this.pedidosPendentesAprovacao = this.gerenteService.getPedidosPendentesAprovacao();
           dialogRef.close(),
-          this.abrirPopupquatro();
+          this.abrirPopupRecusado();
         },
 
+        botao2Disabled: true,
         mostrarCampoTexto: true,
         mostrarBotaoVermelho: true,
         mostrarBotaoVerde: true,
-
-        
-
       }
     });
   }
 
-  abrirPopupdois(): void {
+  abrirPopupAprovar(id: number): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       data: {
         titulo: 'Aprovar Cliente',
 
-        mensagem: 'Confirma a aprovação??',
+        mensagem: 'Confirma a aprovação?',
 
         gifSrc: '../../../assets/gif/nerd.gif',
 
@@ -95,55 +95,51 @@ export class InicioComponent implements OnInit {
 
         botaoText2: 'Aprovar',
         musica2: new Audio('../../../assets/sound/johncena.mp3'),
-        onBotao2Click: () => {dialogRef.close(),
-        this.abrirPopuptres();},
+        onBotao2Click: () => {
+          this.gerenteService.aprovarCliente(id);
+          this.pedidosPendentesAprovacao = this.gerenteService.getPedidosPendentesAprovacao();
+          dialogRef.close(),
+          this.abrirPopupAprovado();
+        },
 
-        mostrarCampoTexto: false,
         mostrarBotaoVermelho: true,
         mostrarBotaoVerde: true,
-
-        
-
       }
     });
   }
 
-  abrirPopuptres(): void {
+  abrirPopupAprovado(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       data: {
-        titulo: 'Aprovar Cliente',
+        titulo: 'Sucesso!',
 
-        mensagem: 'Cliente Aprovado ! ',
+        mensagem: 'Cliente Aprovado!',
 
         gifSrc: '../../../assets/gif/lingua.gif',
 
         onBotao2Click: () => dialogRef.close(),
 
-        botaoText2: 'Concluir',
+        botaoText2: 'OK',
         musica2: new Audio('../../../assets/sound/maketheL.mp3'),
         mostrarBotaoVerde: true
-        
-
       }
     });
   }
 
-  abrirPopupquatro(): void {
+  abrirPopupRecusado(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       data: {
-        titulo: 'Reprovar Cliente',
+        titulo: 'Sucesso!',
 
-        mensagem: 'Cliente Reprovado! ',
+        mensagem: 'Cliente Recusado!',
 
         gifSrc: '../../../assets/gif/huell.gif',
 
         onBotao2Click: () => dialogRef.close(),
 
-        botaoText2: 'Concluir',
+        botaoText2: 'OK',
         musica2: new Audio('../../../assets/sound/maketheL.mp3'),
         mostrarBotaoVerde: true
-        
-
       }
     });
   }

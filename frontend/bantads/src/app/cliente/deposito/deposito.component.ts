@@ -80,6 +80,30 @@ export class DepositoComponent {
     this.contaService.depositar(this.deposito);
   }
 
+  abrirConfirmacaoPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Sucesso!",
+
+        mensagem: "Depósito realizado com sucesso!",
+
+        gifSrc: "../../../assets/gif/huell.gif",
+
+        botaoText2: "OK",
+
+        musica2: new Audio('../../../assets/sound/queota.mp3'),
+
+        onBotao2Click: () => {
+          dialogRef.close();
+        },
+
+        mostrarBotaoVermelho: false,
+        mostrarBotaoVerde: true,
+      },
+    });
+  }
+
   abrirPopup(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: "400px",
@@ -105,9 +129,11 @@ export class DepositoComponent {
         onBotao2Click: () => {
           this.realizarDeposito();
           dialogRef.close();
+          this.abrirConfirmacaoPopup();
+          this.valorDeposito = "";
         },
 
-        mostrarBotaoVermelho: true, 
+        mostrarBotaoVermelho: true,
         mostrarBotaoVerde: true,
       },
     });

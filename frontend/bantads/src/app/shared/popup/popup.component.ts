@@ -34,7 +34,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
         mostrarCampoTexto: true,    //Se deseja mostrar um textfield
         mostrarBotaoVermelho: true, //Se deseja mostrar o botão vermelho (Botão 1)
         mostrarBotaoVerde: true,  //Se deseja mostrar o botão verde (Botão 2)
-        
+
       },
     });
 
@@ -56,8 +56,10 @@ export class PopupComponent {
   mensagem: string;
   gifSrc: string;
   botaoText1: string;
+  botao1Disabled: boolean;
   onBotao1Click: () => void;
   botaoText2: string;
+  botao2Disabled: boolean;
   onBotao2Click: () => void;
   musica1: HTMLAudioElement;
   musica2: HTMLAudioElement;
@@ -72,18 +74,39 @@ export class PopupComponent {
     this.titulo = data.titulo;
     this.mensagem = data.mensagem;
     this.gifSrc = data.gifSrc;
+
+    this.musica1 = data.musica1;
+    this.botaoText1 = data.botaoText1;
+    this.botao1Disabled = data.botao1Disabled;
     this.onBotao1Click = () => {
       data.onBotao1Click();
       this.tocarMusica1();
     }
-    this.botaoText1 = data.botaoText1;
+
+    this.musica2 = data.musica2;
+    this.botaoText2 = data.botaoText2;
+    this.botao2Disabled = data.botao2Disabled;
     this.onBotao2Click = () => {
       data.onBotao2Click();
       this.tocarMusica2();
     }
-    this.botaoText2 = data.botaoText2;
-    this.musica1 = data.musica1;
-    this.musica2 = data.musica2;
+  }
+
+
+  handleCampoTextoInput(event: any): void {
+    if (event.target.value.length > 5) {
+      this.botao2Disabled = false;
+    } else {
+      this.botao2Disabled = true;
+    }
+  }
+
+  isBotao1Disabled(): boolean {
+    return this.botao1Disabled;
+  }
+
+  isBotao2Disabled(): boolean {
+    return this.botao2Disabled;
   }
 
   fecharPopup(): void {

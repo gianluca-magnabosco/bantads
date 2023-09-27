@@ -89,6 +89,30 @@ export class SaqueComponent {
     this.contaService.sacar(this.saque);
   }
 
+  abrirConfirmacaoPopup(): void {
+    const dialogRef = this.dialog.open(PopupComponent, {
+      width: "400px",
+      data: {
+        titulo: "Sucesso!",
+
+        mensagem: "Saque realizado com sucesso!",
+
+        gifSrc: "../../../assets/gif/huell.gif",
+
+        botaoText2: "OK",
+
+        musica2: new Audio('../../../assets/sound/queota.mp3'),
+
+        onBotao2Click: () => {
+          dialogRef.close();
+        },
+
+        mostrarBotaoVermelho: false,
+        mostrarBotaoVerde: true,
+      },
+    });
+  }
+
   abrirPopup(): void {
     const dialogRef = this.dialog.open(PopupComponent, {
       width: "400px",
@@ -114,6 +138,8 @@ export class SaqueComponent {
         onBotao2Click: () => {
           this.realizarSaque();
           dialogRef.close();
+          this.abrirConfirmacaoPopup();
+          this.valorSaque = "";
         },
 
         mostrarBotaoVermelho: true,
