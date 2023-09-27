@@ -11,20 +11,26 @@
           <img src="../../../assets/img/verde_3.png" alt="">
       </div>
 
-      <div class="flex flex-col bg-black w-fit p-8 flex-1 mb-10 rounded-lg space-y-2 self-center">
-          <div class="text-white flex flex-row justify-between">
+      <div class="flex flex-col bg-black w-[100%] p-8 flex-1 mb-10 rounded-lg space-y-2 self-center">
+        <div class="text-white flex flex-row justify-between">
               <h2>Extrato</h2>
             
-              <mat-form-field>
+              <div class="form-field-with-button">
+                <mat-form-field>
                   <mat-label>Insira um período de data</mat-label>
                   <mat-date-range-input [rangePicker]="picker">
-                    <input matStartDate placeholder="Início">
-                    <input matEndDate placeholder="Final">
+                    <input matStartDate placeholder="Início" [readonly]="true">
+                    <input matEndDate placeholder="Final" [readonly]="true">
                   </mat-date-range-input>
-                
-                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-date-range-picker #picker></mat-date-range-picker>
                 </mat-form-field>
+              
+                <button mat-button class="ml-4 bg-[#18C687] hover:bg-[#18FA87] text-white px-4 py-2 rounded">Procurar</button>              
+              </div>
+              
+
           </div>
 
           <mat-divider class="bg-[#4B5652]"/>
@@ -46,13 +52,15 @@
                 <div class="flex flex-col ">
                     <div>
                         <p>{{ transacao.data }}</p>
+                        <p>{{ transacao.horario }}</p>
+                        
                     </div>
                     <div class="-mt-4 text-gray-600">
                         <p>Data</p>
                     </div>
                 </div>
 
-                <div class="text-2xl text-center" [ngClass]="{'text-red-600': transacao.valor < 0, 'text-green-600': transacao.valor >= 0}">
+                <div class="text-2xl text-center" [ngClass]="{'text-red-600': transacao.valor < 0, 'text-blue-600': transacao.valor >= 0}">
                     <p>{{ transacao.valor >= 0 ? '+' : '' }}{{ transacao.valor }}</p>
                 </div>
             </div>
@@ -81,14 +89,14 @@
                     <span
                       [class]="
                         'text-2xl ' +
-                        (saldo.saldo < 0 ? 'text-red-600' : saldo.saldo === 0 ? 'text-gray-400' : 'text-green-400')
+                        (saldo.saldo < 0 ? 'text-red-600' : saldo.saldo === 0 ? 'text-gray-400' : 'text-blue-400')
                       "
                     >
                       {{ saldo.saldo < 0 ? '-' : saldo.saldo === 0 ? '±' : '+' }}
                     </span>
                     <span class="text-gray-400">ㅤ{{ saldo.data }}</span>
                   </div>
-                  <div class="text-blue-300 font-semibold">
+                  <div class="text-gray-400 font-semibold">
                     {{ saldo.saldo | currency:'BRL':'symbol':'1.2-2' }}
                   </div>
                 </li>

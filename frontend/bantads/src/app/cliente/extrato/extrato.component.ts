@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { formatDate } from '@angular/common'; 
 
 @Component({
   selector: 'cliente-extrato',
@@ -11,16 +12,18 @@ export class ExtratoComponent implements OnInit {
   dataAtual: number = Date.now();
   transacoesDoDia: any[] = [];
   saldosPorDia: { data: string, saldo: number }[] = [];
+  
+
 
   constructor(private datePipe: DatePipe) {}
 
   transacoes: any[] = [
-    { nome: 'ElfBar INC', descricao: 'Pacote 100 Pods Sabor Baunilha', data: '01/09/2023', valor: -550 },
-    { nome: 'CIEE', descricao: 'Bolsa-Auxílio', data: '04/09/2023', valor: 900 },
-    { nome: 'Nubank', descricao: 'Venda Ilícita', data: '04/09/2023', valor: 500 },
-    { nome: 'OnlyFans', descricao: 'Assinatura Anual Bluezão Premium Deluxe Maior Fã (Pietro)', data: '05/09/2023', valor: -100 },
-    { nome: 'Valve', descricao: 'Skin - AK-47 | Hentaizao Lore ', data: '14/09/2023', valor: -150 },
-    { nome: 'Nubank', descricao: 'Dívida xxmarcelo caloteiro', data: '14/09/2023', valor: 10 },
+    { nome: 'ElfBar INC', descricao: 'Pacote 100 Pods Sabor Baunilha', data: '01/09/2023', horario: '09:15:00', valor: -550 },
+    { nome: 'CIEE', descricao: 'Bolsa-Auxílio', data: '04/09/2023 ', horario: '08:15:00', valor: 900 },
+    { nome: 'Nubank', descricao: 'Venda Ilícita', data: '04/09/2023', horario: '07:15:00', valor: 500 },
+    { nome: 'OnlyFans', descricao: 'Assinatura Anual Bluezão Premium Deluxe Maior Fã (Pietro)', data: '05/09/2023', horario: '06:15:00', valor: -100 },
+    { nome: 'Valve', descricao: 'Skin - AK-47 | Hentaizao Lore ', data: '14/09/2023', horario: '05:15:00', valor: -150 },
+    { nome: 'Nubank', descricao: 'Dívida xxmarcelo caloteiro', data: '14/09/2023', horario: '04:15:00', valor: 10 },
   ];
 
   ngOnInit() {
@@ -86,6 +89,8 @@ export class ExtratoComponent implements OnInit {
       this.saldoDoDia += transacao.valor;
     }
   }
+
+
   
   
   
