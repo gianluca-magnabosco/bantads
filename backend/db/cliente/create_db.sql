@@ -1,0 +1,26 @@
+CREATE DATABASE IF NOT EXISTS Cliente
+WITH ENCODING = 'UTF8';
+
+USE Cliente;
+
+CREATE TABLE IF NOT EXISTS DadosCliente (
+    ClienteID INT AUTO_INCREMENT PRIMARY KEY,
+    Nome VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    CPF VARCHAR(12) UNIQUE NOT NULL,
+    Telefone VARCHAR(15),
+    Salario DECIMAL(10,2)
+);
+
+CREATE TABLE IF NOT EXISTS EnderecoCliente (
+    EnderecoID INT AUTO_INCREMENT PRIMARY KEY,
+    ClienteID INT,
+    TipoEndereco VARCHAR(50),
+    Logradouro VARCHAR(100),
+    Numero INT,
+    Complemento VARCHAR(50),
+    CEP VARCHAR(12),
+    Cidade VARCHAR(50),
+    Estado VARCHAR(50),
+    FOREIGN KEY (ClienteID) REFERENCES DadosCliente(ClienteID)
+);
