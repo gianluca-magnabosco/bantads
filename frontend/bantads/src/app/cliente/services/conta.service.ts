@@ -6,7 +6,7 @@ import { Deposito, Extrato, ExtratoDia, HistoricoMovimentacoes, Saque, TipoTrans
 })
 export class ContaService {
 
-  private saldo: number = 1.50;
+  private saldo: number = -1.50;
 
   saldoUpdated = new EventEmitter<number>();
 
